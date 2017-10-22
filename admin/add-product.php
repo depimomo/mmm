@@ -61,9 +61,9 @@
                                                         <textarea rows="4" class="form-control form-control-line" name="desc" required="yes"></textarea>  </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-12">Berat (gram)</label>
+                                                    <label class="col-md-12">Berat (kg)</label>
                                                     <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes"/>
+                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes"/>
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
