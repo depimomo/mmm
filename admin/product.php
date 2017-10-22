@@ -46,43 +46,36 @@
                                             <th>Nama</th>
                                             <th>Harga</th>
                                             <th>Kategori</th>
-                                            <th>Qty</th>
                                             <th>Aktif</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>Nama</td>
-                                            <td>Harga</td>
-                                            <td>Kategori</td>
-                                            <td>Qty</td>
-                                            <td>Aktif</td>
-                                            <td>Promo Aktif</td>
-                                            <td>Ubah</td>
-                                        </tr>
                                         <?php
-                                        // $list = mysqli_query($conn, "SELECT * FROM mi_admin");
+                                        $list = mysqli_query($conn, "SELECT * FROM view_product");
 
-                                        // while ($row = mysqli_fetch_assoc($list)) 
-                                        //   {
-                                        //     $user_level = $row['user_level'];
-                                        //     $user_active = $row['user_active'];
-                                        //     $user_fullname = $row['user_fullname'];
-                                        //     $username = $row['username'];
+                                        while ($row = mysqli_fetch_assoc($list)) 
+                                          {
+                                            $no = $row['product_no'];
+                                            $name = $row['product_name'];
+                                            $price = $row['product_price'];
+                                            $subsubcategory = $row['subsubcategory_name'];
+                                            $active = $row['product_active'];
+                                            $promo = $row['promo'];
                                             
-                                        //     echo "
-                                        //     <tr>
-                                        //       <td>".$username."</td>
-                                        //       <td>".$user_fullname."</td>
-                                        //       <td>".$user_level."</td>
-                                        //       <td>".$user_active."</td>
-                                        //       <td><a href='edit-account.php?uname=".$username."'>Ubah</a></td>
-                                        //     </tr>
-                                        //     ";
-                                        //   }
+                                            echo "
+                                            <tr>
+                                              <td>".$no."</td>
+                                              <td>".$name."</td>
+                                              <td>".$price."</td>
+                                              <td>".$subsubcategory."</td>
+                                              <td>".$active."</td>
+                                              <td>".$promo."</td>
+                                              <td><a href='edit-product.php?pid=".$no."'>Ubah</a></td>
+                                            </tr>
+                                            ";
+                                          }
                                         ?>
                                     </tbody>
                                 </table>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22 Okt 2017 pada 17.18
+-- Generation Time: 22 Okt 2017 pada 18.16
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -847,7 +847,7 @@ CREATE TABLE `mi_product` (
 --
 
 INSERT INTO `mi_product` (`product_no`, `product_code`, `product_name`, `product_price`, `product_price_grosir1`, `product_price_grosir2`, `product_price_grosir3`, `product_weight`, `product_subsubcategory_id`, `product_desc`, `product_detail`, `product_size_detail`, `product_motm`, `product_active`, `product_clearance_active`, `product_time_active`, `product_qty_active`, `product_time_day`, `product_time_hour`, `product_qty_sale`, `product_promo_price`, `product_timestamp`, `product_created_user`) VALUES
-(7, 'LS123', 'Lala Skirt', 100000, 10, 15, 0, '100.00', 41, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. ', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', 'N', 'Y', 'N', 'N', 'N', '0000-00-00', '00:00:00', NULL, 0, '2017-10-22 12:55:36', 'depimomo'),
+(7, 'LS123', 'Lala Skirt', 100000, 10, 15, 0, '100.00', 41, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. ', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', 'N', 'Y', 'Y', 'N', 'N', '0000-00-00', '00:00:00', NULL, 0, '2017-10-22 12:55:36', 'depimomo'),
 (8, 'TD123', 'Tutu Dress', 124754, 10, 15, 0, '999.99', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. ', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis ipsum, quis mollis sem ornare at. Mauris consequat faucibus neque vel aliquam. Sed eget sem eu dui eleifend tempus. Aliquam est tortor, laoreet id pulvinar ut, rhoncus at eros. Donec cursus sit amet lacus id cursus. Nullam id porta justo, vitae hendrerit nunc. Vestibulum dolor lacus, pharetra in faucibus pharetra, gravida nec nibh. Pellentesque non lectus tempus, faucibus ex at, tempor ipsum. Integer congue est id euismod eleifend. Integer sodales sapien a risus tempor accumsan. Nulla cursus, sem ac fringilla molestie, ex est euismod lectus, ac vestibulum quam erat vitae diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eget augue odio. Mauris in interdum lorem. Nullam suscipit accumsan ultricies. Vestibulum et euismod libero.</span><br></p>', 'N', 'Y', 'N', 'N', 'N', '0000-00-00', '00:00:00', NULL, 0, '2017-10-22 13:01:20', 'depimomo');
 
 -- --------------------------------------------------------
@@ -8141,11 +8141,35 @@ CREATE TABLE `mi_voucher` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_product`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `view_product` (
+`product_no` int(11)
+,`product_name` varchar(100)
+,`product_price` int(11)
+,`subsubcategory_name` varchar(100)
+,`product_active` enum('Y','N')
+,`promo` varchar(18)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur untuk view `mi_all_category`
 --
 DROP TABLE IF EXISTS `mi_all_category`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mi_all_category`  AS  select `mc`.`category_id` AS `category_id`,`mc`.`category_name` AS `category_name`,`msc`.`subcategory_id` AS `subcategory_id`,`msc`.`subcategory_name` AS `subcategory_name`,`mssc`.`subsubcategory_id` AS `subsubcategory_id`,`mssc`.`subsubcategory_name` AS `subsubcategory_name` from ((`mi_category` `mc` join `mi_subcategory` `msc`) join `mi_subsubcategory` `mssc`) where ((`mc`.`category_id` = `msc`.`category_id`) and (`msc`.`subcategory_id` = `mssc`.`subcategory_id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `view_product`
+--
+DROP TABLE IF EXISTS `view_product`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_product`  AS  select `p`.`product_no` AS `product_no`,`p`.`product_name` AS `product_name`,`p`.`product_price` AS `product_price`,`ssc`.`subsubcategory_name` AS `subsubcategory_name`,`p`.`product_active` AS `product_active`,concat(if((`p`.`product_clearance_active` = 'Y'),'Clearance',''),if((`p`.`product_time_active` = 'Y'),' Time',''),if((`p`.`product_qty_active` = 'Y'),' QTY','')) AS `promo` from (((`mi_product` `p` join `mi_subsubcategory` `ssc`) join `mi_prod_size` `ps`) join `mi_prod_color` `pc`) where (`p`.`product_subsubcategory_id` = `ssc`.`subsubcategory_id`) group by `p`.`product_no` ;
 
 --
 -- Indexes for dumped tables
