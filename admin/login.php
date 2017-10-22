@@ -56,9 +56,9 @@ require 'includes/connect.php';
         if($user_active == 'N') {
           $message = "Akun telah dinonaktifkan";
         } else if(password_verify($password.$user_crypt,$user_pass)){
-          $_SESSION['username']=$username;
-          $_SESSION['user_level']=$user_level;
-          $_SESSION['user_fullname']=$user_fullname;
+          $_SESSION['username'] = $username;
+          $_SESSION['user_level'] = $user_level;
+          $_SESSION['user_fullname'] = $user_fullname;
           
           header("location: index.php");
         } else {

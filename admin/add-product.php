@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <form class="form-horizontal form-material" method="post" action="add-product.php" enctype="multipart/form-data">
+                            <form class="form-horizontal form-material" method="post" action="add-product.php">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -51,6 +51,11 @@
                                                         <input type="text" class="form-control form-control-line" name="name" required="yes"> </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label class="col-md-12">Kode Produk</label>
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control form-control-line" name="product_code" required="yes"> </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label class="col-md-12">Deskripsi singkat</label>
                                                     <div class="col-md-12">
                                                         <textarea rows="4" class="form-control form-control-line" name="desc" required="yes"></textarea>  </div>
@@ -64,26 +69,23 @@
                                                 <div class="form-group">
                                                     <label class="col-md-12">Harga</label>
                                                     <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="price" required="yes"/>
+                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="price"/>
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-12">Harga Grosir 1 (6-10 produk)</label>
-                                                    <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="bulk1" required="yes"/>
-                                                         </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Harga Grosir 2 (11-20 produk)</label>
-                                                    <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="bulk2" required="yes"/>
-                                                         </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Harga Grosir 3 (>20 produk)</label>
-                                                    <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="bulk3" required="yes"/>
-                                                         </div>
+                                                    <label class="col-md-12">Harga Grosir</label>
+                                                    <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
+                                                        <input type='checkbox' name='grosir[]' value='1'/> 
+                                                        <label><i class='glyphicon glyphicon-ok'></i>  3 - 6 Produk (10%)</label>
+                                                    </div>
+                                                    <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
+                                                        <input type='checkbox' name='grosir[]' value='2'/> 
+                                                        <label><i class='glyphicon glyphicon-ok'></i>  7 - 11 Produk (15%)</label>
+                                                    </div>
+                                                    <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
+                                                        <input type='checkbox' name='grosir[]' value='3'/> 
+                                                        <label><i class='glyphicon glyphicon-ok'></i>  > 11 Produk (20%)</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- /.panel-body-->
@@ -127,13 +129,13 @@
                                                 <div class="form-group">
                                                     <label class="col-md-12">Rincian Produk</label>
                                                     <div class="col-md-12">
-                                                        <div id="summernote" name="rincian"></div>
+                                                        <textarea placeholder="Rincian produk: Jangan dicuci dengan air mendidih. Dapat juga memasukkan gambar-gambar detail produk dan detail ukuran." class="sn" name="detail"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-12">Detail Ukuran</label>
                                                     <div class="col-md-12">
-                                                        <div id="summernote2" name="detailukuran"></div>
+                                                        <textarea placeholder="Masukkan detail ukuran seperti lingkar dada, pinggang, dan panjang." class="sn" name="size_detail"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,7 +182,7 @@
                                                                       }
                                                                     ?>
                                                             </select>
-                                                            <input type="text" style="margin-right: 5%;" placeholder="Stok" class="numberOnly col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-1" required="yes"/>
+                                                            <input type="number" style="margin-right: 5%;" placeholder="Stok" class="col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-1" required="yes"/>
                                                         </div>
                                                     </div>
                                                     <a href="#" class="tambah-variasi" style="margin-left: 20px; padding-top: 20px; color: #30AEC9"> + Tambah Variasi </a>
@@ -189,30 +191,11 @@
                                             <!-- /.panel-body-->
                                         </div>
                                     </div>
-                                    <!-- /.panel-default-->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><h3 class="panel-title" style="color: #30AEC9">
-                                          Gambar
-                                            </h3></a>
-                                        </div>
-                                        <div id="collapse4" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Gambar (dapat memilih beberapa sekaligus)</label>
-                                                    <div class="col-md-12">
-                                                        <input type="file" class="form-control form-control-line" name="picture[]" required="yes" multiple="yes"> </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.panel-body-->
-                                        </div>
-                                    </div>
-                                    <!-- /.panel-default-->
                                 </div>
                                 <!-- /.accordion-->
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-success" type="submit" name="tambah">Tambah</button>
+                                        <button class="btn btn-success" type="submit" name="tambah">Lanjut</button>
                                     </div>
                                 </div>
                             </form>
@@ -268,7 +251,7 @@
                           }
                         ?>
                 textt += '</select>';
-                textt += '<input type="text" placeholder="Stok" class="numberOnly col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-'+x+'" required="yes" style="margin-right: 5%;"/>';
+                textt += '<input type="number" placeholder="Stok" class="col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-'+x+'" required="yes" style="margin-right: 5%;"/>';
                 textt += '<a href="#" class="remove_field col-md-1 form-control-line" style="color: #30AEC9">Hapus</a>';
                 textt += '</div>';
                 $(wrapper).append(textt); //add input box
@@ -279,16 +262,7 @@
             e.preventDefault(); $(this).parent('div').remove();
         });
 
-        $('#summernote').summernote({
-            placeholder: 'Rincian produk: Jangan dicuci dengan air mendidih. Dapat juga memasukkan gambar-gambar detail produk dan detail ukuran.',
-            dialogsInBody: true,
-            dialogsFade: true,
-            height: 500,
-            minHeight: 450,
-            maxHeight: 600
-        });
-        $('#summernote2').summernote({
-            placeholder: 'Masukkan detail ukuran seperti lingkar dada, pinggang, dan panjang.',
+        $('.sn').summernote({
             dialogsInBody: true,
             dialogsFade: true,
             height: 500,
@@ -321,23 +295,72 @@
             //cleanup the variables
             //prevent mysql injection
             $name = mysql_real_escape_string($_POST['name']);
+            $procuctcode = mysql_real_escape_string($_POST['product_code']);
             $desc = mysql_real_escape_string($_POST['desc']);
             $price = mysql_real_escape_string($_POST['price']);
-            $bulk1 = mysql_real_escape_string($_POST['bulk1']);
-            $bulk2 = mysql_real_escape_string($_POST['bulk2']);
-            $bulk3 = mysql_real_escape_string($_POST['bulk3']);
-            $stock = mysql_real_escape_string($_POST['stock']);
             $weight = mysql_real_escape_string($_POST['weight']);
-            $category = mysql_real_escape_string($_POST['category']);
-            $subcategory = mysql_real_escape_string($_POST['subcategory']);
             $subsubcategory = mysql_real_escape_string($_POST['subsubcategory']);
+            $detail = mysql_real_escape_string($_POST['detail']);
+            $sizedetail = mysql_real_escape_string($_POST['size_detail']);
+            $uname = $_SESSION['username'];
             
-            $price = str_replace( ',', '', $harga );
-            $bulk1 = str_replace( ',', '', $bulk1 );
-            $bulk2 = str_replace( ',', '', $bulk2 );
-            $bulk3 = str_replace( ',', '', $bulk3 );
-            $stock = str_replace( ',', '', $stock );
+            $price = str_replace( ',', '', $price );
             $weight = str_replace( ',', '', $weight );
+
+            $bulk1 = null;
+            $bulk2 = null;
+            $bulk3 = null;
+
+            foreach($_POST['grosir'] as $selected){
+                if($selected == 1){
+                    $bulk1 = 10;
+                }
+                if($selected == 2){
+                    $bulk2 = 15;
+                }
+                if($selected == 3){
+                    $bulk3 = 20;
+                }
+            }
+
+            $sql = "INSERT INTO mi_product(product_code, product_name, product_price, product_price_grosir1, product_price_grosir2, product_price_grosir3, product_weight, product_subsubcategory_id, product_desc, product_detail, product_size_detail, product_created_user) VALUES ('$procuctcode', '$name','$price','$bulk1','$bulk2','$bulk3','$weight','$subsubcategory','$desc', '$detail', '$sizedetail', '$uname')";
+            
+            if (mysqli_query($conn, $sql)) {
+                $prod_id = mysqli_insert_id($conn);
+                //header("location: add-picture.php");
+            } else {
+                echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+            }
+
+            $color = array();
+            $size = array();
+            $stock = array();
+
+            for ($i = 1; $i <= 50; $i++) {
+                if($_POST['color-'.$i] != null){
+                    array_push($color, mysql_real_escape_string($_POST['color-'.$i]));
+                    array_push($size, mysql_real_escape_string($_POST['size-'.$i]));
+                    array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
+                }
+            }
+
+            for ($i = 0; $i < count($color); $i++) {
+                $ins = "INSERT INTO mi_prod_color(product_no, color_id) VALUES ('$prod_id', '$color[$i]')";
+
+                if (mysqli_query($conn, $ins)) {
+                    $col_id = mysqli_insert_id($conn);
+                } else {
+                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+                }
+
+                $ins2 = "INSERT INTO mi_prod_size(prod_color_id, size_id, prod_size_stock) VALUES ('$col_id', '$size[$i]', '$stock[$i]')";
+                
+                if (mysqli_query($conn, $ins2)) {
+                    header("location: add-product-picture.php?pid=".$prod_id);
+                } else {
+                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+                }
+            }
         }
     ?>
 </html>
