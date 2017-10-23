@@ -105,11 +105,9 @@
 </body>
 <?php include 'templates/scripts.html' ?>
 <?php
-
     if(isset($_POST['tambah'])) {
         //preparing upload picture
         $target_dir = "../images/";
-
         $primary = mysql_real_escape_string($_POST['utama']);
 
         for ($i = 0; $i < count($colors); $i++) {
@@ -135,7 +133,11 @@
 
             $sql = "INSERT INTO mi_picture_color(product_no, color_id, picture_color_url, picture_color_primary) VALUES ('$pid','$colors[$i]','/images/$filename','$setprimary')";
             
-            mysqli_query($conn, $sql);
+            if(mysqli_query($conn, $sql)){
+                header("location: product.php");
+            } else {
+                echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+            }
         }
     }
 ?>

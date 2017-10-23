@@ -9,8 +9,6 @@
 <head>
 	<?php include 'templates/header.html' ?>
     <title>Millenia Admin | Atur Produk</title>
-    <!-- Data Table -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 </head>
 
 <body>
@@ -93,19 +91,10 @@
 </body>
 
 <?php include 'templates/scripts.html' ?>
-
-<!-- DATA TABLES -->
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tbl').DataTable();
         $('.input-sm').height('20px');
     } );
 </script>
-<?php
-
-       
-    ?>
 </html>

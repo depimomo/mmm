@@ -9,8 +9,6 @@
 <head>
 	<?php include 'templates/header.html' ?>
     <title>Millenia Admin | Atur Promo</title>
-    <!-- Data Table -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 </head>
 
 <body>
@@ -20,6 +18,7 @@
     </div>
     <div id="wrapper">
     	<?php include 'templates/navsidebar.html' ?>
+        <?php $filter = (empty($_GET['filter'])) ? '' : $_GET['filter']; ?>
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -40,12 +39,16 @@
                                 <a href="add-promo.php"><button class="btn btn-success pull-right">Tambah</button></a></h3>
 
                             <div style="margin-bottom: -35px;"><p style="display: inline;">Jenis Promo</p>
-                            <select style="display: inline; width: 150px;" name="category" class="input-sm form-control" id="category" required="yes">
-                                <option value="semua">Semua</option>
-                                <option value="clearance">Clearance</option>
-                                <option value="quantity">Quantity</option>
-                                <option value="time">Time</option>
-                                <option value="motm">MOTM</option>
+                            <select name="forma" onchange="location = this.value;" style="display: inline; width: 150px;" name="category" class="input-sm form-control" id="category" required="yes">
+                                <?php
+                                if($filter != ''){
+                                echo "<option>".ucfirst($filter)."</option>";
+                                } ?>
+                                <option value="manage-promo.php">Semua</option>
+                                <option value="manage-promo.php?filter=clearance">Clearance</option>
+                                <option value="manage-promo.php?filter=quantity">Quantity</option>
+                                <option value="manage-promo.php?filter=time">Time</option>
+                                <option value="manage-promo.php?filter=motm">MOTM</option>
                             </select></div>
                             <div class="table-responsive">
                                 <table id="tbl" class="table-striped table">
@@ -55,41 +58,34 @@
                                             <th>Nama</th>
                                             <th>Harga Promo</th>
                                             <th>Kategori</th>
-                                            <th>Aktif</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th>Harga Promo</th>
-                                            <th>Kategori</th>
-                                            <th>Aktif</th>
-                                            <th>Promo Aktif</th>
-                                            <th>Ubah</th>
-                                        </tr>
                                         <?php
-                                        // $list = mysqli_query($conn, "SELECT * FROM mi_admin");
+                                        $list = mysqli_query($conn, "SELECT * FROM mi_view_product WHERE LENGTH(promo) > 1 and lower(promo) like '%$filter%'");
 
-                                        // while ($row = mysqli_fetch_assoc($list)) 
-                                        //   {
-                                        //     $user_level = $row['user_level'];
-                                        //     $user_active = $row['user_active'];
-                                        //     $user_fullname = $row['user_fullname'];
-                                        //     $username = $row['username'];
+                                        while ($row = mysqli_fetch_assoc($list)) 
+                                          {
+                                            $no = $row['product_no'];
+                                            $id = $row['product_code'];
+                                            $name = $row['product_name'];
+                                            $promo_price = $row['product_promo_price'];
+                                            $category = $row['subsubcategory_name'];
+                                            $promo = $row['promo'];
                                             
-                                        //     echo "
-                                        //     <tr>
-                                        //       <td>".$username."</td>
-                                        //       <td>".$user_fullname."</td>
-                                        //       <td>".$user_level."</td>
-                                        //       <td>".$user_active."</td>
-                                        //       <td><a href='edit-account.php?uname=".$username."'>Ubah</a></td>
-                                        //     </tr>
-                                        //     ";
-                                        //   }
+                                            echo "
+                                            <tr class='result'>
+                                              <td>".$id."</td>
+                                              <td>".$name."</td>
+                                              <td>".$promo_price."</td>
+                                              <td>".$category."</td>
+                                              <td>".$promo."</td>
+                                              <td><a href='edit-promo.php?pid=".$no."'>Ubah</a></td>
+                                            </tr>
+                                            ";
+                                          }
                                         ?>
                                     </tbody>
                                 </table>
@@ -108,18 +104,10 @@
 
 <?php include 'templates/scripts.html' ?>
 
-<!-- DATA TABLES -->
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tbl').DataTable({"bLengthChange": false});
         $('.input-sm').height('20px');
-    } );
+    });
 </script>
-<?php
-
-       
-    ?>
 </html>
