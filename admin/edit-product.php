@@ -8,7 +8,7 @@
 
 <head>
 	<?php include 'templates/header.html' ?>
-    <title>Millenia Admin | Tambah Produk</title>
+    <title>Millenia Admin | Edit Produk</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
             $pid = $_GET['pid']; 
             $sql = "SELECT * FROM mi_product WHERE product_no = '$pid'";
 
-            $list = mysqli_query($conn, $sql)
+            $list = mysqli_query($conn, $sql);
 
             while ($row = mysqli_fetch_assoc($list)) {
                 $name = $row['product_name'];
@@ -33,8 +33,9 @@
                 $bulk2 = $row['product_price_grosir2'];
                 $bulk3 = $row['product_price_grosir3'];
                 $detail = $row['product_detail'];
-                $detailsize = $row['product_detail_size'];
+                $detailsize = $row['product_size_detail'];
                 $active = $row['product_active'];
+
             }
             
         ?>
@@ -43,11 +44,11 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-12">
-                        <h4 class="page-title">Tambah Produk</h4>
+                        <h4 class="page-title">Edit Produk</h4>
                         <ol class="breadcrumb">
                             <li><a href="index.php">Beranda</a></li>
                             <li><a href="product.php">Atur Produk</a></li>
-                            <li class="active">Tambah Produk</li>
+                            <li class="active">Edit Produk</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -55,7 +56,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <form class="form-horizontal form-material" method="post" action="add-product.php">
+                            <form class="form-horizontal form-material" method="post" action="edit-product.php?pid=<?php echo $pid ?>">
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -68,37 +69,44 @@
                                                 <div class="form-group">
                                                     <label class="col-md-12">Nama Produk</label>
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control form-control-line" name="name" required="yes"> </div>
+                                                        <input type="text" class="form-control form-control-line" name="name" required="yes" disabled value="<?php echo $name?>"> </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12">Status Produk</label>
+                                                    <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
+                                                        <input type='checkbox' name='aktif' value='Y' <?php if($active=='Y') echo "checked" ?> /> 
+                                                        <label><i class='glyphicon glyphicon-ok'></i>  Aktif</label>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-12">Deskripsi singkat</label>
                                                     <div class="col-md-12">
-                                                        <textarea rows="4" class="form-control form-control-line" name="desc" required="yes"></textarea>  </div>
+                                                        <textarea rows="4" class="form-control form-control-line" name="desc" required="yes"><?php echo $desc ?></textarea>  </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-12">Berat (kg)</label>
-                                                    <div class="col-md-12 money">
-                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes"/>
+                                                    <label class="col-md-12">Berat (gram)</label>
+                                                    <div class="col-md-12">
+                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes" value="<?php echo $weight?>" step="any" min="0" />
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-12">Harga</label>
                                                     <div class="col-md-12 money">
-                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="price"/>
+                                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="price" value="<?php echo $price ?>" />
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-12">Harga Grosir</label>
                                                     <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
-                                                        <input type='checkbox' name='grosir[]' value='1'/> 
+                                                        <input type='checkbox' name='grosir[]' value='1' <?php if($bulk1>0) echo "checked" ?> /> 
                                                         <label><i class='glyphicon glyphicon-ok'></i>  3 - 6 Produk (10%)</label>
                                                     </div>
                                                     <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
-                                                        <input type='checkbox' name='grosir[]' value='2'/> 
+                                                        <input type='checkbox' name='grosir[]' value='2' <?php if($bulk2>0) echo "checked" ?> /> 
                                                         <label><i class='glyphicon glyphicon-ok'></i>  7 - 11 Produk (15%)</label>
                                                     </div>
                                                     <div class='pretty info curvy a-jelly col-lg-2 col-md-6 col-sm-6'>
-                                                        <input type='checkbox' name='grosir[]' value='3'/> 
+                                                        <input type='checkbox' name='grosir[]' value='3' <?php if($bulk3>0) echo "checked" ?> /> 
                                                         <label><i class='glyphicon glyphicon-ok'></i>  > 11 Produk (20%)</label>
                                                     </div>
                                                 </div>
@@ -118,13 +126,13 @@
                                                 <div class="form-group">
                                                     <label class="col-md-12">Rincian Produk</label>
                                                     <div class="col-md-12">
-                                                        <textarea placeholder="Rincian produk: Jangan dicuci dengan air mendidih. Dapat juga memasukkan gambar-gambar detail produk dan detail ukuran." class="sn" name="detail"></textarea>
+                                                        <textarea placeholder="Rincian produk: Jangan dicuci dengan air mendidih. Dapat juga memasukkan gambar-gambar detail produk dan detail ukuran." class="sn" name="detail"><?php echo $detail ?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-12">Detail Ukuran</label>
                                                     <div class="col-md-12">
-                                                        <textarea placeholder="Masukkan detail ukuran seperti lingkar dada, pinggang, dan panjang." class="sn" name="size_detail"></textarea>
+                                                        <textarea placeholder="Masukkan detail ukuran seperti lingkar dada, pinggang, dan panjang." class="sn" name="size_detail"><?php echo $detailsize ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,39 +150,39 @@
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <div class="col-md-12 repeater" style="margin-bottom:20px">
-                                                        <div class="repeat-1 col-md-12" style="margin-bottom:20px;">
-                                                            <select name="color-1" class="col-md-3 form-control-line" style="margin-right: 5%;" id="color-1" required="yes">
-                                                                <?php
-                                                                    $list = mysqli_query($conn, "SELECT * FROM mi_color WHERE color_active = 'Y'");
+                                                        <?php
+                                                            // Select and show all varian, make only stock field editable
+                                                            $sql2 = "SELECT c.prod_color_id, c.color_id, co.color_name, s.size_id, si.size_name, s.prod_size_stock FROM mi_prod_color AS c, mi_color AS co, mi_prod_size AS s, mi_size AS si WHERE c.color_id = co.color_id AND s.size_id = si.size_id AND c.prod_color_id = s.prod_color_id AND c.product_no = $pid";
+                                                            $list2 = mysqli_query($conn, $sql2);
+                                                            $x = 0;
+                                                            $colors = array();
+                                                            $sizes = array();
 
-                                                                    while ($row = mysqli_fetch_assoc($list)) 
-                                                                      {
-                                                                        $color_id = $row['color_id'];
-                                                                        $color_name = $row['color_name'];
-                                                                        
-                                                                        echo "
-                                                                        <option value='".$color_id."'>".$color_name."</option>";
-                                                                      }
-                                                                    ?>
-                                                            </select>
-                                                            <select name="size-1" class="col-md-3 form-control-line" style="margin-right: 5%;" id="size-1" required="yes">
-                                                                <?php
-                                                                    $list = mysqli_query($conn, "SELECT * FROM mi_size WHERE size_active = 'Y'");
+                                                            while ($row = mysqli_fetch_assoc($list2)) {
+                                                                $x++;
+                                                                $stock = $row['prod_size_stock'];
+                                                                $colid = $row['color_id'];
+                                                                $colname = $row['color_name'];
+                                                                $sizeid = $row['size_id'];
+                                                                $sizename = $row['size_name'];
 
-                                                                    while ($row = mysqli_fetch_assoc($list)) 
-                                                                      {
-                                                                        $size_id = $row['size_id'];
-                                                                        $size_name = $row['size_name'];
-                                                                        
-                                                                        echo "
-                                                                        <option value='".$size_id."'>".$size_name."</option>";
-                                                                      }
-                                                                    ?>
-                                                            </select>
-                                                            <input type="number" style="margin-right: 5%;" placeholder="Stok" class="col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-1" required="yes"/>
-                                                        </div>
+                                                                array_push($colors, $colid);
+                                                                array_push($sizes, $row['prod_color_id']);
+                                                                ?>
+
+                                                                <div class="repeat-<?php echo $x?> col-md-12" style="margin-bottom:20px;">
+                                                                    <select disabled name="color-<?php echo $x?>" class="col-md-3 form-control-line" style="margin-right: 5%;" id="color-<?php echo $x?>" required="yes">
+                                                                        <option value="<?php echo $colid?>"><?php echo $colname?></option>                                                                              
+                                                                    </select>
+                                                                    <select disabled name="size-<?php echo $x?>" class="col-md-3 form-control-line" style="margin-right: 5%;" id="size-<?php echo $x?>" required="yes">
+                                                                        <option value="<?php echo $sizeid?>"><?php echo $sizename?></option>
+                                                                    </select>
+                                                                    <input type="number" style="margin-right: 5%;" placeholder="Stok" class="col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-<?php echo $x?>" required="yes" value="<?php echo $stock?>"/>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                        ?>
                                                     </div>
-                                                    <a href="#" class="tambah-variasi" style="margin-left: 20px; padding-top: 20px; color: #30AEC9"> + Tambah Variasi </a>
                                                 </div>
                                             </div>
                                             <!-- /.panel-body-->
@@ -184,7 +192,7 @@
                                 <!-- /.accordion-->
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-success" type="submit" name="tambah">Lanjut</button>
+                                        <button class="btn btn-success" type="submit" name="edit">Simpan</button>
                                     </div>
                                 </div>
                             </form>
@@ -202,55 +210,6 @@
 <?php include 'templates/scripts.html' ?>
 <script type="text/javascript">
     $(document).ready(function() {
-        var max_fields      = 100; //maximum input boxes allowed
-        var wrapper         = $(".repeater"); //Fields wrapper
-        var add_button      = $(".tambah-variasi"); //Add button ID
-        
-        var x = 1; //initlal text box count
-        $(add_button).click(function(e){ //on add input button click
-            e.preventDefault();
-            if(x < max_fields){ //max input box allowed
-                x++; //text box increment
-                var textt = '<div class="repeat-'+x+' col-md-12" style="margin-bottom:20px;">';
-                textt += '<select name="color-'+x+'" class="col-md-3 form-control-line" style="margin-right: 5%;" id="color-'+x+'" required="yes">';
-                    <?php
-                        $list = mysqli_query($conn, "SELECT * FROM mi_color WHERE color_active = 'Y'");
-
-                        while ($row = mysqli_fetch_assoc($list)) 
-                          {
-                            $color_id = $row['color_id'];
-                            $color_name = $row['color_name'];
-                            
-                            ?>
-                            textt += "<?php echo "<option value='".$color_id."'>".$color_name."</option>";?>";
-                        <?php
-                          }
-                        ?>
-                textt += '</select>';
-                textt += '<select name="size-'+x+'" class="col-md-3 form-control-line" style="margin-right: 5%;" id="size-'+x+'" required="yes">';
-                    <?php
-                        $list = mysqli_query($conn, "SELECT * FROM mi_size WHERE size_active = 'Y'");
-
-                        while ($row = mysqli_fetch_assoc($list)) 
-                          {
-                            $size_id = $row['size_id'];
-                            $size_name = $row['size_name'];?>
-                            textt += "<?php echo "<option value='".$size_id."'>".$size_name."</option>";?>";
-                          <?php
-                          }
-                        ?>
-                textt += '</select>';
-                textt += '<input type="number" placeholder="Stok" class="col-md-3 form-control-line" autocomplete="off" maxlength="50" name="stock-'+x+'" required="yes" style="margin-right: 5%;"/>';
-                textt += '<a href="#" class="remove_field col-md-1 form-control-line" style="color: #30AEC9">Hapus</a>';
-                textt += '</div>';
-                $(wrapper).append(textt); //add input box
-            }
-        });
-        
-        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-            e.preventDefault(); $(this).parent('div').remove();
-        });
-
         $('.sn').summernote({
             dialogsInBody: true,
             dialogsFade: true,
@@ -258,98 +217,72 @@
             minHeight: 450,
             maxHeight: 600
         });
-
-        $("#category").change(function(){
-            var filter = $("#category").find("option:selected").val();
-            $.post('includes/subcategory.php', {filter : filter}, function(data) {
-                $(".subchange").remove();
-                $("#subcategory").append(data);
-            });
+        // disable mousewheel on a input number field when in focus
+        // (to prevent Chromium browsers change the value when scrolling)
+        $('form').on('focus', 'input[type=number]', function (e) {
+          $(this).on('mousewheel.disableScroll', function (e) {
+            e.preventDefault()
+          })
         });
-        $("#subcategory").change(function(){
-            var filter2 = $("#subcategory").find("option:selected").val();
-            $.post('includes/subsubcategory.php', {filter : filter2}, function(data) {
-                $(".subsubchange").remove();
-                $("#subsubcategory").append(data);
-            });
+        $('form').on('blur', 'input[type=number]', function (e) {
+          $(this).off('mousewheel.disableScroll')
         });
     });
 </script>
 <?php
+    //check if the form has been submitted
+    if(isset($_POST['edit'])) {
+        //cleanup the variables
+        //prevent mysql injection
+        $desc = mysql_real_escape_string($_POST['desc']);
+        $active = (empty($_POST['aktif'])) ? 'N' : $_POST['aktif'];
+        $price = mysql_real_escape_string($_POST['price']);
+        $detail = mysql_real_escape_string($_POST['detail']);
+        $sizedetail = mysql_real_escape_string($_POST['size_detail']);
+        $weight = mysql_real_escape_string($_POST['weight']);
+        $uname = $_SESSION['username'];
+        
+        $price = str_replace( ',', '', $price );
 
-        $message = '';
+        $bulk1 = null;
+        $bulk2 = null;
+        $bulk3 = null;
 
-        //check if the form has been submitted
-        if(isset($_POST['tambah'])) {
-            //cleanup the variables
-            //prevent mysql injection
-            $name = mysql_real_escape_string($_POST['name']);
-            $procuctcode = mysql_real_escape_string($_POST['product_code']);
-            $desc = mysql_real_escape_string($_POST['desc']);
-            $price = mysql_real_escape_string($_POST['price']);
-            $weight = mysql_real_escape_string($_POST['weight']);
-            $subsubcategory = mysql_real_escape_string($_POST['subsubcategory']);
-            $detail = mysql_real_escape_string($_POST['detail']);
-            $sizedetail = mysql_real_escape_string($_POST['size_detail']);
-            $uname = $_SESSION['username'];
-            
-            $price = str_replace( ',', '', $price );
-            $weight = str_replace( ',', '', $weight );
-
-            $bulk1 = null;
-            $bulk2 = null;
-            $bulk3 = null;
-
-            foreach($_POST['grosir'] as $selected){
-                if($selected == 1){
-                    $bulk1 = 10;
-                }
-                if($selected == 2){
-                    $bulk2 = 15;
-                }
-                if($selected == 3){
-                    $bulk3 = 20;
-                }
+        foreach($_POST['grosir'] as $selected){
+            if($selected == 1){
+                $bulk1 = 10;
             }
+            if($selected == 2){
+                $bulk2 = 15;
+            }
+            if($selected == 3){
+                $bulk3 = 20;
+            }
+        }
 
-            $sql = "INSERT INTO mi_product(product_code, product_name, product_price, product_price_grosir1, product_price_grosir2, product_price_grosir3, product_weight, product_subsubcategory_id, product_desc, product_detail, product_size_detail, product_created_user) VALUES ('$procuctcode', '$name','$price','$bulk1','$bulk2','$bulk3','$weight','$subsubcategory','$desc', '$detail', '$sizedetail', '$uname')";
+        $sql3 = "UPDATE mi_product SET product_price = '$price', product_price_grosir1 = '$bulk1', product_price_grosir2 = '$bulk2', product_price_grosir3 = '$bulk3', product_weight = '$weight' WHERE product_no = $pid";
+        
+        if (!mysqli_query($conn, $sql3)) {
+            echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+        }
+
+        $stock = array();
+
+        for ($i = 1; $i <= count($colors); $i++) {
+            if($_POST['stock-'.$i] != null){
+                array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
+            }
+        }
+
+        for ($i = 0; $i < count($colors); $i++) {
+            $sql4 = "UPDATE mi_prod_size SET prod_size_stock = '$stock[$i]' WHERE prod_size_id = '$sizes[$i]'";
             
-            if (mysqli_query($conn, $sql)) {
-                $prod_id = mysqli_insert_id($conn);
-                //header("location: add-picture.php");
+            if (mysqli_query($conn, $sql4)) {
+                header("location: product.php");
             } else {
                 echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
             }
-
-            $color = array();
-            $size = array();
-            $stock = array();
-
-            for ($i = 1; $i <= 50; $i++) {
-                if($_POST['color-'.$i] != null){
-                    array_push($color, mysql_real_escape_string($_POST['color-'.$i]));
-                    array_push($size, mysql_real_escape_string($_POST['size-'.$i]));
-                    array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
-                }
-            }
-
-            for ($i = 0; $i < count($color); $i++) {
-                $ins = "INSERT INTO mi_prod_color(product_no, color_id) VALUES ('$prod_id', '$color[$i]')";
-
-                if (mysqli_query($conn, $ins)) {
-                    $col_id = mysqli_insert_id($conn);
-                } else {
-                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
-                }
-
-                $ins2 = "INSERT INTO mi_prod_size(prod_color_id, size_id, prod_size_stock) VALUES ('$col_id', '$size[$i]', '$stock[$i]')";
-                
-                if (mysqli_query($conn, $ins2)) {
-                    header("location: add-product-picture.php?pid=".$prod_id);
-                } else {
-                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
-                }
-            }
         }
-    ?>
+    }
+?>
 </html>

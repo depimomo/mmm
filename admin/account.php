@@ -95,6 +95,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tbl').DataTable();
+        $('.input-sm').height('20px');
     } );
 </script>
 <?php

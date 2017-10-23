@@ -37,16 +37,24 @@
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <h3>Daftar Produk Dengan Promo
-                                <a href="add-promo.php"><button class="pull-right btn btn-success">Tambah</button></a></h3>
+                                <a href="add-promo.php"><button class="btn btn-success pull-right">Tambah</button></a></h3>
+
+                            <div style="margin-bottom: -35px;"><p style="display: inline;">Jenis Promo</p>
+                            <select style="display: inline; width: 150px;" name="category" class="input-sm form-control" id="category" required="yes">
+                                <option value="semua">Semua</option>
+                                <option value="clearance">Clearance</option>
+                                <option value="quantity">Quantity</option>
+                                <option value="time">Time</option>
+                                <option value="motm">MOTM</option>
+                            </select></div>
                             <div class="table-responsive">
                                 <table id="tbl" class="table-striped table">
                                     <thead>
                                         <tr>
-                                            <th>Promo</th>
+                                            <th>ID</th>
                                             <th>Nama</th>
                                             <th>Harga Promo</th>
                                             <th>Kategori</th>
-                                            <th>Qty</th>
                                             <th>Aktif</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
@@ -54,14 +62,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>ID</td>
-                                            <td>Nama</td>
-                                            <td>Harga</td>
-                                            <td>Kategori</td>
-                                            <td>Qty</td>
-                                            <td>Aktif</td>
-                                            <td>Promo Aktif</td>
-                                            <td>Ubah</td>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th>Harga Promo</th>
+                                            <th>Kategori</th>
+                                            <th>Aktif</th>
+                                            <th>Promo Aktif</th>
+                                            <th>Ubah</th>
                                         </tr>
                                         <?php
                                         // $list = mysqli_query($conn, "SELECT * FROM mi_admin");
@@ -107,7 +114,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#tbl').DataTable();
+        $('#tbl').DataTable({"bLengthChange": false});
+        $('.input-sm').height('20px');
     } );
 </script>
 <?php

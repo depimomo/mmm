@@ -61,9 +61,9 @@
                                                         <textarea rows="4" class="form-control form-control-line" name="desc" required="yes"></textarea>  </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-12">Berat (kg)</label>
-                                                    <div class="col-md-12 money">
-                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes"/>
+                                                    <label class="col-md-12">Berat (gram)</label>
+                                                    <div class="col-md-12">
+                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes" step="any" min="0"/>
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
@@ -284,83 +284,90 @@
                 $("#subsubcategory").append(data);
             });
         });
+        // disable mousewheel on a input number field when in focus
+        // (to prevent Chromium browsers change the value when scrolling)
+        $('form').on('focus', 'input[type=number]', function (e) {
+          $(this).on('mousewheel.disableScroll', function (e) {
+            e.preventDefault()
+          })
+        });
+        $('form').on('blur', 'input[type=number]', function (e) {
+          $(this).off('mousewheel.disableScroll')
+        });
     });
 </script>
 <?php
+    //check if the form has been submitted
+    if(isset($_POST['tambah'])) {
+        //cleanup the variables
+        //prevent mysql injection
+        $name = mysql_real_escape_string($_POST['name']);
+        $procuctcode = mysql_real_escape_string($_POST['product_code']);
+        $desc = mysql_real_escape_string($_POST['desc']);
+        $price = mysql_real_escape_string($_POST['price']);
+        $weight = mysql_real_escape_string($_POST['weight']);
+        $subsubcategory = mysql_real_escape_string($_POST['subsubcategory']);
+        $detail = mysql_real_escape_string($_POST['detail']);
+        $sizedetail = mysql_real_escape_string($_POST['size_detail']);
+        $uname = $_SESSION['username'];
+        
+        $price = str_replace( ',', '', $price );
+        $weight = str_replace( ',', '', $weight );
 
-        $message = '';
+        $bulk1 = null;
+        $bulk2 = null;
+        $bulk3 = null;
 
-        //check if the form has been submitted
-        if(isset($_POST['tambah'])) {
-            //cleanup the variables
-            //prevent mysql injection
-            $name = mysql_real_escape_string($_POST['name']);
-            $procuctcode = mysql_real_escape_string($_POST['product_code']);
-            $desc = mysql_real_escape_string($_POST['desc']);
-            $price = mysql_real_escape_string($_POST['price']);
-            $weight = mysql_real_escape_string($_POST['weight']);
-            $subsubcategory = mysql_real_escape_string($_POST['subsubcategory']);
-            $detail = mysql_real_escape_string($_POST['detail']);
-            $sizedetail = mysql_real_escape_string($_POST['size_detail']);
-            $uname = $_SESSION['username'];
-            
-            $price = str_replace( ',', '', $price );
-            $weight = str_replace( ',', '', $weight );
-
-            $bulk1 = null;
-            $bulk2 = null;
-            $bulk3 = null;
-
-            foreach($_POST['grosir'] as $selected){
-                if($selected == 1){
-                    $bulk1 = 10;
-                }
-                if($selected == 2){
-                    $bulk2 = 15;
-                }
-                if($selected == 3){
-                    $bulk3 = 20;
-                }
+        foreach($_POST['grosir'] as $selected){
+            if($selected == 1){
+                $bulk1 = 10;
             }
+            if($selected == 2){
+                $bulk2 = 15;
+            }
+            if($selected == 3){
+                $bulk3 = 20;
+            }
+        }
 
-            $sql = "INSERT INTO mi_product(product_code, product_name, product_price, product_price_grosir1, product_price_grosir2, product_price_grosir3, product_weight, product_subsubcategory_id, product_desc, product_detail, product_size_detail, product_created_user) VALUES ('$procuctcode', '$name','$price','$bulk1','$bulk2','$bulk3','$weight','$subsubcategory','$desc', '$detail', '$sizedetail', '$uname')";
-            
-            if (mysqli_query($conn, $sql)) {
-                $prod_id = mysqli_insert_id($conn);
-                //header("location: add-picture.php");
+        $sql = "INSERT INTO mi_product(product_code, product_name, product_price, product_price_grosir1, product_price_grosir2, product_price_grosir3, product_weight, product_subsubcategory_id, product_desc, product_detail, product_size_detail, product_created_user) VALUES ('$procuctcode', '$name','$price','$bulk1','$bulk2','$bulk3','$weight','$subsubcategory','$desc', '$detail', '$sizedetail', '$uname')";
+        
+        if (mysqli_query($conn, $sql)) {
+            $prod_id = mysqli_insert_id($conn);
+            //header("location: add-picture.php");
+        } else {
+            echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+        }
+
+        $color = array();
+        $size = array();
+        $stock = array();
+
+        for ($i = 1; $i <= 50; $i++) {
+            if($_POST['color-'.$i] != null){
+                array_push($color, mysql_real_escape_string($_POST['color-'.$i]));
+                array_push($size, mysql_real_escape_string($_POST['size-'.$i]));
+                array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
+            }
+        }
+
+        for ($i = 0; $i < count($color); $i++) {
+            $ins = "INSERT INTO mi_prod_color(product_no, color_id) VALUES ('$prod_id', '$color[$i]')";
+
+            if (mysqli_query($conn, $ins)) {
+                $col_id = mysqli_insert_id($conn);
             } else {
                 echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
             }
 
-            $color = array();
-            $size = array();
-            $stock = array();
-
-            for ($i = 1; $i <= 50; $i++) {
-                if($_POST['color-'.$i] != null){
-                    array_push($color, mysql_real_escape_string($_POST['color-'.$i]));
-                    array_push($size, mysql_real_escape_string($_POST['size-'.$i]));
-                    array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
-                }
-            }
-
-            for ($i = 0; $i < count($color); $i++) {
-                $ins = "INSERT INTO mi_prod_color(product_no, color_id) VALUES ('$prod_id', '$color[$i]')";
-
-                if (mysqli_query($conn, $ins)) {
-                    $col_id = mysqli_insert_id($conn);
-                } else {
-                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
-                }
-
-                $ins2 = "INSERT INTO mi_prod_size(prod_color_id, size_id, prod_size_stock) VALUES ('$col_id', '$size[$i]', '$stock[$i]')";
-                
-                if (mysqli_query($conn, $ins2)) {
-                    header("location: add-product-picture.php?pid=".$prod_id);
-                } else {
-                    echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
-                }
+            $ins2 = "INSERT INTO mi_prod_size(prod_color_id, size_id, prod_size_stock) VALUES ('$col_id', '$size[$i]', '$stock[$i]')";
+            
+            if (mysqli_query($conn, $ins2)) {
+                header("location: add-product-picture.php?pid=".$prod_id);
+            } else {
+                echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
             }
         }
-    ?>
+    }
+?>
 </html>

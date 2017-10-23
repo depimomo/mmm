@@ -53,11 +53,11 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $list = mysqli_query($conn, "SELECT * FROM view_product");
+                                        $list = mysqli_query($conn, "SELECT * FROM mi_view_product");
 
                                         while ($row = mysqli_fetch_assoc($list)) 
                                           {
-                                            $no = $row['product_no'];
+                                            $no = $row['product_code'];
                                             $name = $row['product_name'];
                                             $price = $row['product_price'];
                                             $subsubcategory = $row['subsubcategory_name'];
@@ -101,6 +101,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tbl').DataTable();
+        $('.input-sm').height('20px');
     } );
 </script>
 <?php
