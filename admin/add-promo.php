@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <form class="form-horizontal form-material" method="post" action="edit-product.php?pid=<?php echo $pid ?>">
+                            <form class="form-horizontal form-material" method="post" action="add-promo.php">
                                 <div class="form-group">
                                     <label class="col-md-12">Pilih produk</label>
                                     <div class="col-md-12">
@@ -63,7 +63,7 @@
                                                         
                                                         echo "
                                                         <tr class='result'>
-                                                          <td><input required type='radio' name='produts[]' value='".$id."'</td>
+                                                          <td><input required type='radio' name='products[]' value='".$no."'</td>
                                                           <td>".$id."</td>
                                                           <td>".$name."</td>
                                                           <td>".$price."</td>
@@ -80,14 +80,27 @@
                                 </div>
                                 <!-- /.form-group -->
                                 <div class="form-group">
+                                    <label class="col-md-12">Harga Promo</label>
+                                    <div class="col-md-12 money">
+                                        <input type="text" class="numberOnly form-control form-control-line" autocomplete="off" maxlength="50" name="promo" />
+                                         </div>
+                                </div>
+                                <!-- /.form-group -->
+                                <div class="form-group">
                                     <label class="col-md-12">Jenis Promo</label>
                                     <div class="col-md-12">
-                                        <select name="category" class="form-control-line" id="category" required="yes">
+                                        <select name="category" class="form-control" id="category" required="yes">
                                             <option value="clearance">Clearance</option>
                                             <option value="quantity">Quantity</option>
                                             <option value="time">Time</option>
-                                            <option value="motm">MOTM</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                                <div id="placeholder"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success" type="submit" name="tambah">Tambah</button>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
@@ -115,6 +128,68 @@
             "bFilter": false
         });
         $('.input-sm').height('20px');
+
+        $("#category").change(function(){
+            var filter = $("#category").find("option:selected").val();
+            var isi = "";
+
+            if(filter == 'quantity'){
+                isi =  '<div class="form-group change">'+
+                                '<label class="col-md-12">Quantity</label>'+
+                                '<div class="col-md-12">'+
+                                    '<input type="number" class="form-control form-control-line" autocomplete="off" name="qty" />'+
+                                     '</div>'+
+                            '</div>';
+
+            } else if (filter == 'time') {
+                isi =  '<div class="form-group change">'+
+                                '<label class="col-md-12">Tanggal Selesai</label>'+
+                                '<div class="col-md-12">'+
+                                    '<input type="text" class="date form-control form-control-line" readonly name="selesai">'+
+                                '</div>'+
+                        '</div>';
+            }
+            
+            $(".change").remove();
+            $("#placeholder").append(isi);
+            $('.date').appendDtpicker();
+        });
     });
 </script>
+
+<?php
+
+    //check if the form has been submitted
+    if(isset($_POST['tambah'])) {
+        //cleanup the variables
+        //prevent mysql injection
+        
+        foreach($_POST['products'] as $selected){
+            $products = mysql_real_escape_string($selected);
+        }
+
+        $promo = mysql_real_escape_string($_POST['promo']);
+        $promo = str_replace( ',', '', $promo );
+        $category = mysql_real_escape_string($_POST['category']);
+
+        $sql='';
+
+        if($category == 'quantity') {
+            $qty = mysql_real_escape_string($_POST['qty']);
+            $sql = "UPDATE mi_product SET product_qty_active='Y', product_qty_sale='$qty', product_promo_price='$promo' WHERE product_no='$products'";
+        } elseif ($category == 'time') {
+            $datetime = mysql_real_escape_string($_POST['selesai']);
+            $split = explode(" ", $datetime);
+            $sql = "UPDATE mi_product SET product_time_active='Y', product_time_day='$split[0]',product_time_hour='$split[1]', product_promo_price='$promo' WHERE product_no='$products'";
+        } elseif ($category == 'clearance') {
+            $sql = "UPDATE mi_product SET product_clearance_active='Y', product_promo_price='$promo' WHERE product_no='$products'";        
+        }
+
+        if (!mysqli_query($conn, $sql)) {
+            echo "<script>alert('Gagal menambah promo, refresh halaman dan coba lagi');</script>";
+        } else {
+            header("location: manage-promo.php");
+        }
+    }
+?>
 </html>

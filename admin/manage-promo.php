@@ -48,7 +48,6 @@
                                 <option value="manage-promo.php?filter=clearance">Clearance</option>
                                 <option value="manage-promo.php?filter=quantity">Quantity</option>
                                 <option value="manage-promo.php?filter=time">Time</option>
-                                <option value="manage-promo.php?filter=motm">MOTM</option>
                             </select></div>
                             <div class="table-responsive">
                                 <table id="tbl" class="table-striped table">
@@ -60,6 +59,7 @@
                                             <th>Kategori</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
+                                            <th>Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,6 +83,7 @@
                                               <td>".$category."</td>
                                               <td>".$promo."</td>
                                               <td><a href='edit-promo.php?pid=".$no."'>Ubah</a></td>
+                                              <td><a data-toggle='modal' data-target='#myModal' data-id='".$no."' style='color: red;cursor: pointer;' class='hapus'>Hapus</a></td>
                                             </tr>
                                             ";
                                           }
@@ -104,10 +105,48 @@
 
 <?php include 'templates/scripts.html' ?>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <form method="post" action="manage-promo.php">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Hapus Promo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus promo ini?</p>
+            <input type="hidden" id="idku" name="idku">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success" type="submit" name="hapus">Hapus</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#tbl').DataTable({"bLengthChange": false});
         $('.input-sm').height('20px');
     });
+    $(document).on("click", ".hapus", function () {
+        var idku = $(this).data('id');
+        $(".modal-body #idku").val(idku);
+    });
 </script>
+<?php
+    if(isset($_POST['hapus'])) {
+        $idku = $_POST['idku'];
+        $sql = "UPDATE mi_product SET product_clearance_active='N',product_time_active='N',product_qty_active='N' WHERE product_no = '$idku'";
+        if(mysqli_query($conn, $sql)){
+            header("location: manage-promo.php");
+        } else {
+            echo "<script>alert('Gagal menghapus promo, refresh halaman dan coba lagi');</script>";
+        }
+    }
+?>
 </html>
