@@ -34,11 +34,11 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box col-lg-4 col-md-4 col-sm-12"  style="min-height: 4200px">
-                            <form class="form-horizontal form-material" style="margin-bottom: 150px" method="post" action="manage-master.php">
+                            <form class="form-horizontal form-material" style="margin-bottom: 150px" method="post" action="manage-category.php">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <input type="text" style="width: 75%" placeholder="Kategori Baru" class="form-control form-control-line" name="category" required="yes"> 
-                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newcolor">Tambah</button>
+                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newcategory">Tambah</button>
                                     </div>
                                 </div>
                             </form>
@@ -63,7 +63,7 @@
                                             echo "
                                             <tr>
                                               <td>".$name."</td>
-                                              <td><a href='edit-category.php?pid=c".$id."'><i class='ti-pencil fa-fw'></i></a></td>
+                                              <td><a data-toggle='modal' data-target='#modalEdit' data-id='c".$id."' style='cursor: pointer;' class='edit'><i class='ti-pencil fa-fw'></i></a></td>
                                             </tr>
                                             ";
                                           }
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="white-box col-lg-4 col-md-4 col-sm-12"  style="min-height: 4200px">
-                            <form class="form-horizontal form-material" style="margin-bottom: 100px" method="post" action="manage-master.php">
+                            <form class="form-horizontal form-material" style="margin-bottom: 100px" method="post" action="manage-category.php">
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <select name="category" class="form-control form-control-line">
@@ -92,7 +92,7 @@
                                             ?>
                                         </select>
                                         <input type="text" style="width: 75%" placeholder="Sub Kategori Baru" class="form-control form-control-line" name="subcategory" required="yes"> 
-                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newsize">Tambah</button>
+                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newsubcategory">Tambah</button>
                                     </div>
                                 </div>
                             </form>
@@ -120,7 +120,7 @@
                                             <tr>
                                               <td>".$parent."</td>
                                               <td>".$name."</td>
-                                              <td><a href='edit-size.php?pid=s".$id."'><i class='ti-pencil fa-fw'></i></a>
+                                              <td><a data-toggle='modal' data-target='#modalEdit' data-id='s".$id."' style='cursor: pointer;' class='edit'><i class='ti-pencil fa-fw'></i></a>
                                               <a data-toggle='modal' data-target='#myModal' data-id='s".$id."' style='color: red;cursor: pointer;' class='hapus'><i class='ti-trash fa-fw'></a></td>
                                             </tr>
                                             ";
@@ -131,10 +131,10 @@
                             </div>
                         </div>
                         <div class="white-box col-lg-4 col-md-4 col-sm-12"  style="min-height: 4200px">
-                            <form class="form-horizontal form-material" style="margin-bottom: 50px" method="post" action="manage-master.php">
+                            <form class="form-horizontal form-material" style="margin-bottom: 50px" method="post" action="manage-category.php">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <select id="category" class="form-control form-control-line">
+                                        <select name="category" id="category" class="form-control form-control-line">
                                             <?php
                                             $list = mysqli_query($conn, "SELECT * FROM mi_category");
 
@@ -149,11 +149,11 @@
                                               }
                                             ?>
                                         </select>
-                                        <select id="subcategory" class="form-control form-control-line">
+                                        <select name="subcategory" id="subcategory" class="form-control form-control-line">
                                             <option class="subchange">-Pilih Kategori Dulu-</option>
                                         </select>
-                                        <input type="text" style="width: 75%" placeholder="Sub Sub Kategori Baru" class="form-control form-control-line" name="size" required="yes"> 
-                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newsize">Tambah</button>
+                                        <input type="text" style="width: 75%" placeholder="Sub Sub Kategori Baru" class="form-control form-control-line" name="subsubcategory" required="yes"> 
+                                        <button class="btn btn-success pull-right" style="margin-top: -35px" type="submit" name="newsubsubcategory">Tambah</button>
                                     </div>
                                 </div>
                             </form>
@@ -181,8 +181,8 @@
                                             <tr>
                                               <td>".$parent."</td>
                                               <td>".$name."</td>
-                                              <td><a href='edit-size.php?pid=s".$id."'><i class='ti-pencil fa-fw'></i></a>
-                                              <a data-toggle='modal' data-target='#myModal' data-id='b".$id."' style='color: red;cursor: pointer;' class='hapus'><i class='ti-trash fa-fw'></a></td>
+                                              <td><a data-toggle='modal' data-target='#modalEdit' data-id='z".$id."' style='cursor: pointer;' class='edit'><i class='ti-pencil fa-fw'></i></a>
+                                              <a data-toggle='modal' data-target='#myModal' data-id='z".$id."' style='color: red;cursor: pointer;' class='hapus'><i class='ti-trash fa-fw'></a></td>
                                             </tr>
                                             ";
                                           }
@@ -205,19 +205,41 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <form method="post" action="manage-master.php">
+    <form method="post" action="manage-category.php">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Hapus Master</h4>
       </div>
       <div class="modal-body">
-        <p>Apakah Anda yakin ingin menghapus master ini? <br> PADA SUBCATEGORY, SELURUH SUBSUBCATEGOTY TERKAIT JUGA AKAN TERHAPUS, TINDAKAN TIDAK DAPAT DIBATALKAN.</p>
+        <p>Apakah Anda yakin ingin menghapus kategori ini? <br> PADA SUBCATEGORY, SELURUH SUBSUBCATEGOTY TERKAIT JUGA AKAN TERHAPUS, TINDAKAN TIDAK DAPAT DIBATALKAN.</p>
             <input type="hidden" id="idku" name="idku">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button class="btn btn-success" type="submit" name="hapus">Hapus</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- Modal -->
+<div id="modalEdit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <form class="form-horizontal form-material" method="post" action="manage-category.php">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Kategori</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="idku" name="idku">
+        <input class="form-control form-control-line" name="name" placeholder="Masukkan Nama Baru">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success" type="submit" name="edit">Edit</button>
       </div>
     </div>
     </form>
@@ -248,43 +270,75 @@
         var idku = $(this).data('id');
         $(".modal-body #idku").val(idku);
     });
+    $(document).on("click", ".edit", function () {
+        var idku = $(this).data('id');
+        $(".modal-body #idku").val(idku);
+    });
 </script>
 <?php
     if(isset($_POST['hapus'])) {
         $idku = $_POST['idku'];
 
-        if(substr($idku, 0,1) == 'c'){
-            $sql = "UPDATE mi_color SET color_active='N' WHERE color_id='".substr($idku, 1)."'";
-        } elseif(substr($idku, 0,1) == 's') {
-            $sql = "UPDATE mi_size SET size_active='N' WHERE size_id='".substr($idku, 1)."'";
+        if(substr($idku, 0,1) == 's'){
+            $sql = "DELETE FROM mi_subcategory WHERE subcategory_id='".substr($idku, 1)."'";
         } else {
-            
+            $sql = "DELETE FROM mi_subsubcategory WHERE subsubcategory_id='".substr($idku, 1)."'";
         }
 
         if(mysqli_query($conn, $sql)){
-            header("location: manage-master.php");
+            header("location: manage-category.php");
         } else{
-            echo "<script>alert('Gagal menghapus master, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menghapus category, refresh halaman dan coba lagi');</script>";
         }
     }
-    if(isset($_POST['newcolor'])) {
-        $color = $_POST['color'];
-        $sql = "INSERT INTO mi_color (color_name) VALUES ('$color')";
+    if(isset($_POST['newcategory'])) {
+        $category = $_POST['category'];
+        $sql = "INSERT INTO mi_category (category_name) VALUES ('$category')";
 
         if(mysqli_query($conn, $sql)){
-            header("location: manage-master.php");
+            header("location: manage-category.php");
         } else {
-            echo "<script>alert('Gagal menambah master, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menambah kategori, refresh halaman dan coba lagi');</script>";
         }
     }
-    if(isset($_POST['newsize'])) {
-        $size = $_POST['size'];
-        $sql = "INSERT INTO mi_size (size_name) VALUES ('$size')";
+    if(isset($_POST['newsubcategory'])) {
+        $category = $_POST['category'];
+        $subcategory = $_POST['subcategory'];
+        $sql = "INSERT INTO mi_subcategory (category_id, subcategory_name) VALUES ('$category', '$subcategory')";
 
         if(mysqli_query($conn, $sql)){
-            header("location: manage-master.php");
+            header("location: manage-category.php");
         } else {
-            echo "<script>alert('Gagal menambah master, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menambah subcategory, refresh halaman dan coba lagi');</script>";
+        }
+    }
+    if(isset($_POST['newsubsubcategory'])) {
+        $subcategory = $_POST['subcategory'];
+        $subsubcategory = $_POST['subsubcategory'];
+        $sql = "INSERT INTO mi_subsubcategory (subcategory_id, subsubcategory_name) VALUES ('$subcategory', '$subsubcategory')";
+
+        if(mysqli_query($conn, $sql)){
+            header("location: manage-category.php");
+        } else {
+            echo "<script>alert('Gagal menambah subsubcategory, refresh halaman dan coba lagi');</script>";
+        }
+    }
+    if(isset($_POST['edit'])) {
+        $idku = $_POST['idku'];
+        $nama = $_POST['name'];
+
+        if(substr($idku, 0,1) == 'c'){
+            $sql = "UPDATE mi_category SET category_name='$nama' WHERE category_id='".substr($idku, 1)."'";
+        } elseif(substr($idku, 0,1) == 's') {
+            $sql = "UPDATE mi_subcategory SET subcategory_name='$nama' WHERE subcategory_id='".substr($idku, 1)."'";
+        } else {
+            $sql = "UPDATE mi_subsubcategory SET subsubcategory_name='$nama' WHERE subsubcategory_id='".substr($idku, 1)."'";
+        }
+
+        if(mysqli_query($conn, $sql)){
+            header("location: manage-category.php");
+        } else {
+            echo "<script>alert('Gagal mengedit kategori, refresh halaman dan coba lagi');</script>";
         }
     }
 ?>
