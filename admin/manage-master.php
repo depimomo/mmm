@@ -64,7 +64,7 @@
                                             echo "
                                             <tr>
                                               <td>".$name."</td>
-                                              <td><a href='edit-color.php?pid=c".$id."'>Ubah</a></td>
+                                              <td><a data-toggle='modal' data-target='#modalEdit' data-id='c".$id."' style='cursor: pointer;' class='edit'>Ubah</a></td>
                                               <td><a data-toggle='modal' data-target='#myModal' data-id='c".$id."' style='color: red;cursor: pointer;' class='hapus'>Hapus</a></td>
                                             </tr>
                                             ";
@@ -105,7 +105,7 @@
                                             echo "
                                             <tr>
                                               <td>".$name."</td>
-                                              <td><a href='edit-size.php?pid=s".$id."'>Ubah</a></td>
+                                              <td><a data-toggle='modal' data-target='#modalEdit' data-id='s".$id."' style='cursor: pointer;' class='edit'>Ubah</a></td>
                                               <td><a data-toggle='modal' data-target='#myModal' data-id='s".$id."' style='color: red;cursor: pointer;' class='hapus'>Hapus</a></td>
                                             </tr>
                                             ";
@@ -147,6 +147,28 @@
     </form>
   </div>
 </div>
+<!-- Modal -->
+<div id="modalEdit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <form class="form-horizontal form-material" method="post" action="manage-master.php">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Master</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="idku" name="idku">
+        <input class="form-control form-control-line" name="name" placeholder="Masukkan Nama Baru">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success" type="submit" name="edit">Edit</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
 <?php include 'templates/scripts.html' ?>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -154,6 +176,10 @@
         $('.input-sm').height('20px');
     });
     $(document).on("click", ".hapus", function () {
+        var idku = $(this).data('id');
+        $(".modal-body #idku").val(idku);
+    });
+    $(document).on("click", ".edit", function () {
         var idku = $(this).data('id');
         $(".modal-body #idku").val(idku);
     });
@@ -172,6 +198,22 @@
             header("location: manage-master.php");
         } else {
             echo "<script>alert('Gagal menghapus master, refresh halaman dan coba lagi');</script>";
+        }
+    }
+    if(isset($_POST['edit'])) {
+        $idku = $_POST['idku'];
+        $nama = $_POST['name'];
+
+        if(substr($idku, 0,1) == 'c'){
+            $sql = "UPDATE mi_color SET color_name='$nama' WHERE color_id='".substr($idku, 1)."'";
+        } else {
+            $sql = "UPDATE mi_size SET size_name='$nama' WHERE size_id='".substr($idku, 1)."'";
+        }
+
+        if(mysqli_query($conn, $sql)){
+            header("location: manage-master.php");
+        } else {
+            echo "<script>alert('Gagal mengedit master, refresh halaman dan coba lagi');</script>";
         }
     }
     if(isset($_POST['newcolor'])) {

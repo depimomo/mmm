@@ -48,7 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th>Kategori</th>
-                                            <th>Edit</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,7 +63,7 @@
                                             echo "
                                             <tr>
                                               <td>".$name."</td>
-                                              <td><a href='edit-color.php?pid=c".$id."'>Ubah</a></td>
+                                              <td><a href='edit-category.php?pid=c".$id."'><i class='ti-pencil fa-fw'></i></a></td>
                                             </tr>
                                             ";
                                           }
