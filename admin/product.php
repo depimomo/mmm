@@ -40,10 +40,10 @@
                                 <table id="tbl" class="table-striped table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th>Harga</th>
-                                            <th>Kategori</th>
+                                            <th>Kode Produk</th>
+                                            <th>Gambar</th>
+                                            <th>Nama Produk</th>
+                                            <th>Harga Produk</th>
                                             <th>Aktif</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
@@ -56,18 +56,18 @@
                                         while ($row = mysqli_fetch_assoc($list)) 
                                           {
                                             $no = $row['product_code'];
+                                            $img = $row['picture_color_url'];
                                             $name = $row['product_name'];
                                             $price = $row['product_price'];
-                                            $subsubcategory = $row['subsubcategory_name'];
                                             $active = $row['product_active'];
                                             $promo = $row['promo'];
                                             
                                             echo "
                                             <tr>
                                               <td>".$no."</td>
+                                              <td><img src='../".$img."' height='100px'></img></td>
                                               <td>".$name."</td>
                                               <td>".$price."</td>
-                                              <td>".$subsubcategory."</td>
                                               <td>".$active."</td>
                                               <td>".$promo."</td>
                                               <td><a href='edit-product.php?pid=".$no."'>Ubah</a></td>

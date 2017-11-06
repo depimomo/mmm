@@ -20,7 +20,7 @@
     	<?php include 'templates/navsidebar.html' ?>
         <?php 
             $pid = $_GET['pid']; 
-            $sql = "SELECT * FROM mi_product WHERE product_no = '$pid'";
+            $sql = "SELECT * FROM mi_product WHERE product_code = '$pid'";
 
             $list = mysqli_query($conn, $sql);
 

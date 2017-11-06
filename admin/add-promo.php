@@ -26,6 +26,7 @@
                         <h4 class="page-title">Tambah Promo</h4>
                         <ol class="breadcrumb">
                             <li><a href="index.php">Beranda</a></li>
+                            <li><a href="manage-promo.php">Atur Promo</a></li>
                             <li class="active">Tambah Promo</li>
                         </ol>
                     </div>
@@ -143,6 +144,12 @@
 
             } else if (filter == 'time') {
                 isi =  '<div class="form-group change">'+
+                                '<label class="col-md-12">Tanggal Mulai</label>'+
+                                '<div class="col-md-12">'+
+                                    '<input type="text" class="date form-control form-control-line" readonly name="mulai">'+
+                                '</div>'+
+                        '</div>'+
+                        '<div class="form-group change">'+
                                 '<label class="col-md-12">Tanggal Selesai</label>'+
                                 '<div class="col-md-12">'+
                                     '<input type="text" class="date form-control form-control-line" readonly name="selesai">'+
@@ -178,9 +185,11 @@
             $qty = mysql_real_escape_string($_POST['qty']);
             $sql = "UPDATE mi_product SET product_qty_active='Y', product_qty_sale='$qty', product_promo_price='$promo' WHERE product_no='$products'";
         } elseif ($category == 'time') {
+            $datetimem = mysql_real_escape_string($_POST['mulai']);
             $datetime = mysql_real_escape_string($_POST['selesai']);
+            $splitm = explode(" ", $datetimem);
             $split = explode(" ", $datetime);
-            $sql = "UPDATE mi_product SET product_time_active='Y', product_time_day='$split[0]',product_time_hour='$split[1]', product_promo_price='$promo' WHERE product_no='$products'";
+            $sql = "UPDATE mi_product SET product_time_active='Y', product_time_day='$splitm[0]',product_time_hour='$splitm[1]', product_time_day_end='$split[0]',product_time_hour_end='$split[1]', product_promo_price='$promo' WHERE product_no='$products'";
         } elseif ($category == 'clearance') {
             $sql = "UPDATE mi_product SET product_clearance_active='Y', product_promo_price='$promo' WHERE product_no='$products'";        
         }

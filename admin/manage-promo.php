@@ -53,10 +53,11 @@
                                 <table id="tbl" class="table-striped table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
+                                            <th>Kode Produk</th>
+                                            <th>Gambar</th>
+                                            <th>Nama Produk</th>
+                                            <th>Harga Asli</th>
                                             <th>Harga Promo</th>
-                                            <th>Kategori</th>
                                             <th>Promo Aktif</th>
                                             <th>Ubah</th>
                                             <th>Hapus</th>
@@ -70,7 +71,9 @@
                                           {
                                             $no = $row['product_no'];
                                             $id = $row['product_code'];
+                                            $img = $row['picture_color_url'];
                                             $name = $row['product_name'];
+                                            $price = $row['product_price'];
                                             $promo_price = $row['product_promo_price'];
                                             $category = $row['subsubcategory_name'];
                                             $promo = $row['promo'];
@@ -78,9 +81,10 @@
                                             echo "
                                             <tr class='result'>
                                               <td>".$id."</td>
+                                              <td><img src='../".$img."' height='100px'></img></td>
                                               <td>".$name."</td>
+                                              <td>".$price."</td>
                                               <td>".$promo_price."</td>
-                                              <td>".$category."</td>
                                               <td>".$promo."</td>
                                               <td><a href='edit-promo.php?pid=".$no."'>Ubah</a></td>
                                               <td><a data-toggle='modal' data-target='#myModal' data-id='".$no."' style='color: red;cursor: pointer;' class='hapus'>Hapus</a></td>

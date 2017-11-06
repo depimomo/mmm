@@ -34,7 +34,9 @@
                 $product_time_active = $row['product_time_active'];
                 $product_qty_active = $row['product_qty_active'];
                 $product_time_day = $row['product_time_day'];
-                $product_time_hour = $row['product_time_hour'];
+                $product_time_hour = $row['product_time_hour_end'];
+                $product_time_day_end = $row['product_time_day_end'];
+                $product_time_hour_end = $row['product_time_hour'];
                 $product_qty_sale = $row['product_qty_sale'];
 
                 if($product_clearance_active == 'Y'){
@@ -55,6 +57,7 @@
                         <h4 class="page-title">Edit Promo</h4>
                         <ol class="breadcrumb">
                             <li><a href="index.php">Beranda</a></li>
+                            <li><a href="manage-promo.php">Atur Promo</a></li>
                             <li class="active">Edit Promo</li>
                         </ol>
                     </div>
@@ -94,9 +97,15 @@
                                     if($promo == 'Time') {
                                         ?>
                                         <div class="form-group change">
+                                                <label class="col-md-12">Tanggal Start</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" class="date form-control form-control-line" name="mulai" value="<?php echo $product_time_day.' '.$product_time_hour ?>">
+                                                </div>
+                                        </div>
+                                        <div class="form-group change">
                                                 <label class="col-md-12">Tanggal Selesai</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" class="date form-control form-control-line" readonly name="selesai" value="<?php echo $product_time_day.' '.$product_time_hour ?>">
+                                                    <input type="text" class="date form-control form-control-line" name="selesai" value="<?php echo $product_time_day_end.' '.$product_time_hour_end ?>">
                                                 </div>
                                         </div>
                                         <?php
@@ -162,9 +171,11 @@
             $qty = mysql_real_escape_string($_POST['qty']);
             $sql = "UPDATE mi_product SET product_qty_sale='$qty', product_promo_price='$promo' WHERE product_no='$pid'";
         } elseif ($category == 'Time') {
+            $datetimem = mysql_real_escape_string($_POST['mulai']);
             $datetime = mysql_real_escape_string($_POST['selesai']);
+            $splitm = explode(" ", $datetimem);
             $split = explode(" ", $datetime);
-            $sql = "UPDATE mi_product SET product_time_day='$split[0]',product_time_hour='$split[1]', product_promo_price='$promo' WHERE product_no='$pid'";
+            $sql = "UPDATE mi_product SET product_time_day='$splitm[0]', product_time_hour='$splitm[1]', product_time_day_end='$split[0]', product_time_hour_end='$split[1]', product_promo_price='$promo' WHERE product_no='$pid'";
         } elseif ($category == 'Clearance') {
             $sql = "UPDATE mi_product SET product_promo_price='$promo' WHERE product_no='$pid'";        
         }
