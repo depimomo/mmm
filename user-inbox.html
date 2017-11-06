@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!-- for icons purposes-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  
+  <link href="css/cart.css" rel="stylesheet">
+  <link href="css/stepper.css" rel="stylesheet">  
+  <link href="css/d1.css" rel="stylesheet">
+  <link href="css/test-menu.css" rel="stylesheet">	
+  
+  <!-- hand made css-->
+  <link href="css/pembantu3.css" rel="stylesheet">
+  <link href="css/form-checkout.css" rel="stylesheet">
+  <link href="css/users.css" rel="stylesheet">
+  
+  <!-- my one and only js-->
+  
+</head>
+<body>
+
+<!-- navigation start here -->
+
+<nav class="navbar navbar-static-top" id="navbarku">
+      <div class="container-fluid nopad">
+		<div class="navbar-header">
+		  <button 
+		  data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" 
+		  type="button" class="navbar-toggle pull-left sidebar">
+		  <i class="fa fa-bars burger fa-lg hidden-md hidden-lg" aria-hidden="true"></i>
+		  </button>
+		  <div class="navbar-brand" href="#"> <!--Milenia Logo-->
+			<div class="image" style="margin-top:-10%;"></div>​
+		  </div>
+		  <div class="hidden-sm hidden-md hidden-lg text-right side-right-menu" style="padding-top:6%;">
+			<a href="#"><i class="fa fa-search biru fa-lg side-items" aria-hidden="true" id="cari-xs" onclick="openov1()"></i></a>
+			<a href="#" data-toggle="modal" data-target="#myModal">
+			<i class="fa fa-shopping-cart biru fa-lg side-items1" aria-hidden="true" style=""></i></a>
+		  </div>
+		  
+        </div>
+		<form class="navbar-form navbar-left hidden-xs" style="padding-left:6%;">
+		  <div class="input-group bar-cari">
+			<input type="text" class="form-control" placeholder="Search">
+			<div class="input-group-btn">
+			  <button class="btn btn-defaults" type="submit">
+				<i class="glyphicon glyphicon-search"></i>
+			  </button>
+			</div>
+		  </div>
+		</form>
+        <div class="side-collapse in sidebars" id="sidebarku">
+          <nav role="navigation" class="navbar-collapse">
+			<ul class="nav navbar-nav navbar-right hidden-xs"  style="margin-right:10px;">
+				  <!--navigasi sebelum login
+				  <li><a href="#">Masuk &nbsp &nbsp </a></li>
+				  <li>
+					<button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
+				  </li>	-->
+				  <li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<!--<i class="material-icons biru" style="font-size:2.2em;">account_circle</i>-->
+					<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
+					&nbsp &nbsp Username 
+					&nbsp &nbsp <span class="caret"></span></a>
+					  <ul class="dropdown-menu" style="padding:5% 3% 9% 3%;width:190px;border:none;">
+						<li style="padding:6% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-profile.svg" style="width:15%;">
+							&nbsp &nbsp Akun Saya</a>
+						</li>
+						<li style="padding:5% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-inbox.svg" style="width:14%;">
+							&nbsp &nbsp Kotak Pesan</a>
+						</li>
+						<li style="padding:5% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-history.svg" style="width:14%;">
+							&nbsp &nbsp Histori Belanja</a>
+						</li>
+						<li style="padding:3% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-review.svg" style="width:14%;">
+							&nbsp &nbsp Ulasan</a>
+						</li>
+						<li style="padding:4% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-wishlist.svg" style="width:12.9%;">
+							&nbsp &nbsp Wishlist</a>
+						</li>
+						<li style="padding:3% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-point.svg" style="width:14%;">
+							&nbsp &nbsp Milenia Point</a>
+						</li>
+						<li style="padding:4% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-complain.svg" style="width:14%;">
+							&nbsp &nbsp Komplain</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell biru" aria-hidden="true" style="font-size:1.2em;"></i>
+					<!-- kalo ada notifikasi--> <span class="badge">2</span>
+					</a>
+						<ul class="dropdown-menu" style="padding:5%;border:none;left:-40px;width:200px;">
+							<div class="col-lg-12 nopad" style="height:125px;overflow-y:scroll;">
+								<li style="padding:8% 5% 8% 5%;">
+									<a href="#"> notifikasi 1</a>
+								</li>
+								<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee"></div>
+								<li style="padding:8% 5% 8% 5%;">
+									<a href="#"> notifikasi 1</a>
+								</li>
+								<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee"></div>
+								<li style="padding:8% 5% 8% 5%;">
+									<a href="#"> notifikasi 1</a>
+								</li>
+								<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee"></div>
+								<li style="padding:8% 5% 8% 5%;">
+									<a href="#"> notifikasi 1</a>
+								</li>
+								<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee"></div>
+							</div>	
+						</ul>
+					</li>
+				  <li><a href="#" id="cart" data-toggle="collapse" data-target="#demo" class="" aria-expanded="true"><span class="glyphicon glyphicon-shopping-cart biru"></span> &nbsp &nbsp My Cart</a>
+					<ul class="dropdown-menu dropdown-cart collapse" role="menu" id="demo" aria-expanded="true" style="">
+						<li>
+							<a class="text-left" style="padding:5% 6% 5% 6%;border-bottom:1px solid #eeeeee;margin-bottom:10px;" id="counteritem">
+							0 Barang</a>
+						</li>
+						<div class="items-cart" id="keranjangku">
+						  <!-- diisi dengan item keranjangku-->
+						</div>
+						  <li class="divider"></li>
+						  <div class="col-lg-12 col-sm-12 nopad" style="padding-top:0%;padding-left:4%;">
+							<li style="float:left;"><h5 id="totalitem">Total : Rp 0</h5></li>
+						  </div>
+						  <div class="col-lg-12 nopad">
+							  <div class="col-lg-6 col-sm-6 nopad" style="padding:2% 2% 5% 4%;">
+								<button class="btn-out-default" style="padding:9%;border-radius:3px;width:100%;font-size:0.9em;"> Lihat Pesanan</button>
+							  </div>
+							  <div class="col-lg-6 col-sm-6 nopad" style="padding:2% 3% 5% 4%;">
+								<button class="btn-defaults" style="padding:8%;border-radius:3px;width:100%;"> Bayar</button>
+							  </div>
+						  </div>	  
+					</ul>
+				  </li>  
+			</ul>
+			<div class="col-lg-12 hidden-sm nopad space-nav-lg" style="">
+			<ul class="nav navbar-nav navbar-left" id="menu">
+			<!--<div class="hidden-sm hidden-md hidden-lg col-xs-12 side-top-xs" style="padding:5% 7% 5% 6%;border-bottom:1px solid #eeeeee;margin-bottom:7%;">
+				<h4 id="closeside"> Menu </h4>
+				<a href="javascript:void(0)" class="closebtn">&times;</a>
+			</div>-->
+			<a class="hidden-sm hidden-md hidden-lg" style="display:inline;font-size:1.2em;padding-left:15px;"> Menu</a>
+			<a class="hidden-sm hidden-md hidden-lg" href="javascript:void(0)" id="tutup" 
+			style="font-size:30px;position:relative;top:2px;left:64%;display:inline;">
+			&times;</a>
+			<!--<li class="hidden-sm hidden-md hidden-lg" style=""><a href="#" style="font-size:1.2em;">Menu</a></li>-->
+			<div class="hidden-sm hidden-md hidden-lg col-xs-12 nopad" style="border-top:1px solid #eeeeee;margin-top:10px;"></div>
+			<!--<li class="hidden-xs" style=""><a href="#">Beranda</a></li>	-->
+			<li class="hidden-sm hidden-md hidden-lg" style="padding-top:7%;"><a href="#">Beranda</a></li>	
+			<li class="dropdown mega-dropdown">
+			  <a href="#" class="dropdown-toggle drop" data-toggle="dropdown">Pakaian Pria &nbsp &nbsp &nbsp
+			  <!--<span class="glyphicon glyphicon-chevron-down pull-right"></span>-->
+			  <i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true"></i>
+			  </a>
+			  <ul class="dropdown-menu mega-dropdown-menu row megamenuku" id="menu1">
+				<li class="col-sm-4 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Atasan</a></li>
+					<li><a href="#">Kemeja</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Kaos Tanpa Lengan</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Atasan</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-4 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Bawahan</a></li>
+					<li><a href="#">Celana Pendek</a></li>
+					<li><a href="#">Celana Panjang</a></li>
+					<li><a href="#">Jeans</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Bawahan</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-4 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Outwear</a></li>
+					<li><a href="#">Cardigan</a></li>
+					<li><a href="#">Jaket</a></li>
+					<li><a href="#">Sweater</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Outwear</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</li>
+			<li class="dropdown mega-dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pakaian Wanita &nbsp &nbsp &nbsp
+			  <i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true"></i></a>
+			  <ul class="dropdown-menu mega-dropdown-menu col-sm-12 megamenuku" id="menu2">
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Dress</a></li>
+					<li><a href="#">Santai</a></li>
+					<li><a href="#">Cocktail</a></li>
+					<li><a href="#">Bodycon</a></li>
+					<li><a href="#">Jumpsuit</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Dress</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Atasan</a></li>
+					<li><a href="#">Kemeja</a></li>
+					<li><a href="#">Blouse</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Tank Top</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Atasan</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Bawahan</a></li>
+					<li><a href="#">Celana Pendek</a></li>
+					<li><a href="#">Rok</a></li>
+					<li><a href="#">Celana Panjang</a></li>
+					<li><a href="#">Jeans</a></li>
+					<li><a href="#">Leggings</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Bawahan</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Outerwear</a></li>
+					<li><a href="#">Cardigan</a></li>
+					<li><a href="#">Blazer</a></li>
+					<li><a href="#">Jaket</a></li>
+					<li><a href="#">Sweater</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Outerwear</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Pakaian Dalam</a></li>
+					<li><a href="#">Baju Tidur</a></li>
+					<!--<li><a href="#" style="text-decoration:underline;">Lihat Semua Outerwear</a></li>-->
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Aksesoris</a></li>
+					<li><a href="#">Aksesoris Wanita</a></li>
+					<!--<li><a href="#" style="text-decoration:underline;">Lihat Semua Outerwear</a></li>-->
+				  </ul>
+				</li>
+			  </ul>
+			</li>
+			<li class="dropdown mega-dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pakaian Anak &nbsp &nbsp &nbsp
+			  <i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true"></i></a>
+			  <ul class="dropdown-menu mega-dropdown-menu col-sm-12 megamenuku" id="menu3">
+				<li class="col-sm-2 nopad space-lg-r1" style="">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Junior Boys</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Kemeja</a></li>
+					<li><a href="#">Jeans & Trousers</a></li>
+					<li><a href="#">Celana Pendek</a></li>
+					<li><a href="#">Piyama</a></li>
+					<li><a href="#">Hoodie, Sweater & Outwear</a></li>
+					<li><a href="#">Rompers</a></li>
+					<li><a href="#">Pakaian Set</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Junior Boys</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad space-lg-r1">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Junior Girls</a></li>
+					<li><a href="#">Dress</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Leggings</a></li>
+					<li><a href="#">Jeans & Trousers</a></li>
+					<li><a href="#">Celana Pendek & Rok</a></li>
+					<li><a href="#">Piyama</a></li>
+					<li><a href="#">Hoodie, Sweater & Outwear</a></li>
+					<li><a href="#">Rompers</a></li>
+					<li><a href="#">Pakaian Set</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Junior Girls</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad space-lg-r1">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Toddler Boys</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Kemeja</a></li>
+					<li><a href="#">Jeans & Trousers</a></li>
+					<li><a href="#">Celana Pendek</a></li>
+					<li><a href="#">Piyama</a></li>
+					<li><a href="#">Hoodie, Sweater & Outwear</a></li>
+					<li><a href="#">Rompers</a></li>
+					<li><a href="#">Pakaian Set</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Toddler Boys</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad space-lg-r1">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Toddler Girls</a></li>
+					<li><a href="#">Dress</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Leggings</a></li>
+					<li><a href="#">Jeans & Trousers</a></li>
+					<li><a href="#">Celana Pendek & Rok</a></li>
+					<li><a href="#">Piyama</a></li>
+					<li><a href="#">Hoodie, Sweater & Outwear</a></li>
+					<li><a href="#">Rompers</a></li>
+					<li><a href="#">Pakaian Set</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Toddler Girls</a></li>
+				  </ul>
+				</li>
+				<li class="col-sm-2 nopad space-lg-r1">
+				  <ul>
+					<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Baby</a></li>
+					<li><a href="#">Jumper</a></li>
+					<li><a href="#">Piyama & Pakaian Set</a></li>
+					<li><a href="#">Dress</a></li>
+					<li><a href="#">Kaos T-shirt</a></li>
+					<li><a href="#">Leggings</a></li>
+					<li><a href="#">Jeans & Trousers</a></li>
+					<li><a href="#">Celana Pendek</a></li>
+					<li><a href="#">Hoodie, Sweater & Outwear</a></li>
+					<li><a href="#" style="text-decoration:underline;">Lihat Semua Baby</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</li>
+			</ul>	
+			
+			<ul class="nav navbar-nav navbar-right space-nav-xs" style="margin-right:-15px;">
+				<div class="hidden-sm hidden-md hidden-lg container-fluid" style="border-top:1px solid #eeeeee;padding-top:8%;">
+					<li class="dropdown">
+						<div  class="dropdown-toggle" data-toggle="dropdown">
+							<a href="#"> Username
+							<i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true" style="margin-top:5px;"></i></a>
+						</div>
+						<ul class="dropdown-menu" style="padding:2%;border:none;margin-left:-13%;">
+						<li style="padding:2% 0% 2% 0%;">
+							<a href="#"><img src="img/icons/ic-profile.svg" style="width:12%;">
+							&nbsp &nbsp Akun Saya</a>
+						</li>
+						<li style="padding:2% 0% 2% 0%;">
+							<a href="#"><img src="img/icons/ic-inbox.svg" style="width:11%;">
+							&nbsp &nbsp Kotak Pesan</a>
+						</li>
+						<li style="padding:5% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-history.svg" style="width:11%;">
+							&nbsp &nbsp Histori Belanja</a>
+						</li>
+						<li style="padding:3% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-review.svg" style="width:11%;">
+							&nbsp &nbsp Ulasan</a>
+						</li>
+						<li style="padding:4% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-wishlist.svg" style="width:9.5%;">
+							&nbsp &nbsp Wishlist</a>
+						</li>
+						<li style="padding:3% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-point.svg" style="width:11%;">
+							&nbsp &nbsp Milenia Point</a>
+						</li>
+						<li style="padding:4% 0% 3.5% 0%;">
+							<a href="#"><img src="img/icons/ic-complain.svg" style="width:11%;">
+							&nbsp &nbsp Komplain</a>
+						</li>
+					  </ul>
+					</li>
+					<li style="margin-top:18px;margin-bottom:8px;">
+						<a href="#">Notifikasi
+							<!-- kalo ada notifikasi--> <span class="badge" style="margin-top:-5px;margin-left:5px;">2</span>
+						</a>
+					</li>
+				</div>
+				<li><a href="#" class="biru">Be a SELLER </a></li>
+				<li><a href="#">Lacak Pesanan</a></li>
+				<li><a href="#">Konfirmasi Pembayaran</a></li>
+				<li class="hidden-sm hidden-md hidden-lg"><a href="#">Keluar</a></li>
+			</ul>
+			</nav>
+        </div>
+      </div>
+</nav>
+
+<!-- navigation end here-->
+
+<!-- overlay things goes here -->
+<div class="overlay" id="bgku"></div>
+
+<!-- overlay overlay search mobile here -->
+<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
+	<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
+	<h4> Cari Produk </h4>
+	<div class="col-xs-12 nopad" style="margin-bottom:8%;">
+		<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
+	</div>
+	<div class="col-xs-12 nopad">
+		<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
+		<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
+		Temukan</button>
+	</div>	
+</div>
+
+
+<!-- content start here -->
+<div class="container-fluid nopad bg-ver2">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad outer-space-p">
+		
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 nopad">
+			<div class="container-fluid nopad outer-box-p">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad box-ver2">
+					<!-- avatar edit profile menu -->
+					<div class="container-fluid nopad text-center avatar-p" style="background-color:white">
+						<div class="col-xs-3 col-sm-12 col-md-12 col-lg-12 nopad">
+							<img src="img/icons/ic-profile.svg" class="img-prof">
+						</div>
+						<div class="col-xs-9 col-sm-12 col-md-12 col-lg-12 nopad space-profile-3">	
+							<h5 style="font-size:1.3em;"> aa </h5>
+							<h5> Active since 2 days ago </h5>
+							<a class="biru kecil2"> <i class="fa fa-pencil biru" aria-hidden="true" style="padding-right:2%;"></i>Edit Profil </a>
+						</div>
+					</div>
+					<!-- echo milenia points here -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad text-center point-p">
+						<h5> Milenia Points </h5>
+						<h4> 100.000 Points </h4>
+					</div>
+					
+					<div class="hidden-xs col-sm-12 col-md-12 col-lg-12 nopad text-left" style="padding:5% 10% 6% 10%;">
+						<!-- menu users in desktop here -->
+						<div class="hidden-xs container-fluid nopad">
+							<a href="user-profile.html">
+								<div class="container-fluid nopad" style="border-top:none;">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:3%;">
+										<img src="img/icons/ic-profile.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5> Profil Saya</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-inbox.html">
+								<div class="container-fluid nopad">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:3.5%;">
+										<img src="img/icons/ic-inbox.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5> Kotak Pesan</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-history.html">
+								<div class="container-fluid nopad">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:4%;">
+										<img src="img/icons/ic-history.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5>Histori Belanja</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-review.html">
+								<div class="container-fluid nopad">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:3.5%;">
+										<img src="img/icons/ic-review.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5>Ulasan Belanja</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-wishlist.html">	
+								<div class="container-fluid nopad">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:4.3%;">
+										<img src="img/icons/ic-wishlist.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5>Wishlist</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-points.html">							
+								<div class="container-fluid nopad">
+									<div class="col-sm-2 col-md-2 col-lg-2 nopad" style="padding:4%;">
+										<img src="img/icons/ic-point.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5>Milenia Points</h5>
+									</div>
+								</div>
+							</a>
+							<a href="user-complain.html">	
+								<div class="container-fluid nopad">
+									<div class="col-lg-2 nopad" style="padding:4%;">
+										<img src="img/icons/ic-complain.svg" style="width:100%;">
+									</div>
+									<div class="col-sm-10 col-md-10 col-lg-10 nopad" style="padding:1.5% 5% 1.5% 5%;">
+										<h5>Komplain</h5>
+									</div>
+								</div>
+							</a>
+						</div>
+						
+					</div>
+				</div>
+				<!-- menu users in mobile here -->
+				<div class="hidden-sm hidden-md hidden-lg col-xs-12 nopad" style="padding:2%;margin-bottom:10px;">
+					<select class="form-control" id="tabprofile" onchange="location=this.value;">
+						<option value="user-inbox.html">Kotak Pesan</option>
+						<option value="user-profile.html">Profil Saya</option>
+						<option value="user-history.html">Histori Belanja</option>
+						<option value="user-review.html">Ulasan Belanja</option>
+						<option value="user-wishlist.html">Wishlist</option>
+						<option value="user-points.html">Milenia Points</option>
+						<option value="user-complain.html">Komplain</option>
+					</select>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 nopad space-p-2 box-ver2" style="box-shadow:none;">
+			<div class="container-fluid nopad" style="border-bottom:1px solid #eeeeee;padding-bottom:6px;padding-left:25px;padding-top:5px;">
+					<h4> Kotak Pesan </h4>
+				</div>
+			
+			<!-- list message in inbox here -->
+			<div class="container-fluid nopad content-ver2">
+				
+				<!-- row each message in inbox here -->
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad message-i">
+					<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 nopad">
+						<img src="img/icons/ic-profile.svg" style="width:80%;">
+					</div>
+					<div class="col-xs-10 col-sm-7 col-md-7 col-lg-8 nopad" style="padding-left:2%;">
+						<h5 style="font-size:1.1em;"> Diskusi Produk Sweater Black White 
+							<span class="kecil3"> - 20 Feb 2017, 11:59</span>
+							<!-- use badges for new message -->
+							<span class="badge" style="margin-left:2px;">5</span>
+						</h5>
+						<!-- btn see discussion for mobile -->
+						<div class="col-xs-12 hidden-sm hidden-md hidden-lg nopad">
+							<button class="btn btn-out-default" style="box-shadow:none;margin-top:3px"> Lihat Diskusi</button>
+						</div>
+					</div>
+					<!-- btn see discussion for desktop -->
+					<div class="hidden-xs col-sm-1 col-md-1 col-lg-3 nopad text-right">
+						<a href="user-inbox2.html">
+							<button class="btn btn-out-default" style="box-shadow:none;margin-top:3px"> Lihat Diskusi</button>
+						</a>	
+					</div>
+				</div>
+					
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- content end here -->
+
+<!-- modal for cart -->
+<div id="myModal" class="modal fade" role="dialog" style="margin:10% 5% 10% 5%;">
+  <div class="modal-dialog" >
+	<div class="modal-content" style="padding:1%;">
+      <div class="modal-header" style="border-bottom:1px solid #eeeeee;padding-bottom:1%;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
+      </div>
+      <div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
+       
+      </div>
+	  <div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
+			<h5 id="totalitemxs"> Total : Rp 0 </h5>
+	  </div>
+      <div class="modal-footer">
+		<div class="col-xs-6 nopad" style="padding-right:1%;">
+			<button class="btn-out-default" style="padding:7%;border-radius:3px;width:100%;"> Lihat Pesanan </button>
+		</div>
+		<div class="col-xs-6 nopad" style="">
+			<button type="button" class="btn btn-defaults" style="padding:7%;border-radius:3px;width:100%;">Bayar</button>
+		</div>	
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {   
+    
+	/* sidebar mobile*/	
+	var sideslider = $('[data-toggle=collapse-side]');
+    var sel = sideslider.attr('data-target');
+    var sel2 = sideslider.attr('data-target-2');
+	var temp =1;
+	sideslider.click(function(event){
+		$(sel).toggleClass('in');
+		jQuery('.navbar-static-top').css({position: 'static'});
+		$("#sidebarku").fadeIn(200);
+		$("#bgku").fadeIn(200);
+    });
+			
+	$("#tutup").on("click", function() {
+		console.log("burger");
+		$("#sidebarku").fadeOut(200);
+		$("#sidebarku").show().removeClass('animated slideInLeft');
+		$(".sidebars").siblings(".sidebars").removeClass("in");
+		$(".sidebars").toggleClass("in");
+		$("#bgku").fadeOut(300);
+		jQuery('.navbar-static-top').css({position: 'fixed'});
+		$("#navbarku").removeClass("nonebs-nav-xs");
+	});
+});
+
+
+/* filter select option for add new address */
+document.getElementById("addcity").disabled=true;
+document.getElementById("adddistrict").disabled=true;	
+
+	/* filter provinsi */				
+	$('#addprov').on('change', function (e) {
+		/* ini buat dapetin value yang terpilih di selection*/
+		var optionprov = $("option:selected", this);
+		var valueprov = this.value;
+		console.log(valueprov);
+		if(valueprov=="Pilih Provinsi")
+		{
+			document.getElementById("addcity").disabled=true;
+		}
+		else
+		{
+			document.getElementById("addcity").disabled=false;
+		}
+	});
+
+	/* filter kota */
+	$('#addcity').on('change', function (e) {
+		var optioncity = $("option:selected", this);
+		var valuecity = this.value;
+		console.log(valuecity);
+		if(valuecity=="Pilih Kota")
+		{
+			document.getElementById("adddistrict").disabled=true;
+		}
+		else
+		{
+			document.getElementById("adddistrict").disabled=false;
+		}
+	});
+
+
+/* ---------------- CART FOR DESKTOP --------------*/
+	
+	/*declare var global for desktop for count item in cart*/	
+	var hitungitem = 0;	
+	var sum = 0
+
+	/*jika ada elemen yang baru dibuat setelah html selesai diload, wajib pake ini*/
+	$(document).on("click",".btnclear", function() {
+		var temphapus = $(this).attr('id');
+		var tempharga = $("#harga"+temphapus).val();
+		//console.log(tempharga);
+		$("#cartitem"+temphapus).remove();
+		hitungitem--;
+		sum = sum - tempharga;
+		//console.log(sum+"kurang");
+		$('#counteritem').html(hitungitem+" Barang");
+		$('#totalitem').html("Total : Rp "+sum);
+	});
+	
+	/* ini buat desktop, mesti dipisah karena cartnya satu dropdown satu modal */	
+	$("#buyitem").on("click", function() {
+		var nama = $('#nameitem').attr('value');
+		var harga = parseInt($('#priceitem').attr('value'));
+		//var ukuran = $('#size').find(":selected").text();
+		//var warna = $('#color').find(":selected").text();
+		var qty = $('#quantity').val();
+		var gambar = $("#top-img").attr('value');
+		hitungitem++;
+		var totalperitem = qty*harga;
+		sum = sum + totalperitem;
+		console.log(sum);
+		
+		
+		var tampung = 
+		"<li id='cartitem"+hitungitem+"'><span class='item col-lg-10 nopad'><span class='item-left'><img src='img/"+gambar+"' style='width:100%;width:70px;height:70px;'><span class='item-info'><span>"+nama+"</span><span>Rp "+ harga +" x "+qty+"</span></span></span></span><i class='material-icons biru btnclear col-lg-2 nopad text-right' style='font-size:1.3em;right:15px;top:5px' id='"+hitungitem+"'>clear</i><input id='harga"+hitungitem+"' value="+totalperitem+" style='display:none'></li>";
+		$('#counteritem').html(hitungitem+" Barang");
+		$('#totalitem').html("Total : Rp "+sum);
+		$('#keranjangku').append(tampung);
+	});	
+
+/* ---------------- CART FOR MOBILE --------------*/
+	/*declare var global for mobile for count item in cart*/
+	var hitungitemxs = 0;	
+	var sumxs=0;
+
+	/*jika ada elemen yang baru dibuat setelah html selesai diload, wajib pake ini*/
+	$(document).on("click",".btnclearxs", function() {
+		var temphapusxs = $(this).attr('id');
+		var temphargaxs = $("#hargaxs"+temphapusxs).val();
+		$("#cartitem"+temphapusxs).remove();
+		hitungitemxs--;
+		sumxs = sumxs - temphargaxs;
+		$('#counteritemxs').html(hitungitemxs+" Barang");
+		$('#totalitemxs').html("Total : Rp "+sumxs);
+	});
+
+	/*ini buat cart mobile*/
+	$("#buyitemxs").on("click", function() {
+		var namaxs = $('#nameitem').attr('value');
+		var hargaxs = parseInt($('#priceitem').attr('value'));
+		var qtyxs = $('#quantity').val();
+		var gambarxs = $("#top-img").attr('value');
+		hitungitemxs++;
+		//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
+		var totalperitemxs = qtyxs*hargaxs;
+		sumxs = sumxs + totalperitemxs;
+		console.log(sumxs);
+		
+		var tampungxs = 
+		"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='img/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
+		$('#counteritemxs').html(hitungitemxs+" Barang");
+		$('#totalitemxs').html("Total : Rp "+sumxs);
+		$('#keranjangkuxs').append(tampungxs);
+	});
+	
+	
+/* for overlay purposes, dont change this */
+	function openov1(){
+		$("#bgku2").fadeIn();
+	}
+
+	function closebgku2(){
+		$("#bgku2").fadeOut();
+	}
+	
+</script>
+</body>
+</html>

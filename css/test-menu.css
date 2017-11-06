@@ -1,0 +1,98 @@
+body
+{
+	position: relative;
+}
+
+
+
+/*image nav*/
+div.image {
+   content:url(../img/res-logo.png);
+}​
+
+/*custom nav*/
+
+.navbar-inverse {
+    background-color: white;
+    border:none;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: white;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: white;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	
+	
+	.side-collapse-container{
+		width:100%;
+		/*position:fixed;*/
+		left:0;
+		transition:left .4s;
+		overflow-y:scroll;
+		height: 100%;
+	}
+	.side-collapse-container.out{
+		left:250px;
+	}
+
+	.side-collapse {
+		top:0px;
+		bottom:0;
+		left:0;
+		width:250px;
+		position:fixed;
+		overflow-y:scroll;
+		height: 100%;
+		transition: .5s;
+		/*border-right:1px solid #eeeeee;*/
+		background-color:white;
+		z-index:1000;
+		padding-bottom:50%;
+	}
+
+	.side-collapse.in {
+		width:250px;
+		/*transition: .3s;*/
+		position: absolute;
+		/*overflow-y:hidden;*/
+		overflow-x:hidden;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s, opacity 1s linear;
+	}
+	
+	.navbar{
+		padding: 0% 7% 5% 7%;
+		margin-bottom:20px;
+	}
+	
+	.navbar-brand{
+		padding-top:8%;
+		padding-left:5%;
+	}
+	
+}
+
+@media screen and (min-width: 768px) {
+	.navbar{
+		padding: 0.5% 11.5% 0.5% 11.5%;
+	}
+	
+	.navbar-brand{
+		padding-top:13%;
+	}
+	
+	/*.navbar-right{
+		margin-right: 150px;
+	}*/
+	
+}
