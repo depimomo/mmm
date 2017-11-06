@@ -63,7 +63,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-12">Berat (gram)</label>
                                                     <div class="col-md-12">
-                                                        <input type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes" step="any" min="0"/>
+                                                        <input step="100" min="100" type="number" class="form-control form-control-line" autocomplete="off" maxlength="50" name="weight" required="yes" value="100" />
                                                          </div>
                                                 </div>
                                                 <div class="form-group">
