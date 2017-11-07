@@ -125,7 +125,6 @@
 						<!-- tabs 1 : status pembayaran -->
 						<div id="menup1" class="tab-pane fade in active">
 							<div class="container-fluid nopad" style="padding-top:13px;padding-left:1%;">
-								<!--<h5 style="font-size:1.1em;"> Data Profil </h5>-->
 								<!-- list content tab 1 -->
 								<div class="container-fluid nopad">
 									<!-- row invoice -->
@@ -166,16 +165,12 @@
 												</div>
 											</div>
 										</div>
-
 									</div>
 								</div>	
 							</div>
 						</div>
-
-
 					</div>	  
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -208,10 +203,10 @@
 		</div>
 	</div>
 
-	<script>
-		<?php include "/templates/scripts.html" ?>
-		<?php include "/templates/sidebar.js" ?>
-
+	<?php include "/templates/scripts.html" ?>
+    <script>
+		    <?php include "/templates/sidebar.js" ?>
+		
 			/* for ellipsis title items */
 			/*panjang array dihardcode, cek by panjang string*/
 			var nomer=[11];

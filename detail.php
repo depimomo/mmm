@@ -62,7 +62,6 @@
 								<div class="item active">
 									<img src="images/items1-3.png" alt="Los Angeles" style="width:100%;height: auto;">
 								</div>
-
 								<div class="item">
 									<img src="images/items1-3.png" alt="Chicago" style="width:100%;height: auto;">
 								</div>

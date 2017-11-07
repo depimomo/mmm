@@ -130,7 +130,6 @@
 		<div class="modal-content" style="padding:1%;">
 			<div class="modal-header" style="border-bottom:1px solid #eeeeee;padding-bottom:1%;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<!--<h4 class="modal-title">Keranjang</h4>-->
 				<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 			</div>
 			<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
@@ -175,7 +174,6 @@ function closebgku2(){
 
 var quantitiy=0;
 $('.quantity-right-plus').click(function(e){
-
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
@@ -197,7 +195,6 @@ $('.quantity-left-minus').click(function(e){
             	$('#quantity').val(quantity - 1);
             }
         });
-
 /* ---------------- CART FOR DESKTOP --------------*/
 
 /*declare var global for desktop for count item in cart*/	
@@ -225,7 +222,6 @@ $("#buyitem").on("click", function() {
 	var totalperitem = qty*harga;
 	sum = sum + totalperitem;
 	console.log(sum);
-	
 	
 	var tampung = 
 	"<li id='cartitem"+hitungitem+"'><span class='item col-lg-10 nopad'><span class='item-left'><img src='images/"+gambar+"' style='width:100%;width:70px;height:70px;'><span class='item-info'><span>"+nama+"</span><span>Rp "+ harga +" x "+qty+"</span></span></span></span><i class='material-icons biru btnclear col-lg-2 nopad text-right' style='font-size:1.3em;right:15px;top:5px' id='"+hitungitem+"'>clear</i><input id='harga"+hitungitem+"' value="+totalperitem+" style='display:none'></li>";

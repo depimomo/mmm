@@ -9,82 +9,9 @@
 	<?php include "/templates/navbar.php" ?>
     <?php include "/templates/mobile-search.php" ?>
 
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
-
 	<div class="container-fluid nopad space-ban-xs" style="">
-		<div class="container-fluid nopad">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="z-index:0;margin:0%;padding:0%;">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>
-
-				<div class="carousel-inner">
-					<div class="item active">
-						<img src="https://dummyimage.com/1366x400/4f134f/ffffff.jpg" alt="Los Angeles">
-					</div>
-
-					<div class="item">
-						<img src="https://dummyimage.com/1366x400/4f134f/ffffff.jpg" alt="Los Angeles">
-					</div>
-
-					<div class="item">
-						<img src="https://dummyimage.com/1366x400/4f134f/ffffff.jpg" alt="Los Angeles">
-					</div>
-				</div>
-
-				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#myCarousel" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-
-		<div class="container-fluid">
-			<div class="col-lg-12 text-center" style="padding:1.2%;">
-				<h1 class="title"> <span class="biru">Why</span> Must Milenia </h1>
-				<div class="divider-biru" style="margin-top:20px;"></div>
-			</div>
-			<div class="col-lg-12 text-center space-items-1">
-				<div class="col-sm-3 col-lg-3 space-low-1">
-					<img src="images/icons/ic-main1.svg" style="width:70px;">
-					<h4 class="title" style="padding-top:10px;"> Best Quality </h4>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor </p>
-				</div>
-				<div class="col-sm-3 col-lg-3 space-low-1">
-					<img src="images/icons/ic-main2.svg" style="width:70px;">
-					<h4 class="title" style="padding-top:10px;"> Change Size Anytime  </h4>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor </p>
-				</div>
-				<div class="col-sm-3 col-lg-3 space-low-1">
-					<img src="images/icons/ic-main3.svg" style="width:105px;">
-					<h4 class="title" style="padding-top:10px;"> Same Day Shipping  </h4>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor </p>
-				</div>
-				<div class="col-sm-3 col-lg-3 space-low-1">
-					<img src="images/icons/ic-main4.svg" style="width:70px;">
-					<h4 class="title" style="padding-top:10px;"> Fast Response  </h4>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor </p>
-				</div>
-			</div>
-		</div>
+		<?php include "/templates/index/carousel.php" ?>
+		<?php include "/templates/index/why-millenia.html" ?>
 
 		<div class="container-fluid">
 			<div class="col-lg-12">
@@ -138,7 +65,6 @@
 			</div>	
 		</div>	
 
-
 		<div class="container-fluid nopad">
 			<div class="col-lg-12 nopad">
 				<div class="col-sm-5 col-md-5 col-lg-6 grad1 space-items-4">
@@ -190,152 +116,8 @@
 
 			</div>
 		</div>
-
-
-		<!-- section milenia 1-->
-		<div class="container-fluid nopad space-out-box">
-			<div class="col-sm-12 col-md-12 col-lg-12 space-box">
-				<div class="container-fluid nopad bg-box">
-					<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3 bgban space-inner-1 grad3" style="margin-right:-40px;">
-						<!-- punya 2 judul yang berbeda untuk desktop dan mobile-->
-						<h1 class="title putih hidden-xs" style="line-height:45px;"> Milenia <br>Time <br> Sales</h1>
-						<h1 class="title putih hidden-sm hidden-md hidden-lg" style="line-height:45px;"> Milenia Time Sales</h1>
-
-						<h5 class="putih" style="line-height:20px;margin-top:15px;"> 
-							Lorem ipsum dolor sit amet, consecte tur adipiscing.
-						</h5>
-						<button class="btn-putih" style="margin-top:5%;padding:4% 12% 4% 12%;">See More</button>
-					</div>
-					<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9 nopad space-inner-2" style="padding-top:1.5%;">
-						<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6">
-							<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-								<div class="container-fluid">
-									<img src="images/items1-2.png" style="width:100%;">
-								</div>
-								<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-									<h5 class="title title-items" style="" id="items1">Girls Long Pants Branded Grey Flower</h5>
-									<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-									<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-										<span class="biru">19:01:00 </span> time left</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6">
-								<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-									<div class="container-fluid">
-										<img src="images/items1-2.png" style="width:100%;">
-									</div>
-									<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-										<h5 class="title title-items" style="" id="items2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque metus</h5>
-										<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-										<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-											<span class="biru">19:01:00 </span> time left</h5>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6 hidden-xs hidden-sm">
-									<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-										<div class="container-fluid">
-											<img src="images/items1-2.png" style="width:100%;">
-										</div>
-										<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-											<h5 class="title title-items" style="" id="items3">Tas Ransel Sekolah Jansport Abu Muda / Tas Pria Wanita Trendy Murah</h5>
-											<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-											<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-												<span class="biru">19:01:00 </span> time left</h5>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6 hidden-xs hidden-sm hidden-md">
-										<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-											<div class="container-fluid">
-												<img src="images/items1-2.png" style="width:100%;">
-											</div>
-											<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-												<h5 class="title title-items" style="" id="items4">Kids  <br> Sweater </h5>
-												<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-												<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-													<span class="biru">19:01:00 </span> time left</h5>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>	
-							</div>
-						</div>
-
-						<!-- section milenia 2-->
-						<div class="container-fluid nopad space-out-box">
-							<div class="col-sm-12 col-md-12 col-lg-12 space-box space-low-box">
-								<div class="container-fluid nopad bg-box-2">
-									<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3 bgban2 space-inner-1 grad4" style="margin-right:-40px;">
-										<!-- punya 2 judul yang berbeda untuk desktop dan mobile-->
-										<h1 class="title putih hidden-xs" style="line-height:45px;"> Milenia <br>Quantity<br> Sales</h1>
-										<h1 class="title putih hidden-sm hidden-md hidden-lg" style="line-height:45px;"> Milenia Quantity Sales</h1>
-
-										<h5 class="putih" style="line-height:20px;margin-top:15px;"> 
-											Lorem ipsum dolor sit amet, consecte tur adipiscing.
-										</h5>
-										<button class="btn-putih" style="margin-top:5%;padding:4% 12% 4% 12%;">See More</button>
-									</div>
-									<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9 nopad space-inner-2" style="padding-top:1.5%;">
-										<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6">
-											<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-												<div class="container-fluid">
-													<img src="images/items1-2.png" style="width:100%;">
-												</div>
-												<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-													<h5 class="title title-items" style="" id="items5">Girls Long Pants Branded Grey Flower</h5>
-													<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-													<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-														<span class="biru">19:01:00 </span> time left</h5>
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6">
-												<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-													<div class="container-fluid">
-														<img src="images/items1-2.png" style="width:100%;">
-													</div>
-													<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-														<h5 class="title title-items" style="" id="items6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque metus</h5>
-														<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-														<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-															<span class="biru">19:01:00 </span> time left</h5>
-														</div>
-													</div>
-												</div>
-												<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6 hidden-xs hidden-sm">
-													<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-														<div class="container-fluid">
-															<img src="images/items1-2.png" style="width:100%;">
-														</div>
-														<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-															<h5 class="title title-items" style="" id="items7">Tas Ransel Sekolah Jansport Abu Muda / Tas Pria Wanita Trendy Murah</h5>
-															<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-															<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-																<span class="biru">19:01:00 </span> time left</h5>
-															</div>
-														</div>
-													</div>
-													<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 nopad space-items-6 hidden-xs hidden-sm hidden-md">
-														<div class="col-sm-12 col-lg-12 nopad bgputih card-sale">
-															<div class="container-fluid">
-																<img src="images/items1-2.png" style="width:100%;">
-															</div>
-															<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
-																<h5 class="title title-items" style="" id="items8">Kids  <br> Sweater </h5>
-																<h5 style="padding-top:5%;"> IDR 30.000 <span class="kecil" style="padding-left:2%;"> Rp 120.000</span> </h5>
-																<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i> 
-																	<span class="biru">19:01:00 </span> time left</h5>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>	
-											</div>
-										</div>
-
+		<?php include '/templates/index/time-sale.php'; ?>
+		<?php include '/templates/index/qty-sale.php'; ?>
 										<!-- section milenia 3-->
 										<div class="container-fluid nopad space-out-box">
 											<div class="col-sm-12 col-md-12 col-lg-12 space-box space-low-box">
