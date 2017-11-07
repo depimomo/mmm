@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-
-
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<!-- halaman pencarian -->
 	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
@@ -101,7 +85,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="container-fluid">
 			<div class="col-lg-12">
 				<div class="col-sm-6 col-lg-6 space-items-2">
@@ -203,7 +187,7 @@
 						</select>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 
@@ -216,7 +200,7 @@
 						<!-- punya 2 judul yang berbeda untuk desktop dan mobile-->
 						<h1 class="title putih hidden-xs" style="line-height:45px;"> Milenia <br>Time <br> Sales</h1>
 						<h1 class="title putih hidden-sm hidden-md hidden-lg" style="line-height:45px;"> Milenia Time Sales</h1>
-						
+
 						<h5 class="putih" style="line-height:20px;margin-top:15px;"> 
 							Lorem ipsum dolor sit amet, consecte tur adipiscing.
 						</h5>
@@ -288,7 +272,7 @@
 										<!-- punya 2 judul yang berbeda untuk desktop dan mobile-->
 										<h1 class="title putih hidden-xs" style="line-height:45px;"> Milenia <br>Quantity<br> Sales</h1>
 										<h1 class="title putih hidden-sm hidden-md hidden-lg" style="line-height:45px;"> Milenia Quantity Sales</h1>
-										
+
 										<h5 class="putih" style="line-height:20px;margin-top:15px;"> 
 											Lorem ipsum dolor sit amet, consecte tur adipiscing.
 										</h5>
@@ -360,7 +344,7 @@
 														<!-- punya 2 judul yang berbeda untuk desktop dan mobile-->
 														<h1 class="title putih hidden-xs" style="line-height:45px;"> Milenia <br>Clearance<br> Sales</h1>
 														<h1 class="title putih hidden-sm hidden-md hidden-lg" style="line-height:45px;"> Milenia Clearance Sales</h1>
-														
+
 														<h5 class="putih" style="line-height:20px;margin-top:15px;"> 
 															Lorem ipsum dolor sit amet, consecte tur adipiscing.
 														</h5>
@@ -467,7 +451,7 @@
 																	<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 																</div>
 																<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-																	
+
 																</div>
 																<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
 																	<h5 id="totalitemxs"> Total : Rp 0 </h5>
@@ -485,8 +469,9 @@
 														</div>
 													</div>
 
-													
+
 												</div>
+												<?php include "/templates/scripts.html" ?>
 												<script>
 													$(document).ready(function() {   
 														var sideslider = $('[data-toggle=collapse-side]');
@@ -499,7 +484,7 @@
 															$("#sidebarku").fadeIn(200);
 															$("#bgku").fadeIn(200);
 														});
-														
+
 														$("#tutup").on("click", function() {
 															console.log("burger");
 															$("#sidebarku").fadeOut(200);
@@ -510,29 +495,16 @@
 															jQuery('.navbar-static-top').css({position: 'fixed'});
 															$("#navbarku").removeClass("nonebs-nav-xs");
 														});
-														
-			/*
-			$("#sidebarku").swipeleft(function() {
-				$("#navbarku").removeClass("nonebs-nav-xs");
-				$("#bgku").fadeOut(300);
-				$("#sidebarku").fadeOut(200);
-			});*/
-			
+
 			
 			/*panjang array dihardcode, cek by panjang string*/
 			var nomer=[11];
 			var text=[11];
 			for (i = 1; i < 13; i++) { 
-				//var nomer = $("#items"+i).text().length;
-				//var text = $("#items"+i).text();
 				nomer[i] = $("#items"+i).text().length;
 				text[i] = $("#items"+i).text();
-				//console.log(nomer[i]);
-				//console.log(text[i]);
 				for (j = 1; j < 13; j++) { 
 					if(nomer[i] > 28){
-						//console.log("aa");
-						//console.log(text[i].substr(1,32)+"...");
 						$("#items"+i).html(text[i].substr(0,28)+"...");
 					}
 				}
@@ -540,17 +512,9 @@
 			}
 		});			
 
-													jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
-														e.stopPropagation()
-													})
-
-/*$('ul.nav li.dropdown').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});*/
-
-
+		jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
+			e.stopPropagation()
+		});
 
 $("#tekan1").on("click", function() {
 	console.log("aa");
@@ -636,7 +600,7 @@ $("#buyitemxs").on("click", function() {
 	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
+
 	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
@@ -647,7 +611,4 @@ $("#buyitemxs").on("click", function() {
 
 </script>
 </body>
-
-
-
 </html>	

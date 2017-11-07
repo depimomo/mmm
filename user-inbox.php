@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
+
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<!-- overlay things goes here -->
-	<div class="overlay" id="bgku"></div>
-
-	<!-- overlay overlay search mobile here -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
-
+	<?php include "/templates/mobile-search.php" ?>
 
 	<!-- content start here -->
 	<div class="container-fluid nopad bg-ver2">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad outer-space-p">
-			
+
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 nopad">
 				<div class="container-fluid nopad outer-box-p">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad box-ver2">
@@ -47,7 +32,7 @@
 							<h5> Milenia Points </h5>
 							<h4> 100.000 Points </h4>
 						</div>
-						
+
 						<div class="hidden-xs col-sm-12 col-md-12 col-lg-12 nopad text-left" style="padding:5% 10% 6% 10%;">
 							<!-- menu users in desktop here -->
 							<div class="hidden-xs container-fluid nopad">
@@ -122,7 +107,7 @@
 									</div>
 								</a>
 							</div>
-							
+
 						</div>
 					</div>
 					<!-- menu users in mobile here -->
@@ -137,18 +122,18 @@
 							<option value="user-complain.html">Komplain</option>
 						</select>
 					</div>
-					
+
 				</div>
 			</div>
-			
+
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 nopad space-p-2 box-ver2" style="box-shadow:none;">
 				<div class="container-fluid nopad" style="border-bottom:1px solid #eeeeee;padding-bottom:6px;padding-left:25px;padding-top:5px;">
 					<h4> Kotak Pesan </h4>
 				</div>
-				
+
 				<!-- list message in inbox here -->
 				<div class="container-fluid nopad content-ver2">
-					
+
 					<!-- row each message in inbox here -->
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad message-i">
 						<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 nopad">
@@ -174,7 +159,7 @@
 					</div>
 					
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -189,7 +174,7 @@
 					<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 				</div>
 				<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-					
+
 				</div>
 				<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
 					<h5 id="totalitemxs"> Total : Rp 0 </h5>
@@ -207,32 +192,9 @@
 		</div>
 	</div>
 
-	<script>
-		$(document).ready(function() {   
-			
-			/* sidebar mobile*/	
-			var sideslider = $('[data-toggle=collapse-side]');
-			var sel = sideslider.attr('data-target');
-			var sel2 = sideslider.attr('data-target-2');
-			var temp =1;
-			sideslider.click(function(event){
-				$(sel).toggleClass('in');
-				jQuery('.navbar-static-top').css({position: 'static'});
-				$("#sidebarku").fadeIn(200);
-				$("#bgku").fadeIn(200);
-			});
-			
-			$("#tutup").on("click", function() {
-				console.log("burger");
-				$("#sidebarku").fadeOut(200);
-				$("#sidebarku").show().removeClass('animated slideInLeft');
-				$(".sidebars").siblings(".sidebars").removeClass("in");
-				$(".sidebars").toggleClass("in");
-				$("#bgku").fadeOut(300);
-				jQuery('.navbar-static-top').css({position: 'fixed'});
-				$("#navbarku").removeClass("nonebs-nav-xs");
-			});
-		});
+	<?php include "/templates/scripts.html" ?>
+    <script>
+    <?php include "/templates/sidebar.js" ?>
 
 
 		/* filter select option for add new address */
@@ -245,12 +207,10 @@
 			var optionprov = $("option:selected", this);
 			var valueprov = this.value;
 			console.log(valueprov);
-			if(valueprov=="Pilih Provinsi")
-			{
+			if(valueprov=="Pilih Provinsi") {
 				document.getElementById("addcity").disabled=true;
 			}
-			else
-			{
+			else {
 				document.getElementById("addcity").disabled=false;
 			}
 		});
@@ -260,19 +220,17 @@
 			var optioncity = $("option:selected", this);
 			var valuecity = this.value;
 			console.log(valuecity);
-			if(valuecity=="Pilih Kota")
-			{
+			if(valuecity=="Pilih Kota"){
 				document.getElementById("adddistrict").disabled=true;
 			}
-			else
-			{
+			else{
 				document.getElementById("adddistrict").disabled=false;
 			}
 		});
 
 
 		/* ---------------- CART FOR DESKTOP --------------*/
-		
+
 		/*declare var global for desktop for count item in cart*/	
 		var hitungitem = 0;	
 		var sum = 0
@@ -281,21 +239,17 @@
 		$(document).on("click",".btnclear", function() {
 			var temphapus = $(this).attr('id');
 			var tempharga = $("#harga"+temphapus).val();
-		//console.log(tempharga);
 		$("#cartitem"+temphapus).remove();
 		hitungitem--;
 		sum = sum - tempharga;
-		//console.log(sum+"kurang");
 		$('#counteritem').html(hitungitem+" Barang");
 		$('#totalitem').html("Total : Rp "+sum);
 	});
-		
+
 		/* ini buat desktop, mesti dipisah karena cartnya satu dropdown satu modal */	
 		$("#buyitem").on("click", function() {
 			var nama = $('#nameitem').attr('value');
 			var harga = parseInt($('#priceitem').attr('value'));
-		//var ukuran = $('#size').find(":selected").text();
-		//var warna = $('#color').find(":selected").text();
 		var qty = $('#quantity').val();
 		var gambar = $("#top-img").attr('value');
 		hitungitem++;
@@ -337,7 +291,7 @@
 		//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 		var totalperitemxs = qtyxs*hargaxs;
 		sumxs = sumxs + totalperitemxs;
-		console.log(sumxs);
+	
 		
 		var tampungxs = 
 		"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
@@ -345,8 +299,8 @@
 		$('#totalitemxs').html("Total : Rp "+sumxs);
 		$('#keranjangkuxs').append(tampungxs);
 	});
-		
-		
+
+
 		/* for overlay purposes, dont change this */
 		function openov1(){
 			$("#bgku2").fadeIn();
@@ -355,7 +309,7 @@
 		function closebgku2(){
 			$("#bgku2").fadeOut();
 		}
-		
+
 	</script>
 </body>
 </html>

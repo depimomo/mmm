@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<div class="container side-collapse-container padku-lg" id="itemku" style="">
 		<div class="container-fluid space-xs-bd" style="">
@@ -110,11 +96,7 @@
 							- Sweater tekstur ribbed
 							<br>- Warna navy
 							<br>- Kerah bulat
-			<!--<br>- Unlined
-			<br>- Relaxed fit
-			<br>- Tinggi model 174cm, mengenakan ukuran S-->
 		</p>
-		<!--<h5 class="biru"> Lihat Selengkapnya <span class="caret"></span></h5> -->
 	</div>
 	
 	<div class="hidden-xs container-fluid nopad" style="margin-top:0px;">
@@ -395,9 +377,6 @@
 							<p style="margin-top:0%;">
 								Respon Chat Cepat. Packing Baik. Recommended Seller. Cepat Sampai. Barang Sesuai Pesanan
 							</p>
-						<!--<p style="color: #9E9E9E;">
-							12/09/2017 - 09.00 WIB
-						</p>-->
 					</div>
 				</div>
 				<div class="container-fluid nopad" style="padding:2%;border-bottom:1px solid #e0e0e0;margin-top:10px;">
@@ -418,9 +397,6 @@
 						<p style="margin-top:0%;">
 							Respon Chat Cepat. Packing Baik. Recommended Seller. Cepat Sampai. Barang Sesuai Pesanan
 						</p>
-						<!--<p style="color: #9E9E9E;">
-							12/09/2017 - 09.00 WIB
-						</p>-->
 					</div>
 				</div>	
 			</div>
@@ -441,19 +417,9 @@
 
 </div>
 </div>
-
-
-
-
-
 </div>
-
 </div>
-
-
 </div>
-
-
 <div id="myModal" class="modal fade" role="dialog" style="margin:10% 5% 10% 5%;">
 	<div class="modal-dialog" >
 		<div class="modal-content" style="padding:1%;">
@@ -481,32 +447,9 @@
 	</div>
 </div>
 
-
-
-
+<?php include "/templates/scripts.html" ?>
 <script>
-	$(document).ready(function() {   
-		var sideslider = $('[data-toggle=collapse-side]');
-		var sel = sideslider.attr('data-target');
-		var sel2 = sideslider.attr('data-target-2');
-		var temp =1;
-		sideslider.click(function(event){
-			$(sel).toggleClass('in');
-			jQuery('.navbar-static-top').css({position: 'static'});
-			$("#sidebarku").fadeIn(200);
-			$("#bgku").fadeIn(200);
-		});
-		
-		$("#tutup").on("click", function() {
-			console.log("burger");
-			$("#sidebarku").fadeOut(200);
-			$("#sidebarku").show().removeClass('animated slideInLeft');
-			$(".sidebars").siblings(".sidebars").removeClass("in");
-			$(".sidebars").toggleClass("in");
-			$("#bgku").fadeOut(300);
-			jQuery('.navbar-static-top').css({position: 'fixed'});
-			$("#navbarku").removeClass("nonebs-nav-xs");
-		});
+    <?php include "/templates/sidebar.js" ?>
 		
 		
 		/* buat rating*/
@@ -579,35 +522,18 @@
 				elem5.style.width = width5 + '%'; 
 			}
 		}
-
-	});	
 	
-
-
-
-/*
-$('ul.nav li.dropdown').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});
-*/
 
 $("#hilang").on("click", function() {
 	$("#hilang").fadeOut();
 });
 
 $(".thumbs").on("click", function() {
-	//alert($(this).attr('value'));
 	var nameimg = $(this).attr('value');
 	var imgsrc= "images/" + nameimg;
 	$('#top-img').attr("src",imgsrc);
 	return false;
 });
-
-/*$(document).on('click touchstart', '.thumbs', function() {
-    alert('ok');
-});*/
 
 function openov1(){
 	$("#bgku2").fadeIn();
@@ -616,25 +542,6 @@ function openov1(){
 function closebgku2(){
 	$("#bgku2").fadeOut();
 }
-
-
-/*gakepake
-sidebar
-//document.getElementById("bgku").style.display = "block";
-//document.getElementById("sidebarku").style.width = "250";
-//document.getElementById("bgku").style.display = "none";
-//document.getElementById("sidebarku").style.width = "0";
-//$(sel2).toggleClass('out');
-document.getElementById("sidebarku").style.display = "block";
-$("#sidebarku").animate({opacity: '1'}, "fast");						
-
-$(".mega-dropdown").hover(function(e){
-    e.stopPropagation()
-});
-
-*/
-
-
 
 var quantitiy=0;
 $('.quantity-right-plus').click(function(e){
@@ -645,12 +552,8 @@ $('.quantity-right-plus').click(function(e){
         var quantity = parseInt($('#quantity').val());
         
         // If is not undefined
-        
         $('#quantity').val(quantity + 1);
-
-        
             // Increment
-            
         });
 
 $('.quantity-left-minus').click(function(e){
@@ -700,9 +603,7 @@ $("#buyitem").on("click", function() {
 	hitungitem++;
 	var totalperitem = qty*harga;
 	sum = sum + totalperitem;
-	console.log(sum);
-	
-	
+
 	var tampung = 
 	"<li id='cartitem"+hitungitem+"'><span class='item col-lg-10 nopad'><span class='item-left'><img src='images/"+gambar+"' style='width:100%;width:70px;height:70px;'><span class='item-info'><span>"+nama+"</span><span>Rp "+ harga +" x "+qty+"</span></span></span></span><i class='material-icons biru btnclear col-lg-2 nopad text-right' style='font-size:1.3em;right:15px;top:5px' id='"+hitungitem+"'>clear</i><input id='harga"+hitungitem+"' value="+totalperitem+" style='display:none'></li>";
 	$('#counteritem').html(hitungitem+" Barang");
@@ -738,21 +639,12 @@ $("#buyitemxs").on("click", function() {
 	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
-	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
 	$('#counteritemxs').html(hitungitemxs+" Barang");
 	$('#totalitemxs').html("Total : Rp "+sumxs);
 	$('#keranjangkuxs').append(tampungxs);
 });
-
-
-
-
 </script>
 </body>
-
-
-
 </html>	

@@ -1,33 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<div class="container side-collapse-container" id="itemku">
-	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="padding-top:2%;">
-		<h2 class="text-left"> Checkout </h2>
-	</div>-->
-	
 	<div class="container-fluid nopad" style="padding-top:3%;">
 		<div class="container-fluid space-ship-2" style="">
 			<!-- container barang cart -->
@@ -44,10 +26,8 @@
 						</div>	
 					</div>
 					<div class="container-fluid nopad text-left border-point" style="padding:3% 10% 3% 10%;">
-						<!--<img src="images/icons/ic-profile.svg" style="width:23%;margin-bottom:3%;">-->
 						<h5> Milenia Points</h5>
 						<h5 style="font-size:1.3em;"> 100.000 Points</h5>
-						<!--<a class="biru kecil2"> <i class="fa fa-pencil biru" aria-hidden="true" style="padding-right:2%;"></i>Edit Profil </a>-->
 					</div>
 					<div class="hidden-xs container-fluid nopad text-left space-profile-1" style="">
 						<div class="container-fluid nopad side-p-selected" style="border-top:none;">
@@ -106,7 +86,6 @@
 								<h5>Komplain</h5>
 							</div>
 						</div>
-						<!--<a class="biru kecil2"> <i class="fa fa-pencil biru" aria-hidden="true" style="padding-right:2%;"></i>Edit Profil </a>-->
 					</div>
 				</div>
 			</div>
@@ -232,9 +211,6 @@
 						<div id="menuit3" class="tab-pane fade">
 							<div class="container-fluid nopad" style="padding-top:1%;">
 								<a style="font-size:1.1em;"> Daftar Alamat Tersedia</a>
-						<!-- tampilkan ini jika belum ada alamat
-							<h5 style="padding-top:2%;padding-bottom:1%;"> Anda belum menyimpan alamat pengiriman </h5>-->
-							<!-- tampilkan ini jika sudah ada alamat-->
 							<div class="container-fluid nopad" style="padding-top:2%;margin-bottom:20px;">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="border:1px solid #eeeeee;padding:2% 3% 2% 3%;border-radius:3px;">
 									<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 nopad text-left" style="padding-left:2.5%;">
@@ -343,12 +319,6 @@
 								</div>
 							</div> 
 						</div>
-					<!--<div class="container-fluid nopad" style="padding-top:3%;">
-						<button class="btn-defaults" style="padding:2% 5% 2% 5%;border-radius:3px;margin-bottom:2.5%;" id="buyitem"
-						data-toggle="collapse" data-target="#demo">
-						Tambah Alamat Baru</button>
-					</div>-->
-					
 				</div>
 				
 			</div> 
@@ -361,21 +331,6 @@
 
 </div>
 
-<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad space-low-btn" style="">
-	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopad" style="float:left;padding-top:1%;">
-		<h5 class="biru hidden-xs" style="font-size:1em"> <i class="fa fa-angle-left fa-lg biru" aria-hidden="true" style="margin-right:4%;"></i>
-		Kembali ke Informasi Pengiriman</h5>
-		<h5 class="biru hidden-sm hidden-md hidden-lg" style="font-size:1em">
-		<i class="fa fa-angle-left fa-2x biru" aria-hidden="true" style="margin-right:4%;"></i></h5>
-	</div>
-	<div class="col-xs-9 col-sm-3 col-md-3 col-lg-3 nopad text-right" style="float:right;margin-top:5px;">
-		<button class="btn-defaults" style="padding:6% 5% 6% 5%;border-radius:3px;width:100%;margin-bottom:2.5%;" id="buyitem">
-		Lanjut ke Konfirmasi </button>
-	</div>	
-</div>
-</div>-->
-
-
 <div id="myModal" class="modal fade" role="dialog" style="margin:10% 5% 10% 5%;">
 	<div class="modal-dialog" >
 
@@ -383,23 +338,9 @@
 		<div class="modal-content" style="padding:1%;">
 			<div class="modal-header" style="border-bottom:1px solid #eeeeee;padding-bottom:1%;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<!--<h4 class="modal-title">Keranjang</h4>-->
 				<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 			</div>
 			<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-        <!--<div class="col-xs-12 nopad" style="margin-bottom:5%;">
-			<div class="col-xs-3 nopad">
-				<img src="images/test-1.jpg" style="width:100%;border:1px solid #eeeeee;">
-			</div>
-			<div class="col-xs-8 nopad" style="padding-left:5%;">
-				<h5 class="modal-title">Nama Items</h5>
-				<h5 class="modal-title">Rp 80.000 x 2</h5>
-			</div>
-			<i class='material-icons biru btnclear col-xs-1 nopad text-right' style='font-size:1.3em;'>
-			clear
-			</i>
-		</div>-->
-		
 	</div>
 	<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
 		<h5 id="totalitemxs"> Total : Rp 120.000 </h5>
@@ -438,35 +379,9 @@
 	</div>
 </div>
 
+<?php include "/templates/scripts.html" ?>
 <script>
-	$(document).ready(function() {   
-		var sideslider = $('[data-toggle=collapse-side]');
-		var sel = sideslider.attr('data-target');
-		var sel2 = sideslider.attr('data-target-2');
-		var temp =1;
-		sideslider.click(function(event){
-			$(sel).toggleClass('in');
-			jQuery('.navbar-static-top').css({position: 'static'});
-			$("#sidebarku").fadeIn(200);
-			$("#bgku").fadeIn(200);
-		});
-		
-		$("#tutup").on("click", function() {
-			console.log("burger");
-			$("#sidebarku").fadeOut(200);
-			$("#sidebarku").show().removeClass('animated slideInLeft');
-			$(".sidebars").siblings(".sidebars").removeClass("in");
-			$(".sidebars").toggleClass("in");
-			$("#bgku").fadeOut(300);
-			jQuery('.navbar-static-top').css({position: 'fixed'});
-			$("#navbarku").removeClass("nonebs-nav-xs");
-		});
-		
-		
-		
-
-	});	
-
+    <?php include "/templates/sidebar.js" ?>
 
 	/* buat filter select option*/
 	document.getElementById("addcity").disabled=true;
@@ -476,32 +391,25 @@
 		var optionprov = $("option:selected", this);
 		var valueprov = this.value;
 		console.log(valueprov);
-		if(valueprov=="Pilih Provinsi")
-		{
+		if(valueprov=="Pilih Provinsi"){
 			document.getElementById("addcity").disabled=true;
-		//console.log("gaboleh");
-	}
-	else
-	{
-		document.getElementById("addcity").disabled=false;
-	}
-});
+		}
+		else{
+			document.getElementById("addcity").disabled=false;
+		}
+	});
 
 	$('#addcity').on('change', function (e) {
-		/* ini buat dapetin value yang terpilih di selection*/
 		var optioncity = $("option:selected", this);
 		var valuecity = this.value;
 		console.log(valuecity);
-		if(valuecity=="Pilih Kota")
-		{
+		if(valuecity=="Pilih Kota"){
 			document.getElementById("adddistrict").disabled=true;
-		//console.log("gaboleh");
-	}
-	else
-	{
-		document.getElementById("adddistrict").disabled=false;
-	}
-});
+		}
+		else{
+			document.getElementById("adddistrict").disabled=false;
+		}
+	});
 
 
 
@@ -532,14 +440,6 @@
 	});
 
 
-/*
-$('ul.nav li.dropdown').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});
-*/
-
 $("#hilang").on("click", function() {
 	$("#hilang").fadeOut();
 });
@@ -552,10 +452,6 @@ $(".thumbs").on("click", function() {
 	return false;
 });
 
-/*$(document).on('click touchstart', '.thumbs', function() {
-    alert('ok');
-});*/
-
 function openov1(){
 	$("#bgku2").fadeIn();
 }
@@ -564,41 +460,28 @@ function closebgku2(){
 	$("#bgku2").fadeOut();
 }
 
-
-
-
-
-
 var quantitiy=0;
 $('.quantity-right-plus').click(function(e){
-	
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-        
-        // If is not undefined
-        
-        $('#quantity').val(quantity + 1);
-
-        
-            // Increment
-            
-        });
+// Stop acting like a button
+e.preventDefault();
+// Get the field name
+var quantity = parseInt($('#quantity').val());
+// If is not undefined
+$('#quantity').val(quantity + 1);
+// Increment  
+});
 
 $('.quantity-left-minus').click(function(e){
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-        
-        // If is not undefined
-        
-            // Increment
-            if(quantity>0){
-            	$('#quantity').val(quantity - 1);
-            }
-        });
+// Stop acting like a button
+e.preventDefault();
+// Get the field name
+var quantity = parseInt($('#quantity').val());
+// If is not undefined
+    // Increment
+    if(quantity>0){
+    	$('#quantity').val(quantity - 1);
+    }
+});
 
 
 
@@ -613,11 +496,9 @@ var sum = 0
 $(document).on("click",".btnclear", function() {
 	var temphapus = $(this).attr('id');
 	var tempharga = $("#harga"+temphapus).val();
-	//console.log(tempharga);
 	$("#cartitem"+temphapus).remove();
 	hitungitem--;
 	sum = sum - tempharga;
-	//console.log(sum+"kurang");
 	$('#counteritem').html(hitungitem+" Barang");
 	$('#totalitem').html("Total : Rp "+sum);
 });
@@ -671,7 +552,7 @@ $("#buyitemxs").on("click", function() {
 	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
+
 	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
@@ -679,13 +560,6 @@ $("#buyitemxs").on("click", function() {
 	$('#totalitemxs').html("Total : Rp "+sumxs);
 	$('#keranjangkuxs').append(tampungxs);
 });
-
-
-
-
 </script>
 </body>
-
-
-
 </html>	

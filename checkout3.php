@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia | Checkout</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<div class="container side-collapse-container" id="itemku">
-	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="padding-top:2%;">
-		<h2 class="text-left"> Checkout </h2>
-	</div>-->
 	<div class="container-fluid nopad space-chk1" style="">
 		<h2 class="text-left title" style=""> Checkout </h2>
 	</div>
@@ -123,7 +106,7 @@
 					<h5 style="font-size:1em;line-height:20px;"> <span class="biru">Kode kupon berhasil ditambahkan!</span> 
 						<br> Anda mendapatkan diskon sebesar Rp 15.000</h5>
 					</div>
-					
+
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="padding:0% 0% 6% 0%;">
 						<button class="btn-defaults" style="padding:6% 5% 6% 5%;border-radius:3px;width:100%;margin-bottom:2.5%;" id="buyitem">
 						Lanjut ke Pembayaran </button>
@@ -133,45 +116,6 @@
 					</div>
 				</div>	
 			</div>
-		<!--opsi 2
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 nopad" style="padding-left:3.5%;">
-			<div class="container-fluid nopad" style="padding:0%;">
-			<h3 style="font-size:1.25em;margin:0px"> Rincian Pesanan</h3>
-			<div class="container-fluid nopad" style="padding-top:3%;">
-				<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee;margin-top:2%;">
-					<div class="col-lg-8 nopad" style="padding-top:3%;">
-						<h5 style="font-size:1em;"> Subtotal</h5>
-					</div>
-					<div class="col-lg-4 nopad text-right" style="padding-top:3%;">
-						<h5 style="font-size:1em;"> Rp 30.000</h5>
-					</div>	
-				</div>
-				<div class="col-lg-12 nopad" style="">
-					<div class="col-lg-8 nopad" style="padding-top:1%;">
-						<h5 style="font-size:1em;"> Diskon</h5>
-					</div>
-					<div class="col-lg-4 nopad text-right" style="padding-top:1%;">
-						<h5 class="biru" style="font-size:1em;"> -Rp 100</h5>
-					</div>	
-				</div>
-				<div class="col-lg-12 nopad" style="border-top:1px solid #eeeeee;margin-top:2%;">
-					<div class="col-lg-8 nopad" style="padding-top:3%;">
-						<h5 style="font-size:1.15em"> Total</h5>
-					</div>
-					<div class="col-lg-4 nopad text-right" style="padding-top:3%;">
-						<h5 style="font-size:1.15em"> Rp 29.900</h5>
-					</div>	
-				</div>
-				<div class="col-lg-12 nopad" style="padding:6% 0% 6% 0%;">
-					<button class="btn-defaults" style="padding:5%;border-radius:3px;width:100%;margin-bottom:2.5%;" id="buyitem">
-					Lanjut ke Pembayaran </button>
-					<button class="btn-out-default" style="padding:5%;border-radius:3px;width:100%;" id="buyitem"> 
-					Lanjut Belanja
-					</button>
-				</div>
-			</div>
-			</div>
-		</div>-->
 	</div>
 </div>
 
@@ -190,18 +134,6 @@
 				<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 			</div>
 			<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-        <!--<div class="col-xs-12 nopad" style="margin-bottom:5%;">
-			<div class="col-xs-3 nopad">
-				<img src="images/test-1.jpg" style="width:100%;border:1px solid #eeeeee;">
-			</div>
-			<div class="col-xs-8 nopad" style="padding-left:5%;">
-				<h5 class="modal-title">Nama Items</h5>
-				<h5 class="modal-title">Rp 80.000 x 2</h5>
-			</div>
-			<i class='material-icons biru btnclear col-xs-1 nopad text-right' style='font-size:1.3em;'>
-			clear
-			</i>
-		</div>-->
 		
 	</div>
 	<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
@@ -216,68 +148,22 @@
 		</div>	
 	</div>
 </div>
-
 </div>
 </div>
-
-
-
-
+<?php include "/templates/scripts.html" ?>
 <script>
-	$(document).ready(function() {   
-		var sideslider = $('[data-toggle=collapse-side]');
-		var sel = sideslider.attr('data-target');
-		var sel2 = sideslider.attr('data-target-2');
-		var temp =1;
-		sideslider.click(function(event){
-			$(sel).toggleClass('in');
-			jQuery('.navbar-static-top').css({position: 'static'});
-			$("#sidebarku").fadeIn(200);
-			$("#bgku").fadeIn(200);
-		});
-		
-		$("#tutup").on("click", function() {
-			console.log("burger");
-			$("#sidebarku").fadeOut(200);
-			$("#sidebarku").show().removeClass('animated slideInLeft');
-			$(".sidebars").siblings(".sidebars").removeClass("in");
-			$(".sidebars").toggleClass("in");
-			$("#bgku").fadeOut(300);
-			jQuery('.navbar-static-top').css({position: 'fixed'});
-			$("#navbarku").removeClass("nonebs-nav-xs");
-		});
-		
-		
-		
-
-	});	
-	
-
-
-
-/*
-$('ul.nav li.dropdown').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});
-*/
+<?php include "/templates/sidebar.js" ?>
 
 $("#hilang").on("click", function() {
 	$("#hilang").fadeOut();
 });
 
 $(".thumbs").on("click", function() {
-	//alert($(this).attr('value'));
 	var nameimg = $(this).attr('value');
 	var imgsrc= "images/" + nameimg;
 	$('#top-img').attr("src",imgsrc);
 	return false;
 });
-
-/*$(document).on('click touchstart', '.thumbs', function() {
-    alert('ok');
-});*/
 
 function openov1(){
 	$("#bgku2").fadeIn();
@@ -287,42 +173,17 @@ function closebgku2(){
 	$("#bgku2").fadeOut();
 }
 
-
-/*gakepake
-sidebar
-//document.getElementById("bgku").style.display = "block";
-//document.getElementById("sidebarku").style.width = "250";
-//document.getElementById("bgku").style.display = "none";
-//document.getElementById("sidebarku").style.width = "0";
-//$(sel2).toggleClass('out');
-document.getElementById("sidebarku").style.display = "block";
-$("#sidebarku").animate({opacity: '1'}, "fast");						
-
-$(".mega-dropdown").hover(function(e){
-    e.stopPropagation()
-});
-
-*/
-
-
-
 var quantitiy=0;
 $('.quantity-right-plus').click(function(e){
-	
+
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
-        
         // If is not undefined
-        
         $('#quantity').val(quantity + 1);
-
-        
             // Increment
-            
         });
-
 $('.quantity-left-minus').click(function(e){
         // Stop acting like a button
         e.preventDefault();
@@ -330,15 +191,12 @@ $('.quantity-left-minus').click(function(e){
         var quantity = parseInt($('#quantity').val());
         
         // If is not undefined
-        
+
             // Increment
             if(quantity>0){
             	$('#quantity').val(quantity - 1);
             }
         });
-
-
-
 
 /* ---------------- CART FOR DESKTOP --------------*/
 
@@ -350,11 +208,9 @@ var sum = 0
 $(document).on("click",".btnclear", function() {
 	var temphapus = $(this).attr('id');
 	var tempharga = $("#harga"+temphapus).val();
-	//console.log(tempharga);
 	$("#cartitem"+temphapus).remove();
 	hitungitem--;
 	sum = sum - tempharga;
-	//console.log(sum+"kurang");
 	$('#counteritem').html(hitungitem+" Barang");
 	$('#totalitem').html("Total : Rp "+sum);
 });
@@ -363,8 +219,6 @@ $(document).on("click",".btnclear", function() {
 $("#buyitem").on("click", function() {
 	var nama = $('#nameitem').attr('value');
 	var harga = parseInt($('#priceitem').attr('value'));
-    //var ukuran = $('#size').find(":selected").text();
-	//var warna = $('#color').find(":selected").text();
 	var qty = $('#quantity').val();
 	var gambar = $("#top-img").attr('value');
 	hitungitem++;
@@ -405,10 +259,8 @@ $("#buyitemxs").on("click", function() {
 	var qtyxs = $('#quantity').val();
 	var gambarxs = $("#top-img").attr('value');
 	hitungitemxs++;
-	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
 	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
@@ -416,13 +268,6 @@ $("#buyitemxs").on("click", function() {
 	$('#totalitemxs').html("Total : Rp "+sumxs);
 	$('#keranjangkuxs').append(tampungxs);
 });
-
-
-
-
 </script>
 </body>
-
-
-
 </html>	

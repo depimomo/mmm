@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
+
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<!-- overlay things goes here -->
-	<div class="overlay" id="bgku"></div>
-
-	<!-- overlay overlay search mobile here -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
-
-
+	<?php include "/templates/mobile-search.php" ?>
 	<!-- content start here -->
 	<div class="container-fluid nopad bg-ver2">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad outer-space-p">
@@ -497,32 +481,9 @@
 		</div>
 	</div>
 
-	<script>
-		$(document).ready(function() {   
-			
-			/* sidebar mobile*/	
-			var sideslider = $('[data-toggle=collapse-side]');
-			var sel = sideslider.attr('data-target');
-			var sel2 = sideslider.attr('data-target-2');
-			var temp =1;
-			sideslider.click(function(event){
-				$(sel).toggleClass('in');
-				jQuery('.navbar-static-top').css({position: 'static'});
-				$("#sidebarku").fadeIn(200);
-				$("#bgku").fadeIn(200);
-			});
-			
-			$("#tutup").on("click", function() {
-				console.log("burger");
-				$("#sidebarku").fadeOut(200);
-				$("#sidebarku").show().removeClass('animated slideInLeft');
-				$(".sidebars").siblings(".sidebars").removeClass("in");
-				$(".sidebars").toggleClass("in");
-				$("#bgku").fadeOut(300);
-				jQuery('.navbar-static-top').css({position: 'fixed'});
-				$("#navbarku").removeClass("nonebs-nav-xs");
-			});
-		});
+	<?php include "/templates/scripts.html" ?>
+    <script>
+    <?php include "/templates/sidebar.js" ?>
 
 
 		/* filter select option for add new address */
@@ -550,12 +511,10 @@
 			var optioncity = $("option:selected", this);
 			var valuecity = this.value;
 			console.log(valuecity);
-			if(valuecity=="Pilih Kota")
-			{
+			if(valuecity=="Pilih Kota"){
 				document.getElementById("adddistrict").disabled=true;
 			}
-			else
-			{
+			else{
 				document.getElementById("adddistrict").disabled=false;
 			}
 		});
@@ -627,7 +586,7 @@
 		//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 		var totalperitemxs = qtyxs*hargaxs;
 		sumxs = sumxs + totalperitemxs;
-		console.log(sumxs);
+	
 		
 		var tampungxs = 
 		"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";

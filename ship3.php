@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<div class="container side-collapse-container" id="itemku">
-	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="padding-top:2%;">
-		<h2 class="text-left"> Checkout </h2>
-	</div>-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
 		<div class="container nopad">
 			<div class="row bs-wizard" style="border-bottom:0;">
@@ -75,7 +58,6 @@
 							<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12 field-text nopad" style="padding-right:10px;">
 								<label for="usr">Nama Penerima</label>
 								<h5> aa </h5>
-								<!--<input id="email" type="text" class="form-control input-edit" name="email" placeholder="Silakan masukkan Nama Penerima">-->
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nopad form-field">
@@ -359,29 +341,9 @@
 </div>
 
 
+<?php include "/templates/scripts.html" ?>
 <script>
-	$(document).ready(function() {   
-		var sideslider = $('[data-toggle=collapse-side]');
-		var sel = sideslider.attr('data-target');
-		var sel2 = sideslider.attr('data-target-2');
-		var temp =1;
-		sideslider.click(function(event){
-			$(sel).toggleClass('in');
-			jQuery('.navbar-static-top').css({position: 'static'});
-			$("#sidebarku").fadeIn(200);
-			$("#bgku").fadeIn(200);
-		});
-		
-		$("#tutup").on("click", function() {
-			console.log("burger");
-			$("#sidebarku").fadeOut(200);
-			$("#sidebarku").show().removeClass('animated slideInLeft');
-			$(".sidebars").siblings(".sidebars").removeClass("in");
-			$(".sidebars").toggleClass("in");
-			$("#bgku").fadeOut(300);
-			jQuery('.navbar-static-top').css({position: 'fixed'});
-			$("#navbarku").removeClass("nonebs-nav-xs");
-		});
+    <?php include "/templates/sidebar.js" ?>
 		
 		
 		
@@ -423,25 +385,6 @@ function closebgku2(){
 	$("#bgku2").fadeOut();
 }
 
-
-/*gakepake
-sidebar
-//document.getElementById("bgku").style.display = "block";
-//document.getElementById("sidebarku").style.width = "250";
-//document.getElementById("bgku").style.display = "none";
-//document.getElementById("sidebarku").style.width = "0";
-//$(sel2).toggleClass('out');
-document.getElementById("sidebarku").style.display = "block";
-$("#sidebarku").animate({opacity: '1'}, "fast");						
-
-$(".mega-dropdown").hover(function(e){
-    e.stopPropagation()
-});
-
-*/
-
-
-
 var quantitiy=0;
 $('.quantity-right-plus').click(function(e){
 	
@@ -449,14 +392,9 @@ $('.quantity-right-plus').click(function(e){
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
-        
         // If is not undefined
-        
         $('#quantity').val(quantity + 1);
-
-        
             // Increment
-            
         });
 
 $('.quantity-left-minus').click(function(e){
@@ -464,9 +402,7 @@ $('.quantity-left-minus').click(function(e){
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
-        
         // If is not undefined
-        
             // Increment
             if(quantity>0){
             	$('#quantity').val(quantity - 1);
@@ -486,11 +422,9 @@ var sum = 0
 $(document).on("click",".btnclear", function() {
 	var temphapus = $(this).attr('id');
 	var tempharga = $("#harga"+temphapus).val();
-	//console.log(tempharga);
 	$("#cartitem"+temphapus).remove();
 	hitungitem--;
 	sum = sum - tempharga;
-	//console.log(sum+"kurang");
 	$('#counteritem').html(hitungitem+" Barang");
 	$('#totalitem').html("Total : Rp "+sum);
 });
@@ -499,8 +433,6 @@ $(document).on("click",".btnclear", function() {
 $("#buyitem").on("click", function() {
 	var nama = $('#nameitem').attr('value');
 	var harga = parseInt($('#priceitem').attr('value'));
-    //var ukuran = $('#size').find(":selected").text();
-	//var warna = $('#color').find(":selected").text();
 	var qty = $('#quantity').val();
 	var gambar = $("#top-img").attr('value');
 	hitungitem++;
@@ -541,10 +473,9 @@ $("#buyitemxs").on("click", function() {
 	var qtyxs = $('#quantity').val();
 	var gambarxs = $("#top-img").attr('value');
 	hitungitemxs++;
-	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
+
 	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
@@ -552,13 +483,6 @@ $("#buyitemxs").on("click", function() {
 	$('#totalitemxs').html("Total : Rp "+sumxs);
 	$('#keranjangkuxs').append(tampungxs);
 });
-
-
-
-
 </script>
 </body>
-
-
-
 </html>	

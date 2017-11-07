@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Bootstrap Example</title>
+	<title>Millenia</title>
 	<?php include "/templates/styles.html" ?>
 </head>
 
 <body>
 	<?php include "/templates/navbar.php" ?>
-	<div class="overlay" id="bgku"></div>
-
-	<!-- halaman pencarian -->
-	<div class="col-xs-12 overlay-w" id="bgku2" style="padding:35% 10% 15% 10%;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closebgku2()">&times;</a>
-		<h4> Cari Produk </h4>
-		<div class="col-xs-12 nopad" style="margin-bottom:8%;">
-			<input type="text" class="bar-text-xs col-xs-8" id="usr" placeholder="Ketik nama produk disini">
-		</div>
-		<div class="col-xs-12 nopad">
-			<button class="btn-defaults" style="padding:6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> 
-				<i class="glyphicon glyphicon-search" style="margin-right:2%;"></i>
-			Temukan</button>
-		</div>	
-	</div>
+    <?php include "/templates/mobile-search.php" ?>
 
 	<div class="container-fluid nopad space-ban-xs" style="">
 		<div class="container-fluid nopad">
@@ -94,64 +80,26 @@
 
 		</div>
 	</div>
-	<script>
-		$(document).ready(function() {   
-			var sideslider = $('[data-toggle=collapse-side]');
-			var sel = sideslider.attr('data-target');
-			var sel2 = sideslider.attr('data-target-2');
-			var temp =1;
-			sideslider.click(function(event){
-				$(sel).toggleClass('in');
-				jQuery('.navbar-static-top').css({position: 'static'});
-				$("#sidebarku").fadeIn(200);
-				$("#bgku").fadeIn(200);
-			});
-			
-			$("#tutup").on("click", function() {
-				console.log("burger");
-				$("#sidebarku").fadeOut(200);
-				$("#sidebarku").show().removeClass('animated slideInLeft');
-				$(".sidebars").siblings(".sidebars").removeClass("in");
-				$(".sidebars").toggleClass("in");
-				$("#bgku").fadeOut(300);
-				jQuery('.navbar-static-top').css({position: 'fixed'});
-				$("#navbarku").removeClass("nonebs-nav-xs");
-			});
-			
-			
-			
+	<?php include "/templates/scripts.html" ?>
+    <script>
+    <?php include "/templates/sidebar.js" ?>
+
 			/*panjang array dihardcode, cek by panjang string*/
 			var nomer=[11];
 			var text=[11];
 			for (i = 1; i < 13; i++) { 
-				//var nomer = $("#items"+i).text().length;
-				//var text = $("#items"+i).text();
 				nomer[i] = $("#items"+i).text().length;
 				text[i] = $("#items"+i).text();
-				//console.log(nomer[i]);
-				//console.log(text[i]);
 				for (j = 1; j < 13; j++) { 
 					if(nomer[i] > 36){
-						//console.log("aa");
-						//console.log(text[i].substr(1,32)+"...");
 						$("#items"+i).html(text[i].substr(0,36)+"...");
 					}
 				}
 				
 			}
-		});			
-
 		jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
 			e.stopPropagation()
-		})
-
-/*$('ul.nav li.dropdown').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});*/
-
-
+		});
 
 $("#tekan1").on("click", function() {
 	console.log("aa");
@@ -235,7 +183,7 @@ $("#buyitemxs").on("click", function() {
 	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
 	var totalperitemxs = qtyxs*hargaxs;
 	sumxs = sumxs + totalperitemxs;
-	console.log(sumxs);
+
 	
 	var tampungxs = 
 	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
