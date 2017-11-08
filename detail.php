@@ -449,11 +449,10 @@
 <?php include "/templates/scripts.html" ?>
 <script>
     <?php include "/templates/sidebar.js" ?>
-		
+    <?php include "/templates/cart.js" ?>
 		
 		/* buat rating*/
 		var totalreview = $("#totalrate").attr('value');
-		console.log(totalreview);
 		/*ini dihardcode, nanti buat aja input type hidden terus isi jumlahnya*/
 		
 		var pre1 = Math.round(parseInt($('#rate1').text())/totalreview*100);
@@ -480,7 +479,6 @@
 		
 		var width2 = 1;
 		var id2 = setInterval(frame2, 10);
-		console.log(pre2);
 		function frame2() {
 			if (width2 >= pre2) {clearInterval(id2);
 			} else {
@@ -491,7 +489,6 @@
 		
 		var width3 = 1;
 		var id3 = setInterval(frame3, 10);
-		console.log(pre3);
 		function frame3() {
 			if (width3 >= pre3) {clearInterval(id3);
 			} else {
@@ -502,7 +499,6 @@
 		
 		var width4 = 1;
 		var id4 = setInterval(frame4, 10);
-		console.log(pre4);
 		function frame4() {
 			if (width4 >= pre4) {clearInterval(id4);
 			} else {
@@ -513,7 +509,6 @@
 		
 		var width5 = 1;
 		var id5 = setInterval(frame5, 10);
-		console.log(pre5);
 		function frame5() {
 			if (width5 >= pre5) {clearInterval(id5);
 			} else {
@@ -568,82 +563,6 @@ $('.quantity-left-minus').click(function(e){
             	$('#quantity').val(quantity - 1);
             }
         });
-
-
-
-
-/* ---------------- CART FOR DESKTOP --------------*/
-
-/*declare var global for desktop for count item in cart*/	
-var hitungitem = 0;	
-var sum = 0
-
-/*jika ada elemen yang baru dibuat setelah html selesai diload, wajib pake ini*/
-$(document).on("click",".btnclear", function() {
-	var temphapus = $(this).attr('id');
-	var tempharga = $("#harga"+temphapus).val();
-	//console.log(tempharga);
-	$("#cartitem"+temphapus).remove();
-	hitungitem--;
-	sum = sum - tempharga;
-	//console.log(sum+"kurang");
-	$('#counteritem').html(hitungitem+" Barang");
-	$('#totalitem').html("Total : Rp "+sum);
-});
-
-/* ini buat desktop, mesti dipisah karena cartnya satu dropdown satu modal */	
-$("#buyitem").on("click", function() {
-	var nama = $('#nameitem').attr('value');
-	var harga = parseInt($('#priceitem').attr('value'));
-    //var ukuran = $('#size').find(":selected").text();
-	//var warna = $('#color').find(":selected").text();
-	var qty = $('#quantity').val();
-	var gambar = $("#top-img").attr('value');
-	hitungitem++;
-	var totalperitem = qty*harga;
-	sum = sum + totalperitem;
-
-	var tampung = 
-	"<li id='cartitem"+hitungitem+"'><span class='item col-lg-10 nopad'><span class='item-left'><img src='images/"+gambar+"' style='width:100%;width:70px;height:70px;'><span class='item-info'><span>"+nama+"</span><span>Rp "+ harga +" x "+qty+"</span></span></span></span><i class='material-icons biru btnclear col-lg-2 nopad text-right' style='font-size:1.3em;right:15px;top:5px' id='"+hitungitem+"'>clear</i><input id='harga"+hitungitem+"' value="+totalperitem+" style='display:none'></li>";
-	$('#counteritem').html(hitungitem+" Barang");
-	$('#totalitem').html("Total : Rp "+sum);
-	$('#keranjangku').append(tampung);
-});
-
-
-
-/* ---------------- CART FOR MOBILE --------------*/
-/*declare var global for mobile for count item in cart*/
-var hitungitemxs = 0;	
-var sumxs=0;
-
-/*jika ada elemen yang baru dibuat setelah html selesai diload, wajib pake ini*/
-$(document).on("click",".btnclearxs", function() {
-	var temphapusxs = $(this).attr('id');
-	var temphargaxs = $("#hargaxs"+temphapusxs).val();
-	$("#cartitem"+temphapusxs).remove();
-	hitungitemxs--;
-	sumxs = sumxs - temphargaxs;
-	$('#counteritemxs').html(hitungitemxs+" Barang");
-	$('#totalitemxs').html("Total : Rp "+sumxs);
-});
-
-/*ini buat cart mobile*/
-$("#buyitemxs").on("click", function() {
-	var namaxs = $('#nameitem').attr('value');
-	var hargaxs = parseInt($('#priceitem').attr('value'));
-	var qtyxs = $('#quantity').val();
-	var gambarxs = $("#top-img").attr('value');
-	hitungitemxs++;
-	//console.log(namaxs,hargaxs,qtyxs,gambarxs,hitungitemxs);
-	var totalperitemxs = qtyxs*hargaxs;
-	sumxs = sumxs + totalperitemxs;
-	var tampungxs = 
-	"<div class='col-xs-12 nopad' style='margin-bottom:5%;' id='cartitem"+hitungitemxs+"'><div class='col-xs-3 nopad'><img src='images/"+gambarxs+"' style='width:100%;border:1px solid #eeeeee;'></div><div class='col-xs-8 nopad' style='padding-left:5%;'><h5 class='modal-title'>"+namaxs+"</h5><h5 class='modal-title'>Rp "+hargaxs+" x "+qtyxs+"</h5></div><i class='material-icons biru btnclearxs col-xs-1 nopad text-right' style='font-size:1.3em;' id='"+hitungitemxs+"'>clear</i><input type='hidden' id='hargaxs"+hitungitemxs+"' value="+totalperitemxs+"></div>";
-	$('#counteritemxs').html(hitungitemxs+" Barang");
-	$('#totalitemxs').html("Total : Rp "+sumxs);
-	$('#keranjangkuxs').append(tampungxs);
-});
 </script>
 </body>
 </html>	

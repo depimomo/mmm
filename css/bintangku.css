@@ -15,7 +15,7 @@
   display         : block;
   float           : right;
   position        : relative;
-  background-image: url("../img/icons/star-1.svg");
+  background-image: url("../images/icons/star-1.svg");
   background-size : contain;
 }
 
@@ -24,7 +24,7 @@
   display         : block;
   width           : 1.5em;
   height          : 1.5em;
-  background-image: url("../img/icons/star.svg");
+  background-image: url("../images/icons/star.svg");
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;

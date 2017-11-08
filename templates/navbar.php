@@ -37,7 +37,6 @@
 				</li>	-->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<!--<i class="material-icons biru" style="font-size:2.2em;">account_circle</i>-->
 						<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
 						&nbsp &nbsp Username 
 						&nbsp &nbsp <span class="caret"></span></a>
@@ -98,21 +97,14 @@
 				</ul>
 				<div class="col-lg-12 hidden-sm nopad space-nav-lg" style="">
 					<ul class="nav navbar-nav navbar-left" id="menu">
-			<!--<div class="hidden-sm hidden-md hidden-lg col-xs-12 side-top-xs" style="padding:5% 7% 5% 6%;border-bottom:1px solid #eeeeee;margin-bottom:7%;">
-				<h4 id="closeside"> Menu </h4>
-				<a href="javascript:void(0)" class="closebtn">&times;</a>
-			</div>-->
 			<a class="hidden-sm hidden-md hidden-lg" style="display:inline;font-size:1.2em;padding-left:15px;"> Menu</a>
 			<a class="hidden-sm hidden-md hidden-lg" href="javascript:void(0)" id="tutup" 
 			style="font-size:30px;position:relative;top:2px;left:64%;display:inline;">
 		&times;</a>
-		<!--<li class="hidden-sm hidden-md hidden-lg" style=""><a href="#" style="font-size:1.2em;">Menu</a></li>-->
 		<div class="hidden-sm hidden-md hidden-lg col-xs-12 nopad" style="border-top:1px solid #eeeeee;margin-top:10px;"></div>
-		<!--<li class="hidden-xs" style=""><a href="#">Beranda</a></li>	-->
 		<li class="hidden-sm hidden-md hidden-lg" style="padding-top:7%;"><a href="#">Beranda</a></li>	
 		<li class="dropdown mega-dropdown">
 			<a href="#" class="dropdown-toggle drop" data-toggle="dropdown">Pakaian Pria &nbsp &nbsp &nbsp
-				<!--<span class="glyphicon glyphicon-chevron-down pull-right"></span>-->
 				<i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true"></i>
 			</a>
 			<ul class="dropdown-menu mega-dropdown-menu row megamenuku" id="menu1">
@@ -194,14 +186,12 @@
 						<ul>
 							<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Pakaian Dalam</a></li>
 							<li><a href="#">Baju Tidur</a></li>
-							<!--<li><a href="#" style="text-decoration:underline;">Lihat Semua Outerwear</a></li>-->
 						</ul>
 					</li>
 					<li class="col-sm-2 nopad">
 						<ul>
 							<li><a href="#" style="font-size:1.3em;color:#424242;margin-bottom:10px;">Aksesoris</a></li>
 							<li><a href="#">Aksesoris Wanita</a></li>
-							<!--<li><a href="#" style="text-decoration:underline;">Lihat Semua Outerwear</a></li>-->
 						</ul>
 					</li>
 				</ul>
@@ -324,16 +314,11 @@
 								</li>
 							</ul>
 						</li>
-						<li style="margin-top:18px;margin-bottom:8px;">
-							<a href="#">Notifikasi
-								<!-- kalo ada notifikasi--> <span class="badge" style="margin-top:-5px;margin-left:5px;">2</span>
-							</a>
-						</li>
 					</div>
-					<li><a href="#" class="biru">Be a SELLER </a></li>
 					<li><a href="#">Lacak Pesanan</a></li>
 					<li><a href="#">Konfirmasi Pembayaran</a></li>
 					<li class="hidden-sm hidden-md hidden-lg"><a href="#">Keluar</a></li>
+					<li><a href="#" class="biru">Be a SELLER </a></li>
 				</ul>
 			</nav>
 		</div>

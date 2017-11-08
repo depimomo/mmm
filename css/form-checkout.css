@@ -1,56 +1,41 @@
 @media (max-width: 354px){
 	.form-field{
 		padding-top:5%;
-	}
-	.space-form1{
+	}	.space-form1{
 		padding:6% 0% 6% 0%;
 	}
 }
-
 @media (max-width: 768px){
-	
-	
-	
 	.form-field{
 		padding-top:5%;
-	}
-	.space-form1{
+	}	.space-form1{
 		padding:6% 0% 6% 0%;
-	}
-	
+	}	
 	.form-field-lg-3{
 		padding-right:0px;
-	}
-	
+	}	
 	.price-items2{
 		margin-top:10px;border:1px solid #eeeeee;padding:2%;background-color:#fafafa;text-align:left;
-	}
-	.space-low-btn{
+	}	.space-low-btn{
 		padding:2% 10% 2% 9%;background-color:#F5F5F5;
 	}
 }
-
 @media (min-width: 768px){
 	
 	
 	.form-field{
 		padding-top:2%;
-	}
-	
+	}	
 	.form-field-lg-3{
 		padding-right:8px!important;
-	}
-	.space-form1{
+	}	.space-form1{
 		padding:3% 0% 6% 0%;
-	}
-	
+	}	
 	.price-items2{
 		margin-top:-5px;border:1px solid #eeeeee;padding:2%;background-color:#fafafa;text-align:left;
-	}
-	
+	}	
 	.space-low-btn{
 		padding:2% 12.5% 2% 12%!important;
 		background-color:#F5F5F5;
 	}
 }
-
