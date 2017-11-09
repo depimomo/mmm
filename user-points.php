@@ -242,27 +242,6 @@
     <script>
     <?php include "/templates/sidebar.js" ?>
     <?php include "/templates/cart.js" ?>
-			
-			/* for ellipsis title items */
-			/*panjang array dihardcode, cek by panjang string*/
-			var nomer=[11];
-			var text=[11];
-			for (i = 1; i < 13; i++) { 
-				//var nomer = $("#items"+i).text().length;
-				//var text = $("#items"+i).text();
-				nomer[i] = $("#items"+i).text().length;
-				text[i] = $("#items"+i).text();
-				//console.log(nomer[i]);
-				//console.log(text[i]);
-				for (j = 1; j < 13; j++) { 
-					if(nomer[i] > 36){
-						//console.log("aa");
-						//console.log(text[i].substr(1,32)+"...");
-						$("#items"+i).html(text[i].substr(0,36)+"...");
-					}
-				}
-				
-			}
 
 		/* filter select option for add new address */
 		document.getElementById("addcity").disabled=true;

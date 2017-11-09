@@ -248,7 +248,7 @@ function closebgku2(){
 	$("#bgku2").fadeOut();
 }
 
-var quantitiy=0;
+var quantity=0;
 $('.quantity-right-plus').click(function(e){
 
         // Stop acting like a button

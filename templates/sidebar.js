@@ -1,5 +1,5 @@
 $(document).ready(function() {   
-			
+	
 	/* sidebar mobile*/	
 	var sideslider = $('[data-toggle=collapse-side]');
 	var sel = sideslider.attr('data-target');

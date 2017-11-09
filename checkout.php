@@ -116,84 +116,80 @@
 					</div>
 				</div>	
 			</div>
-	</div>
-</div>
-
-
-</div>
-
-
-<div id="myModal" class="modal fade" role="dialog" style="margin:10% 5% 10% 5%;">
-	<div class="modal-dialog" >
-
-		<!-- Modal content-->
-		<div class="modal-content" style="padding:1%;">
-			<div class="modal-header" style="border-bottom:1px solid #eeeeee;padding-bottom:1%;">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
-			</div>
-			<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-		
-	</div>
-	<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
-		<h5 id="totalitemxs"> Total : Rp 120.000 </h5>
-	</div>
-	<div class="modal-footer">
-		<div class="col-xs-6 nopad" style="padding-right:1%;">
-			<button class="btn-out-default" style="padding:7%;border-radius:3px;width:100%;"> Lihat Pesanan </button>
 		</div>
-		<div class="col-xs-6 nopad" style="">
-			<button type="button" class="btn btn-defaults" style="padding:7%;border-radius:3px;width:100%;">Bayar</button>
-		</div>	
 	</div>
-</div>
-</div>
-</div>
-<?php include "/templates/scripts.html" ?>
-<script>
-<?php include "/templates/sidebar.js" ?>
-<?php include "/templates/cart.js" ?>
 
-$("#hilang").on("click", function() {
-	$("#hilang").fadeOut();
-});
+	<div id="myModal" class="modal fade" role="dialog" style="margin:10% 5% 10% 5%;">
+		<div class="modal-dialog" >
+			<!-- Modal content-->
+			<div class="modal-content" style="padding:1%;">
+				<div class="modal-header" style="border-bottom:1px solid #eeeeee;padding-bottom:1%;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
+				</div>
+				<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
+				</div>
+				<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
+					<h5 id="totalitemxs"> Total : Rp 120.000 </h5>
+				</div>
+				<div class="modal-footer">
+					<div class="col-xs-6 nopad" style="padding-right:1%;">
+						<button class="btn-out-default" style="padding:7%;border-radius:3px;width:100%;"> Lihat Pesanan </button>
+					</div>
+					<div class="col-xs-6 nopad" style="">
+						<button type="button" class="btn btn-defaults" style="padding:7%;border-radius:3px;width:100%;">Bayar</button>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include "/templates/scripts.html" ?>
 
-$(".thumbs").on("click", function() {
-	var nameimg = $(this).attr('value');
-	var imgsrc= "images/" + nameimg;
-	$('#top-img').attr("src",imgsrc);
-	return false;
-});
+	<script>
+	<?php include "/templates/sidebar.js" ?>
+	<?php include "/templates/cart.js" ?>
 
-function openov1(){
-	$("#bgku2").fadeIn();
-}
+	$("#hilang").on("click", function() {
+		$("#hilang").fadeOut();
+	});
 
-function closebgku2(){
-	$("#bgku2").fadeOut();
-}
+	$(".thumbs").on("click", function() {
+		var nameimg = $(this).attr('value');
+		var imgsrc= "images/" + nameimg;
+		$('#top-img').attr("src",imgsrc);
+		return false;
+	});
 
-var quantitiy=0;
-$('.quantity-right-plus').click(function(e){
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-        // If is not undefined
-        $('#quantity').val(quantity + 1);
-            // Increment
-        });
-$('.quantity-left-minus').click(function(e){
-	        // Stop acting like a button
-	        e.preventDefault();
-	        // Get the field name
-	        var quantity = parseInt($('#quantity').val());
-	        // If is not undefined
-            // Increment
-            if(quantity>0){
-            	$('#quantity').val(quantity - 1);
-            }
-        });
-</script>
+	function openov1(){
+		$("#bgku2").fadeIn();
+	}
+
+	function closebgku2(){
+		$("#bgku2").fadeOut();
+	}
+
+	var quantity=0;
+	$('.quantity-right-plus').click(function(e){
+		// Stop acting like a button
+		e.preventDefault();
+		// Get the field name
+		var quantity = parseInt($('#quantity').val());
+		// If is not undefined
+		$('#quantity').val(quantity + 1);
+		// Increment
+	});
+
+	$('.quantity-left-minus').click(function(e){
+		// Stop acting like a button
+		e.preventDefault();
+		// Get the field name
+		var quantity = parseInt($('#quantity').val());
+		// If is not undefined
+		// Increment
+		if(quantity>0){
+		$('#quantity').val(quantity - 1);
+		}
+	});
+	</script>
 </body>
 </html>	
