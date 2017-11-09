@@ -1,3 +1,7 @@
+<?php
+	require 'includes/connect.php';
+	require 'includes/logged-in.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

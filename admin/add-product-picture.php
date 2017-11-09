@@ -131,7 +131,7 @@
                 $setprimary = 0;
             }
 
-            $sql = "INSERT INTO mi_picture_color(product_no, color_id, picture_color_url, picture_color_primary) VALUES ('$pid','$colors[$i]','/images/$filename','$setprimary')";
+            $sql = "INSERT INTO mi_picture_color(product_no, color_id, picture_color_url, picture_color_primary) VALUES ('$pid','$colors[$i]','images/$filename','$setprimary')";
             
             if(mysqli_query($conn, $sql)){
                 header("location: product.php");
