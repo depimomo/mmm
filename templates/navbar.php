@@ -2,8 +2,8 @@
 <nav class="navbar navbar-static-top" id="navbarku">
 	<div class="container-fluid nopad">
 		<div class="navbar-header">
-			<button 
-			data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" 
+			<button
+			data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container"
 			type="button" class="navbar-toggle pull-left sidebar">
 			<i class="fa fa-bars burger fa-lg hidden-md hidden-lg" aria-hidden="true"></i>
 		</button>
@@ -15,7 +15,7 @@
 			<a href="#" data-toggle="modal" data-target="#myModal">
 				<i class="fa fa-shopping-cart biru fa-lg side-items1" aria-hidden="true" style=""></i></a>
 			</div>
-			
+
 		</div>
 		<form class="navbar-form navbar-left hidden-xs" style="padding-left:6%;">
 			<div class="input-group bar-cari">
@@ -35,42 +35,61 @@
 				  <li>
 					<button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
 				</li>	-->
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
-						&nbsp &nbsp Username 
-						&nbsp &nbsp <span class="caret"></span></a>
-						<ul class="dropdown-menu" style="padding:5% 3% 9% 3%;width:190px;border:none;">
-							<li style="padding:6% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-profile.svg" style="width:15%;">
-								&nbsp &nbsp Akun Saya</a>
-							</li>
-							<li style="padding:5% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-inbox.svg" style="width:14%;">
-								&nbsp &nbsp Kotak Pesan</a>
-							</li>
-							<li style="padding:5% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-history.svg" style="width:14%;">
-								&nbsp &nbsp Histori Belanja</a>
-							</li>
-							<li style="padding:3% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-review.svg" style="width:14%;">
-								&nbsp &nbsp Ulasan</a>
-							</li>
-							<li style="padding:4% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-wishlist.svg" style="width:12.9%;">
-								&nbsp &nbsp Wishlist</a>
-							</li>
-							<li style="padding:3% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-point.svg" style="width:14%;">
-								&nbsp &nbsp Milenia Point</a>
-							</li>
-							<li style="padding:4% 0% 3.5% 0%;">
-								<a href="#"><img src="images/icons/ic-complain.svg" style="width:14%;">
-								&nbsp &nbsp Komplain</a>
-							</li>
-						</ul>
-					</li>
+				<?php
+				if(isset($SESSION['username'])){//check apakah ada session atau tidak -Tim
+					//kalo ada tampilan jadi akun -Tim
+					?>
+					<!-- Start Akunku -Tim -->
+ 				<li class="dropdown">
+ 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+ 						<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
+ 						&nbsp &nbsp Username
+ 						&nbsp &nbsp <span class="caret"></span></a>
+ 						<ul class="dropdown-menu" style="padding:5% 3% 9% 3%;width:190px;border:none;">
+ 							<li style="padding:6% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-profile.svg" style="width:15%;">
+ 								&nbsp &nbsp Akun Saya</a>
+ 							</li>
+ 							<li style="padding:5% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-inbox.svg" style="width:14%;">
+ 								&nbsp &nbsp Kotak Pesan</a>
+ 							</li>
+ 							<li style="padding:5% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-history.svg" style="width:14%;">
+ 								&nbsp &nbsp Histori Belanja</a>
+ 							</li>
+ 							<li style="padding:3% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-review.svg" style="width:14%;">
+ 								&nbsp &nbsp Ulasan</a>
+ 							</li>
+ 							<li style="padding:4% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-wishlist.svg" style="width:12.9%;">
+ 								&nbsp &nbsp Wishlist</a>
+ 							</li>
+ 							<li style="padding:3% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-point.svg" style="width:14%;">
+ 								&nbsp &nbsp Milenia Point</a>
+ 							</li>
+ 							<li style="padding:4% 0% 3.5% 0%;">
+ 								<a href="#"><img src="images/icons/ic-complain.svg" style="width:14%;">
+ 								&nbsp &nbsp Komplain</a>
+ 							</li>
+ 						</ul>
+ 					</li>
+ 					<!-- End Akunku -Tim -->
+					<?php
+				}else{//kalo engga jadi Masuk daftar -Tim
+					?>
+					<!-- Tambain link ke signin.pgp -Tim -->
+					<li><a href="signin.php">Masuk &nbsp &nbsp </a></li>
+					<!-- End Tambahin link ke signin.pgp -Tim -->
+				 <li>
+				 <button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
+			 </li>
+					<?php
+				}
+				 ?>
+
 					<li><a href="#" id="cart" data-toggle="collapse" data-target="#demo" class="" aria-expanded="true"><span class="glyphicon glyphicon-shopping-cart biru"></span> &nbsp &nbsp My Cart</a>
 						<ul class="dropdown-menu dropdown-cart collapse" role="menu" id="demo" aria-expanded="true" style="">
 							<li>
@@ -91,18 +110,18 @@
 								<div class="col-lg-6 col-sm-6 nopad" style="padding:2% 3% 5% 4%;">
 									<button class="btn-defaults" style="padding:8%;border-radius:3px;width:100%;"> Bayar</button>
 								</div>
-							</div>	  
+							</div>
 						</ul>
-					</li>  
+					</li>
 				</ul>
 				<div class="col-lg-12 hidden-sm nopad space-nav-lg" style="">
 					<ul class="nav navbar-nav navbar-left" id="menu">
 			<a class="hidden-sm hidden-md hidden-lg" style="display:inline;font-size:1.2em;padding-left:15px;"> Menu</a>
-			<a class="hidden-sm hidden-md hidden-lg" href="javascript:void(0)" id="tutup" 
+			<a class="hidden-sm hidden-md hidden-lg" href="javascript:void(0)" id="tutup"
 			style="font-size:30px;position:relative;top:2px;left:64%;display:inline;">
 		&times;</a>
 		<div class="hidden-sm hidden-md hidden-lg col-xs-12 nopad" style="border-top:1px solid #eeeeee;margin-top:10px;"></div>
-		<li class="hidden-sm hidden-md hidden-lg" style="padding-top:7%;"><a href="#">Beranda</a></li>	
+		<li class="hidden-sm hidden-md hidden-lg" style="padding-top:7%;"><a href="#">Beranda</a></li>
 		<li class="dropdown mega-dropdown">
 			<a href="#" class="dropdown-toggle drop" data-toggle="dropdown">Pakaian Pria &nbsp &nbsp &nbsp
 				<i class="fa fa-angle-down fa-lg icons-nav-xs" aria-hidden="true"></i>
@@ -274,8 +293,8 @@
 						</li>
 					</ul>
 				</li>
-			</ul>	
-			
+			</ul>
+
 			<ul class="nav navbar-nav navbar-right space-nav-xs" style="margin-right:-15px;">
 				<div class="hidden-sm hidden-md hidden-lg container-fluid" style="border-top:1px solid #eeeeee;padding-top:8%;">
 					<li class="dropdown">

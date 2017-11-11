@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	<title>Millenia</title>
-	<?php include "/templates/styles.html" ?>
+	<?php include "./templates/styles.html" ?>
 </head>
 
 <body>
-	<?php include "/templates/navbar.php" ?>
-    <?php include "/templates/mobile-search.php" ?>
+	<?php include "./templates/navbar.php" ?>
+    <?php include "./templates/mobile-search.php" ?>
 
 	<div class="container-fluid nopad space-ban-xs" style="">
 		<div class="container-fluid nopad">
@@ -15,7 +15,9 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nopad" style="padding:4.5% 6% 5% 6%;">
 				<h1 class="title" style="font-size:3.7em;"> Sign In </h1>
 				<div class="divider-biru" style="margin:0px;margin-top:25px;margin-left:3px;margin-bottom:30px;"></div>
-				<h5 style="font-size:1.1em;"> Belum punya akun? Yuk, <span class="biru">Daftar sekarang </span>! </h5>
+				<!-- Tambahin link ke signup.php -Tim -->
+				<h5 style="font-size:1.1em;"> Belum punya akun? Yuk, <a href="signup.php"><span class="biru">Daftar sekarang </span>!</a> </h5>
+				<!-- End Tambahin link ke signin.php -Tim -->
 				<div class="container-fluid nopad space-input-1">
 					<div class="input-group col-lg-12">
 						<span class="input-group-addon"><i class="fa fa-envelope biru" style="margin-left:-10px;font-size:1.2em;"></i></span>
@@ -46,7 +48,7 @@
 							</button>
 						Sign In via Facebook</h5>
 					</div>
-				</div>			
+				</div>
 			</div>
 		</div>
 
@@ -63,7 +65,7 @@
 					<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 				</div>
 				<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-					
+
 				</div>
 				<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
 					<h5 id="totalitemxs"> Total : Rp 120.000 </h5>
@@ -74,29 +76,29 @@
 					</div>
 					<div class="col-xs-6 nopad" style="">
 						<button type="button" class="btn btn-defaults" style="padding:7%;border-radius:3px;width:100%;">Bayar</button>
-					</div>	
+					</div>
 				</div>
 			</div>
 
 		</div>
 	</div>
-	<?php include "/templates/scripts.html" ?>
+	<?php include "./templates/scripts.html" ?>
     <script>
-    <?php include "/templates/sidebar.js" ?>
-    <?php include "/templates/cart.js" ?>
+    <?php include "./templates/sidebar.js" ?>
+    <?php include "./templates/cart.js" ?>
 
 			/*panjang array dihardcode, cek by panjang string*/
 			var nomer=[11];
 			var text=[11];
-			for (i = 1; i < 13; i++) { 
+			for (i = 1; i < 13; i++) {
 				nomer[i] = $("#items"+i).text().length;
 				text[i] = $("#items"+i).text();
-				for (j = 1; j < 13; j++) { 
+				for (j = 1; j < 13; j++) {
 					if(nomer[i] > 36){
 						$("#items"+i).html(text[i].substr(0,36)+"...");
 					}
 				}
-				
+
 			}
 		jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
 			e.stopPropagation()
@@ -104,7 +106,7 @@
 
 $("#tekan1").on("click", function() {
 	console.log("aa");
-});	
+});
 
 $("#hilang").on("click", function() {
 	$("#hilang").fadeOut();
