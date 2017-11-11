@@ -36,7 +36,7 @@
 					<button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
 				</li>	-->
 				<?php
-				if(isset($SESSION['username'])){//check apakah ada session atau tidak -Tim
+				if(isset($_SESSION['username'])){//check apakah ada session atau tidak -Tim
 					//kalo ada tampilan jadi akun -Tim
 					?>
 					<!-- Start Akunku -Tim -->
