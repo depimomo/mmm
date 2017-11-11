@@ -30,22 +30,17 @@
 		<div class="side-collapse in sidebars" id="sidebarku">
 			<nav role="navigation" class="navbar-collapse">
 				<ul class="nav navbar-nav navbar-right hidden-xs"  style="margin-right:10px;">
-				  <!--navigasi sebelum login
-				  <li><a href="#">Masuk &nbsp &nbsp </a></li>
-				  <li>
-					<button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
-				</li>	-->
 				<?php
 				if(isset($_SESSION['username'])){//check apakah ada session atau tidak -Tim
 					//kalo ada tampilan jadi akun -Tim
 					$full_name = $_SESSION['user_fullname'];
 					?>
 					<!-- Start Akunku -Tim -->
- 				<li class="dropdown">
- 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
- 						<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
- 						&nbsp &nbsp <?php echo "Hello ".$full_name; ?>
- 						&nbsp &nbsp <span class="caret"></span></a>
+ 					<li class="dropdown">
+ 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+ 							<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
+ 							&nbsp &nbsp <?php echo "Hello ".$full_name; ?>
+ 							&nbsp &nbsp <span class="caret"></span></a>
  						<ul class="dropdown-menu" style="padding:5% 3% 9% 3%;width:190px;border:none;">
  							<li style="padding:6% 0% 3.5% 0%;">
  								<a href="#"><img src="images/icons/ic-profile.svg" style="width:15%;">
@@ -75,6 +70,10 @@
  								<a href="#"><img src="images/icons/ic-complain.svg" style="width:14%;">
  								&nbsp &nbsp Komplain</a>
  							</li>
+ 							<li style="padding:4% 0% 3.5% 0%;">
+ 								<a href="./includes/destroy.php"><img src="images/icons/ic-complain.svg" style="width:14%;">
+ 								&nbsp &nbsp Keluar</a>
+ 							</li>
  						</ul>
  					</li>
  					<!-- End Akunku -Tim -->
@@ -86,9 +85,9 @@
 					<!-- End Tambahin link ke signin.php -Tim -->
 				 <li>
 					 <!-- Tambain link ke signup.php -Tim -->
-				 <a href="signup.php"><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
-				 <!-- Tambain link ke signup.php -Tim -->
-			 </li>
+					<a style="padding: 0px !important" href="signup.php"><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
+					<!-- Tambain link ke signup.php -Tim -->
+			 	</li>
 					<?php
 				}
 				 ?>

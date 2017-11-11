@@ -28,8 +28,6 @@
 								<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
 									<h5 class="title title-items" style="" id="items1"><?php echo $row['pname'] ?></h5>
 									<h5 style="padding-top:5%;"> IDR <span class="money"><?php echo $row['proprice'] ?></span> <span class="kecil" style="padding-left:2%;"> Rp <span class="money"><?php echo $row['pprice'] ?></span></span> </h5>
-									<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i>
-									<span class="biru" data-countdown="<?php echo $row['tde']." ".$row['the'] ?>"></span> time left</h5>
 								</div>
 							</div>
 						</div>

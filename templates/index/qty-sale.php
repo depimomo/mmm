@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9 nopad space-inner-2" style="padding-top:1.5%;">
 				<?php
-            $querysel = "select a.product_name as pname, a.product_price as pprice, a.product_promo_price as proprice, a.product_time_day as tds, b.picture_color_url as img, a.product_time_hour as ths, a.product_time_day_end as tde, a.product_time_hour as the from mi_product a, mi_view_product b where a.product_qty_active = 1 and a.product_code = b.product_code and CURDATE() > a.product_time_day and curtime() > a.product_time_hour order by RAND() limit 4 ";
+            $querysel = "select a.product_name as pname, a.product_qty_sale as qty, a.product_price as pprice, a.product_promo_price as proprice, a.product_time_day as tds, b.picture_color_url as img, a.product_time_hour as ths, a.product_time_day_end as tde, a.product_time_hour as the from mi_product a, mi_view_product b where a.product_qty_active = 1 and a.product_code = b.product_code and CURDATE() > a.product_time_day and curtime() > a.product_time_hour order by RAND() limit 4 ";
             $result = $conn->query($querysel);
             while ($row = $result->fetch_assoc()) {
                 $date = new DateTime($row['tde']." ".$row['the']);
@@ -28,8 +28,8 @@
 								<div class="container-fluid" style="padding:3% 6% 3% 10%;border-top:1px solid #E0E0E0;">
 									<h5 class="title title-items" style="" id="items1"><?php echo $row['pname'] ?></h5>
 									<h5 style="padding-top:5%;"> IDR <span class="money"><?php echo $row['proprice'] ?></span> <span class="kecil" style="padding-left:2%;"> Rp <span class="money"><?php echo $row['pprice'] ?></span></span> </h5>
-									<h5> <i class="fa fa-clock-o biru" aria-hidden="true" style="margin-right:3%;"></i>
-									<span class="biru" data-countdown="<?php echo $row['tde']." ".$row['the'] ?>"></span> time left</h5>
+									<h5>
+									<span class="biru"><?php echo $row['qty'] ?></span> stok tersisa</h5>
 								</div>
 							</div>
 						</div>

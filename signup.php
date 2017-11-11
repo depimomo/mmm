@@ -1,4 +1,5 @@
 <?php require 'includes/connect.php'; ?>
+<?php if(isset($_SESSION['username'])){header("location: index.php");} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,58 +10,7 @@
 <body>
 	<?php include "./templates/navbar.php" ?>
     <?php include "./templates/mobile-search.php" ?>
-<?php //PHP TAMBAH USER -Tim
-if(isset($_POST['nama_lengkap'])){
-	//cleanup the variables
-	//prevent mysql injection
-	$uname = mysqli_real_escape_string($conn,$_POST['email']);
-	$fullname = mysqli_real_escape_string($conn,$_POST['nama_lengkap']);
-	$pass1 = mysqli_real_escape_string($conn,$_POST['pwd']);
-	$pass2 = mysqli_real_escape_string($conn,$_POST['repwd']);
-	if ($pass1 != $pass2) {
-			$message = 'Password tidak sesuai';
-	} else {
-			$bytes = openssl_random_pseudo_bytes(50, $cstrong);
-			$salt = bin2hex($bytes);
-			$enc = password_hash($pass1.$salt, PASSWORD_DEFAULT);
-			$reg_time =date("h:i:s");
-			$reg_date =date("Y-m-d");
-			$hashing_signup = md5(uniqid(rand(), true));
-			$sql = "INSERT INTO mi_member(
-				member_email,
-				member_pass,
-				member_crypt,
-				member_fullname,
-				member_regdate,
-				member_regtime,
-				member_hashing_signup
-			)
-				VALUES(
-					'$uname',
-					'$enc',
-					'$salt',
-					'$fullname',
-					'$reg_date',
-					'$reg_time',
-					'$hashing_signup'
-				)";
-			if (mysqli_query($conn, $sql)) {
-					header("location: signin.php");
-			} else {
-					echo $conn->error;
-					$message = "Gagal menambah, coba lagi";
-			}
-	}
 
-	echo
-	"<script>".
-			"$(document).ready(function(){".
-					"$('#message').html('".$message."');".
-					"$('#message').show();".
-			"});".
-	"</script>";
- }
- ?>
 	<div class="container-fluid nopad space-ban-xs" style="">
 		<div class="container-fluid nopad">
 			<div class="hidden-xs col-sm-6 col-md-6 col-lg-6 nopad grad2" style="height:600px;"></div>
@@ -88,6 +38,7 @@ if(isset($_POST['nama_lengkap'])){
 						<span class="input-group-addon"><i class="fa fa-key biru" style="margin-left:-10px;font-size:1.2em;"></i></span>
 						<input id="repwd" type="password" class="form-control input-edit" name="repwd" placeholder="Ketik kembali Password" required>
 					</div>
+					<div style="color: red" id="message"></div>
 				</div>
 		<div class="container-fluid nopad space-input-1" style="padding-top:23px;">
 			<div class="col-lg-12 nopad" style="padding-top:4px;">
@@ -125,6 +76,71 @@ if(isset($_POST['nama_lengkap'])){
 	</div>
 </div>
 <?php include "./templates/scripts.html" ?>
+
+<?php //PHP TAMBAH USER -Tim
+if(isset($_POST['nama_lengkap'])&&isset($_POST['email'])){
+	$message = "";
+	//cleanup the variables
+	//prevent mysql injection
+
+	$uname = mysqli_real_escape_string($conn,$_POST['email']);
+	$result = mysqli_query($conn, "SELECT * FROM mi_member WHERE member_email = '$uname'");
+
+	$count = mysqli_num_rows($result);
+	// If result matched $myusername and $mypassword, table row must be 1 row
+	if($count === 1) {
+		$message = "Email telah terdaftar, silakan coba login.";
+	} elseif (!filter_var($uname, FILTER_VALIDATE_EMAIL)) {
+	  $message = "Format email salah, harap periksa kembali"; 
+	} else {
+		$fullname = mysqli_real_escape_string($conn,$_POST['nama_lengkap']);
+		$pass1 = mysqli_real_escape_string($conn,$_POST['pwd']);
+		$pass2 = mysqli_real_escape_string($conn,$_POST['repwd']);
+		if ($pass1 != $pass2 && $pass1 != "") {
+				$message = 'Password tidak sesuai';
+		} else {
+			$bytes = openssl_random_pseudo_bytes(50, $cstrong);
+			$salt = bin2hex($bytes);
+			$enc = password_hash($pass1.$salt, PASSWORD_DEFAULT);
+			$reg_time =date("h:i:s");
+			$reg_date =date("Y-m-d");
+			$hashing_signup = md5(uniqid(rand(), true));
+			$sql = "INSERT INTO mi_member(
+				member_email,
+				member_pass,
+				member_crypt,
+				member_fullname,
+				member_regdate,
+				member_regtime,
+				member_hashing_signup
+			)
+				VALUES(
+					'$uname',
+					'$enc',
+					'$salt',
+					'$fullname',
+					'$reg_date',
+					'$reg_time',
+					'$hashing_signup'
+				)";
+			if (mysqli_query($conn, $sql)) {
+					header("location: signin.php");
+			} else {
+					echo $conn->error;
+					$message = "Gagal menambah, coba lagi";
+			}
+		}
+	}
+
+	echo
+	"<script>".
+			"$(document).ready(function(){".
+					"$('#message').html('".$message."');".
+			"});".
+	"</script>";
+ }
+ ?>
+
 <script>
     <?php include "./templates/sidebar.js" ?>
 	<?php include "./templates/cart.js" ?>

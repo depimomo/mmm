@@ -1,4 +1,5 @@
-<?php require 'includes/connect.php'; ?>
+<?php require './includes/connect.php'; ?>
+<?php if(isset($_SESSION['username'])){header("location: index.php");} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,53 +10,7 @@
 <body>
 	<?php include "./templates/navbar.php" ?>
     <?php include "./templates/mobile-search.php" ?>
-<?php
-//PHP UNTUK CHECK REQUEST LOGIN -Tim
-if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post form baru jalan
-	//cleanup the variables
-	//prevent mysql injection
-	$username = mysqli_real_escape_string($conn,$_POST['uname']);
-	$password = mysqli_real_escape_string($conn,$_POST['pwd']);
 
-	$result = mysqli_query($conn, "SELECT * FROM mi_member WHERE member_email = '$username'");
-
-	$count = mysqli_num_rows($result);
-	// If result matched $myusername and $mypassword, table row must be 1 row
-	if($count === 1) {
-		while ($row = mysqli_fetch_assoc($result)) {
-			$member_pass = $row['member_pass'];
-			$member_crypt = $row['member_crypt'];
-			$member_active = $row['member_active'];
-			$member_fullname = $row['member_fullname'];
-		}
-
-		if($member_active == 'N') {
-			$message = "Akun telah dinonaktifkan";
-		} else if(password_verify($password.$member_crypt,$member_pass)){
-			$_SESSION['username'] = $username;
-			$_SESSION['user_fullname'] = $member_fullname;
-
-			header("location: index.php");
-		} else {
-			$message = "Password salah";
-		}
-	} else {
-		$message = "Akun tidak terdaftar";
-	}
-	echo
-	"<script>".
-		"$(document).ready(function(){".
-			"$('#message').html('".$message."');".
-			"$('.log-status').addClass('wrong-entry');".
-			"$('.alert').fadeIn(500);".
-			"setTimeout(`$('.alert').fadeOut(1500);`,3000 );".
-			"$('.form-control').keypress(function(){".
-				"$('.log-status').removeClass('wrong-entry');".
-			"});".
-		"});".
-	"</script>";
-}
- ?>
 	<div class="container-fluid nopad space-ban-xs" style="">
 		<div class="container-fluid nopad">
 
@@ -77,6 +32,7 @@ if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post f
 						<span class="input-group-addon"><i class="fa fa-key biru" style="margin-left:-10px;font-size:1.2em;"></i></span>
 						<input id="pwd" type="password" class="form-control input-edit" name="pwd" placeholder="Password">
 					</div>
+					<div style="color: red" id="message"></div>
 				</div>
 				<div class="container-fluid nopad space-input-1" style="padding-top:15px;">
 					<div class="col-xs-6 col-lg-6 nopad" style="padding-top:4px;">
@@ -131,31 +87,76 @@ if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post f
 
 		</div>
 	</div>
+
 	<?php include "./templates/scripts.html" ?>
+
     <script>
-    <?php include "./templates/sidebar.js" ?>
-    <?php include "./templates/cart.js" ?>
+	    <?php include "./templates/sidebar.js" ?>
+	    <?php include "./templates/cart.js" ?>
 
-		jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
-			e.stopPropagation()
-		});
+			jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
+				e.stopPropagation()
+			});
 
-		$("#tekan1").on("click", function() {
-			console.log("aa");
-		});	
+			$("#tekan1").on("click", function() {
+				console.log("aa");
+			});	
 
-		$("#hilang").on("click", function() {
-			$("#hilang").fadeOut();
-		});
+			$("#hilang").on("click", function() {
+				$("#hilang").fadeOut();
+			});
 
-		function openov1(){
-			$("#bgku2").fadeIn();
+			function openov1(){
+				$("#bgku2").fadeIn();
+			}
+
+			function closebgku2(){
+				$("#bgku2").fadeOut();
+			}
+	</script>
+
+	<?php
+		//PHP UNTUK CHECK REQUEST LOGIN -Tim
+		if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post form baru jalan
+			$message = "";
+			//cleanup the variables
+			//prevent mysql injection
+			$username = mysqli_real_escape_string($conn,$_POST['uname']);
+			$password = mysqli_real_escape_string($conn,$_POST['pwd']);
+
+			$result = mysqli_query($conn, "SELECT * FROM mi_member WHERE member_email = '$username'");
+
+			$count = mysqli_num_rows($result);
+			// If result matched $myusername and $mypassword, table row must be 1 row
+			if($count === 1) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$member_pass = $row['member_pass'];
+					$member_crypt = $row['member_crypt'];
+					$member_active = $row['member_active'];
+					$member_fullname = $row['member_fullname'];
+				}
+
+				if($member_active == 'N') {
+					$message = "Akun belum aktif, silakan periksa email Anda";
+				} else if(password_verify($password.$member_crypt,$member_pass)){
+					$_SESSION['username'] = $username;
+					$_SESSION['user_fullname'] = $member_fullname;
+
+					header("location: index.php");
+				} else {
+					$message = "Password salah";
+				}
+			} else {
+				$message = "Akun tidak terdaftar";
+			}
+			echo
+			"<script>".
+				"$(document).ready(function(){".
+					"$('#message').html('".$message."');".
+				"});".
+			"</script>";
 		}
-
-		function closebgku2(){
-			$("#bgku2").fadeOut();
-		}
-</script>
+	?>
 
 </body>
 </html>
