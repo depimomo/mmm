@@ -80,11 +80,13 @@
 					<?php
 				}else{//kalo engga jadi Masuk daftar -Tim
 					?>
-					<!-- Tambain link ke signin.pgp -Tim -->
+					<!-- Tambain link ke signin.php -Tim -->
 					<li><a href="signin.php">Masuk &nbsp &nbsp </a></li>
-					<!-- End Tambahin link ke signin.pgp -Tim -->
+					<!-- End Tambahin link ke signin.php -Tim -->
 				 <li>
-				 <button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
+					 <!-- Tambain link ke signup.php -Tim -->
+				 <a href=""><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
+				 <!-- Tambain link ke signup.php -Tim -->
 			 </li>
 					<?php
 				}
