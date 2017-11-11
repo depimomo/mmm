@@ -15,7 +15,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nopad" style="padding:4.5% 6% 5% 6%;">
 				<h1 class="title" style="font-size:3.7em;"> Sign Up</h1>
 				<div class="divider-biru" style="margin:0px;margin-top:25px;margin-left:3px;margin-bottom:30px;"></div>
-				<h5 style="font-size:1.1em;"> Sudah punya akun? Yuk, <span class="biru">Masuk sekarang </span>! </h5>
+				<h5 style="font-size:1.1em;"> Sudah punya akun? Yuk, <a href="signin.php" class="biru">Masuk sekarang </a>! </h5>
 				<div class="container-fluid nopad space-input-1">
 					<div class="input-group col-lg-12">
 						<span class="input-group-addon"><i class="fa fa-user fa-lg biru" style="margin-left:-10px;"></i></span>
