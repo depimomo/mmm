@@ -38,12 +38,13 @@
 				<?php
 				if(isset($_SESSION['username'])){//check apakah ada session atau tidak -Tim
 					//kalo ada tampilan jadi akun -Tim
+					$full_name = $_SESSION['user_fullname'];
 					?>
 					<!-- Start Akunku -Tim -->
  				<li class="dropdown">
  					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
  						<i class="fa fa-user-circle fa-lg biru" aria-hidden="true" style="font-size:1.6em;"></i>
- 						&nbsp &nbsp Username
+ 						&nbsp &nbsp <?php echo "Hello ".$full_name; ?>
  						&nbsp &nbsp <span class="caret"></span></a>
  						<ul class="dropdown-menu" style="padding:5% 3% 9% 3%;width:190px;border:none;">
  							<li style="padding:6% 0% 3.5% 0%;">
