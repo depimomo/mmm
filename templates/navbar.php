@@ -36,7 +36,7 @@
 					<button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
 				</li>	-->
 				<?php
-				if(isset($SESSION['username'])){//check apakah ada session atau tidak -Tim
+				if(isset($_SESSION['username'])){//check apakah ada session atau tidak -Tim
 					//kalo ada tampilan jadi akun -Tim
 					?>
 					<!-- Start Akunku -Tim -->
@@ -80,11 +80,13 @@
 					<?php
 				}else{//kalo engga jadi Masuk daftar -Tim
 					?>
-					<!-- Tambain link ke signin.pgp -Tim -->
+					<!-- Tambain link ke signin.php -Tim -->
 					<li><a href="signin.php">Masuk &nbsp &nbsp </a></li>
-					<!-- End Tambahin link ke signin.pgp -Tim -->
+					<!-- End Tambahin link ke signin.php -Tim -->
 				 <li>
-				 <button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp
+					 <!-- Tambain link ke signup.php -Tim -->
+				 <a href="signup.php"><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
+				 <!-- Tambain link ke signup.php -Tim -->
 			 </li>
 					<?php
 				}
