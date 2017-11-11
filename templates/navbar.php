@@ -85,7 +85,7 @@
 					<!-- End Tambahin link ke signin.php -Tim -->
 				 <li>
 					 <!-- Tambain link ke signup.php -Tim -->
-				 <a href=""><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
+				 <a href="signup.php"><button class="btn btn-biru" style="margin-top:7px;"> Daftar </button> &nbsp</a>
 				 <!-- Tambain link ke signup.php -Tim -->
 			 </li>
 					<?php
