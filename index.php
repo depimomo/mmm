@@ -149,6 +149,17 @@
 		function closebgku2(){
 			$("#bgku2").fadeOut();
 		}
+
+
 	</script>
+  <script type="text/javascript">
+  $('[data-countdown]').each(function() {
+        var $this = $(this), finalDate = $(this).data('countdown').replace("-","/");
+        console.log(finalDate);
+        $this.countdown(finalDate, function(event) {
+          $this.html(event.strftime('%D days %H:%M:%S'));
+        });
+      });
+  </script>
 </body>
 </html>
