@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-7 col-md-9 col-lg-9 nopad space-inner-2" style="padding-top:1.5%;">
 				<?php
-            $querysel = "select a.product_name as pname, a.product_price as pprice, a.product_promo_price as proprice, a.product_time_day as tds, b.picture_color_url as img, a.product_time_hour as ths, a.product_time_day_end as tde, a.product_time_hour as the from mi_product a, mi_view_product b where a.product_clearance_active = 1 and a.product_code = b.product_code order by RAND() limit 4 ";
+            $querysel = "select a.product_name as pname, a.product_price as pprice, a.product_promo_price as proprice, a.product_time_day as tds, b.picture_color_url as img, a.product_time_hour as ths, a.product_time_day_end as tde, a.product_time_hour as the from mi_product a, mi_view_product b where a.product_clearance_active = 1 and a.product_code = b.product_code and CURDATE() > a.product_time_day and curtime() > a.product_time_hour order by RAND() limit 4 ";
             $result = $conn->query($querysel);
             while ($row = $result->fetch_assoc()) {
                 $date = new DateTime($row['tde']." ".$row['the']);
