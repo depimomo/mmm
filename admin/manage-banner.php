@@ -66,7 +66,7 @@
                                                 
                                                 echo "
                                                 <tr>
-                                                  <td><img width= '500px' src='..".$url."'></img></td>
+                                                  <td><img width= '500px' src='../".$url."'></img></td>
                                                   <td><a data-toggle='modal' data-target='#myModal' data-id='".$id."' style='color: red;cursor: pointer;' class='hapus'>Hapus</a></td>
                                                 </tr>
                                                 ";

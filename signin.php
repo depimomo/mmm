@@ -91,7 +91,6 @@ if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post f
 						<button class="btn-defaults" style="padding:4% 6% 4% 6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> Sign In </button>
 					</div>
 					<div class="col-lg-12 nopad text-center" style="padding-top:6px;">
-						<!--<button class="btn-fb" style="padding:3% 6% 3% 6%;border-radius:3px;width:100%;font-size:1.2em;" id="beli"> Masuk </button>-->
 						<h5>
 							<button class="btn-circle" style="width:35px;height:35px;border-radius:50%;margin-right:10px;background-color:#4267b2;border:1px solid #4267b2;">
 								<i class="fa fa-facebook putih" aria-hidden="true"></i>
@@ -103,8 +102,6 @@ if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post f
 				<!-- FORM END -Tim -->
 			</div>
 		</div>
-
-
 	</div>
 
 
@@ -139,38 +136,25 @@ if(isset($_POST['uname']) && isset($conn,$_POST['pwd'])){//Kalo ada input post f
     <?php include "./templates/sidebar.js" ?>
     <?php include "./templates/cart.js" ?>
 
-			/*panjang array dihardcode, cek by panjang string*/
-			var nomer=[11];
-			var text=[11];
-			for (i = 1; i < 13; i++) {
-				nomer[i] = $("#items"+i).text().length;
-				text[i] = $("#items"+i).text();
-				for (j = 1; j < 13; j++) {
-					if(nomer[i] > 36){
-						$("#items"+i).html(text[i].substr(0,36)+"...");
-					}
-				}
-
-			}
 		jQuery(document).on('hover mouseover', '.mega-dropdown', function(e) {
 			e.stopPropagation()
 		});
 
-$("#tekan1").on("click", function() {
-	console.log("aa");
-});
+		$("#tekan1").on("click", function() {
+			console.log("aa");
+		});	
 
-$("#hilang").on("click", function() {
-	$("#hilang").fadeOut();
-});
+		$("#hilang").on("click", function() {
+			$("#hilang").fadeOut();
+		});
 
-function openov1(){
-	$("#bgku2").fadeIn();
-}
+		function openov1(){
+			$("#bgku2").fadeIn();
+		}
 
-function closebgku2(){
-	$("#bgku2").fadeOut();
-}
+		function closebgku2(){
+			$("#bgku2").fadeOut();
+		}
 </script>
 
 </body>
