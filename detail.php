@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	<title>Millenia</title>
-	<?php include "/templates/styles.html" ?>
+	<?php include "./templates/styles.html" ?>
 </head>
 
 <body>
-	<?php include "/templates/navbar.php" ?>
-    <?php include "/templates/mobile-search.php" ?>
+	<?php include "./templates/navbar.php" ?>
+    <?php include "./templates/mobile-search.php" ?>
 
 	<div class="container side-collapse-container padku-lg" id="itemku" style="">
 		<div class="container-fluid space-xs-bd" style="">
@@ -15,7 +15,7 @@
 				<ol class="breadcrumb">
 					<li><a href="#" style="font-size:0.95em;">Home</a></li>
 					<li><a href="#" style="font-size:0.95em;">Pakaian Wanita</a></li>
-					<li class="active" style="font-size:0.95em;">Sweater Black</li>        
+					<li class="active" style="font-size:0.95em;">Sweater Black</li>
 				</ol>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad" style="margin-top:-5px;">
@@ -27,25 +27,25 @@
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopad thumbs" style="padding-right:1%;" value="items1-3.png">
 							<div class="container-fluid nopad" style="border:1px solid #3FC0D6;">
 								<img src="images/items1-3.png" style="width:100%;height: auto;">
-							</div>	
+							</div>
 						</div>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopad thumbs" style="padding-right:1%;" value="items1-3.png">
 							<div class="container-fluid nopad" style="border:1px solid #e0e0e0;">
 								<img src="images/items1-3.png" style="width:100%;height: auto;">
-							</div>	
+							</div>
 						</div>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopad thumbs" style="padding-right:1%;" value="items1-3.png">
 							<div class="container-fluid nopad" style="border:1px solid #e0e0e0;">
 								<img src="images/items1-3.png" style="width:100%;height: auto;">
-							</div>	
+							</div>
 						</div>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopad thumbs" style="padding-right:1%;" value="items1-3.png">
 							<div class="container-fluid nopad" style="border:1px solid #e0e0e0;">
 								<img src="images/items1-3.png" style="width:100%;height: auto;">
-							</div>	
+							</div>
 						</div>
 					</div>
-					
+
 					<!-- carousel for mobile-->
 					<div class="hidden-sm hidden-md hidden-lg col-sm-12 col-md-12 col-lg-12 nopad" style="width:100%;">
 						<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -83,20 +83,20 @@
 					</div>
 					<!-- end of carousel for mobile-->
 				</div>
-				
+
 				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 nopad space" style="padding:0.5% 3% 0% 3%;margin:0px;">
 					<h2 class="title title-item-xs" style="margin-top:0px;" id="nameitem" value="Sweater Black White"> Sweater <br>Black White </h2>
 					<h6 class="code-item-xs" style="margin-top:-5px;"> WOM-01929 </h6>
-					
+
 					<div class="hidden-xs col-sm-12 col-md-12 col-lg-12 nopad" style="margin-top:-5px;padding-bottom:0px;">
-						<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							<br>
 							- Sweater tekstur ribbed
 							<br>- Warna navy
 							<br>- Kerah bulat
 		</p>
 	</div>
-	
+
 	<div class="hidden-xs container-fluid nopad" style="margin-top:0px;">
 		<h5><i class="fa fa-check-circle fa-lg biru" aria-hidden="true" style="padding-right:3%;"></i>Jaminan Retur 3 Hari</h5>
 		<h5><i class="fa fa-check-circle fa-lg biru" aria-hidden="true" style="padding-right:3%;"></i>Jaminan One-Day Shipping</h5>
@@ -114,7 +114,7 @@
 		<li><a data-toggle="tab" href="#menuit3">Review Customers</a></li>
 		<li><a data-toggle="tab" href="#menuit4">Kebijakan Pengembalian</a></li>
 	</ul>
-</div>		
+</div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:2%;">
 	<ul class="hidden-xs nav nav-tabs" style="border-bottom:1px solid #e0e0e0">
 		<li class="active"><a data-toggle="tab" href="#menuit1">Rincian Produk</a></li>
@@ -149,7 +149,7 @@
 						<tr>
 							<td style="border:none;width:18%;">Material</td>
 							<td style="border:none;">100% Acrylic</td>
-						</tr>	
+						</tr>
 					</tbody>
 				</table>
 				<div class="dividerit"></div>
@@ -171,7 +171,7 @@
 					<li> M (91cm x 88cm x 57cm) </li>
 					<li> L (91cm x 88cm x 57cm) </li>
 				</ul>
-				Agar memperoleh produk dengan ukuran yang tepat, silakan cek kembali ukuran Anda. <span class="biru" style="text-decoration:undefined"> 
+				Agar memperoleh produk dengan ukuran yang tepat, silakan cek kembali ukuran Anda. <span class="biru" style="text-decoration:undefined">
 				Lihat Ukuran</span>
 			</p>
 		</div>
@@ -211,7 +211,7 @@
 								</div>
 								<div class="col-xs-1 col-lg-1 nopad" style="margin-top:-7px;padding-left:3%;">
 									<h5 id="rate1"> 7 </h5>
-								</div>	
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nopad">
@@ -227,7 +227,7 @@
 								</div>
 								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 nopad" style="margin-top:-7px;padding-left:3%;">
 									<h5 id="rate2"> 0 </h5>
-								</div>	
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nopad">
@@ -242,7 +242,7 @@
 								</div>
 								<div class="col-xs-1 col-sm-1 col-md-1col-lg-1 nopad" style="margin-top:-7px;padding-left:3%;">
 									<h5 id="rate3"> 2 </h5>
-								</div>	
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nopad">
@@ -256,7 +256,7 @@
 								</div>
 								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 nopad" style="margin-top:-7px;padding-left:3%;">
 									<h5 id="rate4"> 0 </h5>
-								</div>	
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nopad">
@@ -269,7 +269,7 @@
 								</div>
 								<div class="col-xs-1 col-sm-1 col-md-1col-lg-1 nopad" style="margin-top:-7px;padding-left:3%;">
 									<h5 id="rate5"> 1 </h5>
-								</div>	
+								</div>
 							</div>
 						</div>
 					</div>
@@ -281,7 +281,7 @@
 								<i class="fa fa-star biru" aria-hidden="true"></i>
 								<i class="fa fa-star biru" aria-hidden="true"></i>
 								<i class="fa fa-star biru" aria-hidden="true"></i>
-							</div>	
+							</div>
 							<p style="margin-top:2%;">
 								Username
 							</p>
@@ -301,7 +301,7 @@
 							<i class="fa fa-star biru" aria-hidden="true"></i>
 							<i class="fa fa-star biru" aria-hidden="true"></i>
 							<i class="fa fa-star biru" aria-hidden="true"></i>
-						</div>	
+						</div>
 						<p style="margin-top:2%;">
 							Username
 						</p>
@@ -314,15 +314,15 @@
 							Respon Chat Cepat. Packing Baik. Recommended Seller. Cepat Sampai. Barang Sesuai Pesanan
 						</p>
 					</div>
-				</div>	
+				</div>
 			</div>
-			
+
 		</div>
 	</div>
 	<div id="menuit4" class="tab-pane fade">
 		<h5>Kebijakan Pengembalian Produk</h5>
 		<p style="margin-top:2%;">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis posuere enim. Proin tempor accumsan nunc, eget tristique lacus. Sed molestie laoreet euismod. 
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis posuere enim. Proin tempor accumsan nunc, eget tristique lacus. Sed molestie laoreet euismod.
 			<ul>
 				<li>Nikmati layanan GRATIS pengembalian dalam 30 hari untuk produk ini! </li>
 				<li>Info lebih lanjut mengenai layanan ini lihat FAQ disini</li>
@@ -345,7 +345,7 @@
 				<h5 style="margin-top:2%;" id="counteritemxs">0 Barang</h5>
 			</div>
 			<div class="modal-body" style="padding:6%;height:280px;overflow-y:scroll;" id="keranjangkuxs">
-				
+
 			</div>
 			<div class="container-fluid text-right" style="position:fixed;bottom:19%;background-color:white;">
 				<h5 id="totalitemxs"> Total : Rp 120.000 </h5>
@@ -356,84 +356,84 @@
 				</div>
 				<div class="col-xs-6 nopad" style="">
 					<button type="button" class="btn btn-defaults" style="padding:7%;border-radius:3px;width:100%;">Bayar</button>
-				</div>	
+				</div>
 			</div>
 		</div>
 
 	</div>
 </div>
 
-<?php include "/templates/scripts.html" ?>
+<?php include "./templates/scripts.html" ?>
 <script>
-    <?php include "/templates/sidebar.js" ?>
-    <?php include "/templates/cart.js" ?>
-		
+    <?php include "./templates/sidebar.js" ?>
+    <?php include "./templates/cart.js" ?>
+
 		/* buat rating*/
 		var totalreview = $("#totalrate").attr('value');
 		/*ini dihardcode, nanti buat aja input type hidden terus isi jumlahnya*/
-		
+
 		var pre1 = Math.round(parseInt($('#rate1').text())/totalreview*100);
 		var pre2 = Math.round(parseInt($('#rate2').text())/totalreview*100);
 		var pre3 = Math.round(parseInt($('#rate3').text())/totalreview*100);
 		var pre4 = Math.round(parseInt($('#rate4').text())/totalreview*100);
 		var pre5 = Math.round(parseInt($('#rate5').text())/totalreview*100);
-		
-		var elem1 = document.getElementById("bar1"); 
-		var elem2 = document.getElementById("bar2"); 
-		var elem3 = document.getElementById("bar3"); 
-		var elem4 = document.getElementById("bar4"); 
-		var elem5 = document.getElementById("bar5"); 
-		
+
+		var elem1 = document.getElementById("bar1");
+		var elem2 = document.getElementById("bar2");
+		var elem3 = document.getElementById("bar3");
+		var elem4 = document.getElementById("bar4");
+		var elem5 = document.getElementById("bar5");
+
 		var width = 1;
 		var id = setInterval(frame, 10);
 		function frame() {
 			if (width >= pre1) {clearInterval(id);
 			} else {
-				width++; 
-				elem1.style.width = width + '%'; 
+				width++;
+				elem1.style.width = width + '%';
 			}
 		}
-		
+
 		var width2 = 1;
 		var id2 = setInterval(frame2, 10);
 		function frame2() {
 			if (width2 >= pre2) {clearInterval(id2);
 			} else {
-				width2++; 
-				elem2.style.width = width2 + '%'; 
+				width2++;
+				elem2.style.width = width2 + '%';
 			}
 		}
-		
+
 		var width3 = 1;
 		var id3 = setInterval(frame3, 10);
 		function frame3() {
 			if (width3 >= pre3) {clearInterval(id3);
 			} else {
-				width3++; 
-				elem3.style.width = width3 + '%'; 
+				width3++;
+				elem3.style.width = width3 + '%';
 			}
 		}
-		
+
 		var width4 = 1;
 		var id4 = setInterval(frame4, 10);
 		function frame4() {
 			if (width4 >= pre4) {clearInterval(id4);
 			} else {
-				width4++; 
-				elem4.style.width = width4 + '%'; 
+				width4++;
+				elem4.style.width = width4 + '%';
 			}
 		}
-		
+
 		var width5 = 1;
 		var id5 = setInterval(frame5, 10);
 		function frame5() {
 			if (width5 >= pre5) {clearInterval(id5);
 			} else {
-				width5++; 
-				elem5.style.width = width5 + '%'; 
+				width5++;
+				elem5.style.width = width5 + '%';
 			}
 		}
-	
+
 
 $("#hilang").on("click", function() {
 	$("#hilang").fadeOut();
@@ -456,12 +456,12 @@ function closebgku2(){
 
 var quantity=0;
 $('.quantity-right-plus').click(function(e){
-	
+
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
-        
+
         // If is not undefined
         $('#quantity').val(quantity + 1);
             // Increment
@@ -472,9 +472,9 @@ $('.quantity-left-minus').click(function(e){
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($('#quantity').val());
-        
+
         // If is not undefined
-        
+
             // Increment
             if(quantity>0){
             	$('#quantity').val(quantity - 1);
@@ -482,4 +482,4 @@ $('.quantity-left-minus').click(function(e){
         });
 </script>
 </body>
-</html>	
+</html>
