@@ -25,7 +25,16 @@
 					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at nibh non arcu lacinia congue. </p>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-lg-6 space-items-2-1">
-					<img class="shadow-1" src="images/pic3.jpeg" style="width:100%;">
+					<?php
+	                    $list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y' AND banner_type='MOTM'");
+
+	                    while ($row = mysqli_fetch_assoc($list)) {
+	                        $banner_id = $row['banner_id'];
+	                        $url = $row['banner_url'];
+	                        
+	                        echo "<img class='shadow-1' src='".$url."' style='width:100%;'>";
+	                      }
+                    ?>
 					<div class="btn-top text-center putih grad1"> See Top Item</div>
 				</div>
 			</div>

@@ -34,6 +34,69 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
+                            <h3>Millenia of the Month</h3>
+                            <div class="table-responsive">
+                                <table id="tbl" class="table-striped table">
+                                    <thead>
+                                        <tr>
+                                            <th>Kode Produk</th>
+                                            <th>Gambar</th>
+                                            <th>Nama Produk</th>
+                                            <th>Harga</th>
+                                            <th>Ganti MOTM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $list = mysqli_query($conn, "SELECT p.product_no, p.product_code, p.product_name, p.product_price, v.picture_color_url FROM mi_product p JOIN mi_view_product v WHERE p.product_motm = 'Y' AND p.product_active = 'Y' AND p.product_no = v.product_no");
+
+                                        while ($row = mysqli_fetch_assoc($list)) 
+                                          {
+                                            $no = $row['product_no'];
+                                            $id = $row['product_code'];
+                                            $img = $row['picture_color_url'];
+                                            $name = $row['product_name'];
+                                            $price = $row['product_price'];
+    
+                                            echo "
+                                            <tr class='result'>
+                                              <td>".$id."</td>
+                                              <td><img src='../".$img."' height='100px'></img></td>
+                                              <td>".$name."</td>
+                                              <td>".$price."</td>
+                                              <td><a href='edit-motm.php?pid=".$no."'>Ganti</a></td>
+                                            </tr>
+                                            ";
+                                          }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h3> Banner MOTM </h3>
+                            <?php
+                            $banner_id = 0;
+                            $list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y' AND banner_type='MOTM'");
+
+                            while ($row = mysqli_fetch_assoc($list)) {
+                                $banner_id = $row['banner_id'];
+                                $url = $row['banner_url'];
+                                
+                                echo "<img width= '500px' src='../".$url."'></img>";
+                              }
+                            ?>
+                            <h3 style="margin-top: 2%"> Ubah Banner MOTM </h3>
+                            <form class="form-horizontal form-material" method="post" action="motm.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label class="col-md-12">Banner Baru (Ukuran Banner 750 x 500)</label>
+                                    <div class="col-md-12">
+                                        <img id="x" height="100" />
+                                        <input name="banner" type="file" onchange="document.getElementById('x').src = window.URL.createObjectURL(this.files[0])">
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 5%">
+                                        <button class="btn btn-success" type="submit" name="tambah">Selesai</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -47,48 +110,34 @@
 </body>
 
 <?php include 'templates/scripts.html' ?>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <form method="post" action="manage-promo.php">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Hapus Promo</h4>
-      </div>
-      <div class="modal-body">
-        <p>Apakah Anda yakin ingin menghapus promo ini?</p>
-            <input type="hidden" id="idku" name="idku">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button class="btn btn-success" type="submit" name="hapus">Hapus</button>
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#tbl').DataTable({"bLengthChange": false});
-        $('.input-sm').height('20px');
-    });
-    $(document).on("click", ".hapus", function () {
-        var idku = $(this).data('id');
-        $(".modal-body #idku").val(idku);
-    });
-</script>
 <?php
-    if(isset($_POST['hapus'])) {
-        $idku = $_POST['idku'];
-        $sql = "UPDATE mi_product SET product_clearance_active='N',product_time_active='N',product_qty_active='N' WHERE product_no = '$idku'";
+    if(isset($_POST['tambah'])) {
+        //preparing upload picture
+        $target_dir = "../images/";
+
+        $target_file = $target_dir . basename($_FILES['banner']['name']);
+
+        //cek jenis file
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        
+        $filename = date("Ymd_His") . "." . $imageFileType;
+
+        $simpan_file = $target_dir . $filename;
+
+        if(!move_uploaded_file($_FILES['banner']['tmp_name'], $simpan_file)) {
+            echo "<script>alert('Gagal mengupload file, periksa ukuran dan jenis file (JPG, PNG, GIF)');</script>";
+        }
+
+        $user = $_SESSION['username'];
+
+        $sql = "INSERT INTO mi_banner(banner_url, banner_created_user, banner_type) VALUES ('images/$filename','$user','MOTM')";
+        $sql2 = "UPDATE mi_banner SET banner_active='N' WHERE banner_id = $banner_id";
+        
         if(mysqli_query($conn, $sql)){
-            header("location: manage-promo.php");
+            mysqli_query($conn, $sql2);
+            header("location: motm.php");
         } else {
-            echo "<script>alert('Gagal menghapus promo, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menambah banner, refresh halaman dan coba lagi');</script>";
         }
     }
 ?>

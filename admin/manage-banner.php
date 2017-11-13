@@ -58,7 +58,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y'");
+                                            $list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y' AND banner_type = 'HOME'");
 
                                             while ($row = mysqli_fetch_assoc($list)) {
                                                 $id = $row['banner_id'];
@@ -113,7 +113,7 @@
         if(mysqli_query($conn, $sql)){
             header("location: manage-banner.php");
         } else {
-            echo "<script>alert('Gagal menambah produk, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menambah banner, refresh halaman dan coba lagi');</script>";
         }
     }
 ?>
@@ -154,7 +154,7 @@
         if(mysqli_query($conn, $sql)){
             header("location: manage-banner.php");
         } else {
-            echo "<script>alert('Gagal menghapus promo, refresh halaman dan coba lagi');</script>";
+            echo "<script>alert('Gagal menghapus banner, refresh halaman dan coba lagi');</script>";
         }
     }
 ?>
