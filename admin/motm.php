@@ -36,23 +36,24 @@
                         <div class="white-box">
                             <h3>Millenia of the Month</h3>
                             <div class="table-responsive">
-                                <table id="tbl" class="table-striped table">
+                                <table id="tbl2" class="table-striped table">
                                     <thead>
                                         <tr>
                                             <th>Kode Produk</th>
                                             <th>Gambar</th>
                                             <th>Nama Produk</th>
                                             <th>Harga</th>
-                                            <th>Ganti MOTM</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $list = mysqli_query($conn, "SELECT p.product_no, p.product_code, p.product_name, p.product_price, v.picture_color_url FROM mi_product p JOIN mi_view_product v WHERE p.product_motm = 'Y' AND p.product_active = 'Y' AND p.product_no = v.product_no");
 
+                                        $id_motm = 0;
+
                                         while ($row = mysqli_fetch_assoc($list)) 
                                           {
-                                            $no = $row['product_no'];
+                                            $id_motm = $row['product_no'];
                                             $id = $row['product_code'];
                                             $img = $row['picture_color_url'];
                                             $name = $row['product_name'];
@@ -64,7 +65,6 @@
                                               <td><img src='../".$img."' height='100px'></img></td>
                                               <td>".$name."</td>
                                               <td>".$price."</td>
-                                              <td><a href='edit-motm.php?pid=".$no."'>Ganti</a></td>
                                             </tr>
                                             ";
                                           }
@@ -72,7 +72,61 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <h3> Banner MOTM </h3>
+                            <h3 style="margin-top: 2%"> Ubah MOTM </h3>
+                                <form class="form-horizontal form-material" method="post" action="motm.php">
+                                <input hidden="true" name="current_motm" value="<?php echo $id_motm; ?>">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="tbl" class="table-striped table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Pilih</th>
+                                                        <th>ID</th>
+                                                        <th>Gambar</th>
+                                                        <th>Nama</th>
+                                                        <th>Harga</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $list = mysqli_query($conn, "SELECT p.product_no, p.product_code, p.product_name, p.product_price, v.picture_color_url FROM mi_product p JOIN mi_view_product v WHERE p.product_motm = 'N' AND p.product_active = 'Y' AND p.product_no = v.product_no");
+
+                                                    while ($row = mysqli_fetch_assoc($list)) 
+                                                      {
+                                                        $no = $row['product_no'];
+                                                        $id = $row['product_code'];
+                                                        $img = $row['picture_color_url'];
+                                                        $name = $row['product_name'];
+                                                        $price = $row['product_price'];
+                                                        
+                                                        echo "
+                                                        <tr class='result'>
+                                                          <td><input required type='radio' name='products[]' value='".$no."'</td>
+                                                          <td>".$id."</td>
+                                                          <td><img src='../".$img."' height='100px'></img></td>
+                                                          <td>".$name."</td>
+                                                          <td>".$price."</td>
+                                                        </tr>
+                                                        ";
+                                                      }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                                <div id="placeholder"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success" type="submit" name="ubah">Ubah</button>
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                            </form>
+                            <h3 style="margin-top: 2%"> Banner MOTM </h3>
                             <?php
                             $banner_id = 0;
                             $list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y' AND banner_type='MOTM'");
@@ -110,6 +164,19 @@
 </body>
 
 <?php include 'templates/scripts.html' ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tbl').DataTable( {
+            "scrollY":        "400px",
+            "scrollCollapse": true,
+            "paging":         false,
+            "bLengthChange": false,
+            "info": false,
+            "bFilter": false
+        });
+        $('.input-sm').height('20px');
+    });
+</script>
 <?php
     if(isset($_POST['tambah'])) {
         //preparing upload picture
@@ -138,6 +205,29 @@
             header("location: motm.php");
         } else {
             echo "<script>alert('Gagal menambah banner, refresh halaman dan coba lagi');</script>";
+        }
+    }
+?>
+<?php
+    //check if the form has been submitted
+    if(isset($_POST['ubah'])) {
+        //cleanup the variables
+        //prevent mysql injection
+        
+        foreach($_POST['products'] as $selected){
+            $id = mysqli_real_escape_string($conn, $selected);
+        }
+
+        $current_motm = $_POST['current_motm'];
+
+        $sql = "UPDATE mi_product SET product_motm='Y' WHERE product_no='$id'";
+        $sql2 = "UPDATE mi_product SET product_motm='N' WHERE product_no='$current_motm'";
+
+        if (!mysqli_query($conn, $sql)) {
+            echo "<script>alert('Gagal mengubah MOTM, refresh halaman dan coba lagi');</script>";
+        } else {
+            mysqli_query($conn, $sql2);
+            header("location: motm.php");
         }
     }
 ?>

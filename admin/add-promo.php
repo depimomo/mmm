@@ -165,28 +165,27 @@
 </script>
 
 <?php
-
     //check if the form has been submitted
     if(isset($_POST['tambah'])) {
         //cleanup the variables
         //prevent mysql injection
         
         foreach($_POST['products'] as $selected){
-            $products = mysql_real_escape_string($selected);
+            $products = mysqli_real_escape_string($conn, $selected);
         }
 
-        $promo = mysql_real_escape_string($_POST['promo']);
+        $promo = mysqli_real_escape_string($conn, $_POST['promo']);
         $promo = str_replace( ',', '', $promo );
-        $category = mysql_real_escape_string($_POST['category']);
+        $category = mysqli_real_escape_string($conn, $_POST['category']);
 
         $sql='';
 
         if($category == 'quantity') {
-            $qty = mysql_real_escape_string($_POST['qty']);
+            $qty = mysqli_real_escape_string($conn, $_POST['qty']);
             $sql = "UPDATE mi_product SET product_qty_active='Y', product_qty_sale='$qty', product_promo_price='$promo' WHERE product_no='$products'";
         } elseif ($category == 'time') {
-            $datetimem = mysql_real_escape_string($_POST['mulai']);
-            $datetime = mysql_real_escape_string($_POST['selesai']);
+            $datetimem = mysqli_real_escape_string($conn, $_POST['mulai']);
+            $datetime = mysqli_real_escape_string($conn, $_POST['selesai']);
             $splitm = explode(" ", $datetimem);
             $split = explode(" ", $datetime);
             $sql = "UPDATE mi_product SET product_time_active='Y', product_time_day='$splitm[0]',product_time_hour='$splitm[1]', product_time_day_end='$split[0]',product_time_hour_end='$split[1]', product_promo_price='$promo' WHERE product_no='$products'";

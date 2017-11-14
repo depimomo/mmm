@@ -301,14 +301,14 @@
     if(isset($_POST['tambah'])) {
         //cleanup the variables
         //prevent mysql injection
-        $name = mysql_real_escape_string($_POST['name']);
-        $procuctcode = mysql_real_escape_string($_POST['product_code']);
-        $desc = mysql_real_escape_string($_POST['desc']);
-        $price = mysql_real_escape_string($_POST['price']);
-        $weight = mysql_real_escape_string($_POST['weight']);
-        $subsubcategory = mysql_real_escape_string($_POST['subsubcategory']);
-        $detail = mysql_real_escape_string($_POST['detail']);
-        $sizedetail = mysql_real_escape_string($_POST['size_detail']);
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $procuctcode = mysqli_real_escape_string($conn, $_POST['product_code']);
+        $desc = mysqli_real_escape_string($conn, $_POST['desc']);
+        $price = mysqli_real_escape_string($conn, $_POST['price']);
+        $weight = mysqli_real_escape_string($conn, $_POST['weight']);
+        $subsubcategory = mysqli_real_escape_string($conn, $_POST['subsubcategory']);
+        $detail = mysqli_real_escape_string($conn, $_POST['detail']);
+        $sizedetail = mysqli_real_escape_string($conn, $_POST['size_detail']);
         $uname = $_SESSION['username'];
         
         $price = str_replace( ',', '', $price );
@@ -345,9 +345,9 @@
 
         for ($i = 1; $i <= 50; $i++) {
             if($_POST['color-'.$i] != null){
-                array_push($color, mysql_real_escape_string($_POST['color-'.$i]));
-                array_push($size, mysql_real_escape_string($_POST['size-'.$i]));
-                array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
+                array_push($color, mysqli_real_escape_string($conn, $_POST['color-'.$i]));
+                array_push($size, mysqli_real_escape_string($conn, $_POST['size-'.$i]));
+                array_push($stock, mysqli_real_escape_string($conn, $_POST['stock-'.$i]));
             }
         }
 

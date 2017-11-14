@@ -1,6 +1,6 @@
 <?php 
     require("connect.php");
-	$filter = mysql_real_escape_string( $_POST['filter'] );
+	$filter = mysqli_real_escape_string($conn,  $_POST['filter'] );
 
     $get = mysqli_query($conn, "SELECT * FROM mi_subsubcategory WHERE subcategory_id = $filter");
 	$option = '';
@@ -12,5 +12,5 @@
 	echo $option;
 	$option = '';
 
-    mysql_close();
+    mysqli_close($conn);
 ?>

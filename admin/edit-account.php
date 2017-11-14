@@ -114,9 +114,9 @@
         if(isset($_POST['update'])) {
             //cleanup the variables
             //prevent mysql injection
-            $pass1 = mysql_real_escape_string($_POST['pass1']);
-            $pass2 = mysql_real_escape_string($_POST['pass2']);
-            $active = mysql_real_escape_string($_POST['active']);
+            $pass1 = mysqli_real_escape_string($conn, $_POST['pass1']);
+            $pass2 = mysqli_real_escape_string($conn, $_POST['pass2']);
+            $active = mysqli_real_escape_string($conn, $_POST['active']);
 
             if ($active != "Y" && $active != "N") {
                 $message = 'Status harus "Y" atau "N"';

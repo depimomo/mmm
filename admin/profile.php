@@ -98,8 +98,8 @@
             //cleanup the variables
             //prevent mysql injection
             $uname = $_SESSION['username'];
-            $pass1 = mysql_real_escape_string($_POST['pass1']);
-            $pass2 = mysql_real_escape_string($_POST['pass2']);
+            $pass1 = mysqli_real_escape_string($conn, $_POST['pass1']);
+            $pass2 = mysqli_real_escape_string($conn, $_POST['pass2']);
 
             if($pass1 != $pass2 || $pass1 == ''){
                 $message = 'Password kosong atau tidak sesuai';

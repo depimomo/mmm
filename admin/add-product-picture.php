@@ -108,7 +108,7 @@
     if(isset($_POST['tambah'])) {
         //preparing upload picture
         $target_dir = "../images/";
-        $primary = mysql_real_escape_string($_POST['utama']);
+        $primary = mysqli_real_escape_string($conn, $_POST['utama']);
 
         for ($i = 0; $i < count($colors); $i++) {
             $target_file = $target_dir . basename($_FILES['img'.$colors[$i]]['name']);

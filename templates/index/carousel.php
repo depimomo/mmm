@@ -4,7 +4,7 @@
 			<?php
 				$i = 0;
 
-				$list = mysqli_query($conn, "SELECT COUNT(*) FROM mi_banner WHERE banner_active = 'Y'");
+				$list = mysqli_query($conn, "SELECT COUNT(*) FROM mi_banner WHERE banner_active = 'Y' AND banner_type = 'HOME'");
 
                 while ($row = mysqli_fetch_assoc($list)) {
                     $count = $row['COUNT(*)'];
@@ -22,7 +22,7 @@
 		<div class="carousel-inner">
 			<?php
 				$i = 0;
-				$list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y'");
+				$list = mysqli_query($conn, "SELECT * FROM mi_banner WHERE banner_active = 'Y' AND banner_type = 'HOME'");
 
                 while ($row = mysqli_fetch_assoc($list)) {
                     $url = $row['banner_url'];

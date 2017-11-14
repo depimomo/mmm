@@ -161,18 +161,18 @@
         //cleanup the variables
         //prevent mysql injection
         
-        $promo = mysql_real_escape_string($_POST['promo']);
+        $promo = mysqli_real_escape_string($conn, $_POST['promo']);
         $promo = str_replace( ',', '', $promo );
-        $category = mysql_real_escape_string($_POST['jenis']);
+        $category = mysqli_real_escape_string($conn, $_POST['jenis']);
 
         $sql='';
 
         if($category == 'Qty') {
-            $qty = mysql_real_escape_string($_POST['qty']);
+            $qty = mysqli_real_escape_string($conn, $_POST['qty']);
             $sql = "UPDATE mi_product SET product_qty_sale='$qty', product_promo_price='$promo' WHERE product_no='$pid'";
         } elseif ($category == 'Time') {
-            $datetimem = mysql_real_escape_string($_POST['mulai']);
-            $datetime = mysql_real_escape_string($_POST['selesai']);
+            $datetimem = mysqli_real_escape_string($conn, $_POST['mulai']);
+            $datetime = mysqli_real_escape_string($conn, $_POST['selesai']);
             $splitm = explode(" ", $datetimem);
             $split = explode(" ", $datetime);
             $sql = "UPDATE mi_product SET product_time_day='$splitm[0]', product_time_hour='$splitm[1]', product_time_day_end='$split[0]', product_time_hour_end='$split[1]', product_promo_price='$promo' WHERE product_no='$pid'";

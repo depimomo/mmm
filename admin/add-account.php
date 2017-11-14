@@ -94,11 +94,11 @@
         if(isset($_POST['tambah'])) {
             //cleanup the variables
             //prevent mysql injection
-            $uname = mysql_real_escape_string($_POST['uname']);
-            $fullname = mysql_real_escape_string($_POST['fullname']);
-            $pass1 = mysql_real_escape_string($_POST['pass1']);
-            $pass2 = mysql_real_escape_string($_POST['pass2']);
-            $role = mysql_real_escape_string($_POST['role']);
+            $uname = mysqli_real_escape_string($conn, $_POST['uname']);
+            $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+            $pass1 = mysqli_real_escape_string($conn, $_POST['pass1']);
+            $pass2 = mysqli_real_escape_string($conn, $_POST['pass2']);
+            $role = mysqli_real_escape_string($conn, $_POST['role']);
             
             if ($pass1 != $pass2) {
                 $message = 'Password tidak sesuai';

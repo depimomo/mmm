@@ -234,12 +234,12 @@
     if(isset($_POST['edit'])) {
         //cleanup the variables
         //prevent mysql injection
-        $desc = mysql_real_escape_string($_POST['desc']);
+        $desc = mysqli_real_escape_string($conn, $_POST['desc']);
         $active = (empty($_POST['aktif'])) ? 'N' : $_POST['aktif'];
-        $price = mysql_real_escape_string($_POST['price']);
-        $detail = mysql_real_escape_string($_POST['detail']);
-        $sizedetail = mysql_real_escape_string($_POST['size_detail']);
-        $weight = mysql_real_escape_string($_POST['weight']);
+        $price = mysqli_real_escape_string($conn, $_POST['price']);
+        $detail = mysqli_real_escape_string($conn, $_POST['detail']);
+        $sizedetail = mysqli_real_escape_string($conn, $_POST['size_detail']);
+        $weight = mysqli_real_escape_string($conn, $_POST['weight']);
         $uname = $_SESSION['username'];
         
         $price = str_replace( ',', '', $price );
@@ -270,7 +270,7 @@
 
         for ($i = 1; $i <= count($colors); $i++) {
             if($_POST['stock-'.$i] != null){
-                array_push($stock, mysql_real_escape_string($_POST['stock-'.$i]));
+                array_push($stock, mysqli_real_escape_string($conn, $_POST['stock-'.$i]));
             }
         }
 

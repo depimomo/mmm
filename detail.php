@@ -85,7 +85,7 @@
 				</div>
 
 				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 nopad space" style="padding:0.5% 3% 0% 3%;margin:0px;">
-					<h2 class="title title-item-xs" style="margin-top:0px;" id="nameitem" value="Sweater Black White"> Sweater <br>Black White </h2>
+					<h2 class="title title-item-xs" style="margin-top:0px;" id="nameitem" value="Sweater Black White"> Sweater Black White Blablablasdgbdfbfgbgf</h2>
 					<h6 class="code-item-xs" style="margin-top:-5px;"> WOM-01929 </h6>
 
 					<div class="hidden-xs col-sm-12 col-md-12 col-lg-12 nopad" style="margin-top:-5px;padding-bottom:0px;">

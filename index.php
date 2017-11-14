@@ -35,7 +35,7 @@
 	                        echo "<img class='shadow-1' src='".$url."' style='width:100%;'>";
 	                      }
                     ?>
-					<div class="btn-top text-center putih grad1"> See Top Item</div>
+					<a href=""><div class="btn-top text-center putih grad1"> See Top Item</div></a>
 				</div>
 			</div>
 		</div>

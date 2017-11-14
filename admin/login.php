@@ -36,8 +36,8 @@
     if(isset($_POST['masuk'])) {
       //cleanup the variables
       //prevent mysql injection
-      $username = mysql_real_escape_string($_POST['uname']);
-      $password = mysql_real_escape_string($_POST['pass']);
+      $username = mysqli_real_escape_string($conn, $_POST['uname']);
+      $password = mysqli_real_escape_string($conn, $_POST['pass']);
       
       $result = mysqli_query($conn, "SELECT * FROM mi_admin WHERE username = '$username'");
       $count = mysqli_num_rows($result);
